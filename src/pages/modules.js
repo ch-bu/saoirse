@@ -97,15 +97,11 @@ const ModuleDescription = styled.div`
     position: absolute;
     bottom: 0;
     width: 100%;
-    /* left: 50%; */
-    /* right: -15px; */
     left: 0;
-    /* transform: translateX(-50%); */
     text-decoration: none;
     color: #000;
     font-weight: bold;
     padding: .43em 20px;
-    /* background: #cce7dd; */
     background: rgba(187,239,253,0.8);
     text-align: center;
     border-bottom-left-radius: 10px;
@@ -124,8 +120,6 @@ const ModuleDescription = styled.div`
 export default ({ data }) => {
   const modules = data.allMarkdownRemark.edges;
 
-  console.log(modules);
-
   return (
       <Shell>
         <Helmet>
@@ -137,15 +131,14 @@ export default ({ data }) => {
               {modules.map(({ node }) => (
                 <FlexElement key={node.frontmatter.module}>
                   <ModuleDescription>
-                    {/* <h4>Module {node.frontmatter.module}</h4>  */}
                     <span>{node.frontmatter.module}</span>
                     
                     <p className="title">{node.frontmatter.moduleTitle}</p> 
                     <p>{node.excerpt}</p>
                   
                     <Link to={`/module?id=` + node.frontmatter.module + 
-                              '&subunit=' + node.frontmatter.subunit +
-                              '&unit=' + node.frontmatter.unit}>
+                              '&unit=' + node.frontmatter.unit +
+                              '&subunit=' + node.frontmatter.subunit}>
                       Zum Modul
                     </Link>
                   </ModuleDescription>
