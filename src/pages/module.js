@@ -270,10 +270,15 @@ class Module extends Component {
 
           <Aside showAside={this.state.showAside} >
             <ButtonLerneinheiten>
-              <Link to="/modules">
-                <FaChevronLeft />
-              </Link>
-              <Link to="/modules">Lerneinheiten {this.state.moduleId}: <br />{this.state.title}</Link>
+              <div>
+                <Link to="/modules">
+                  <FaChevronLeft />
+                </Link>
+                <Link to="/modules">Lesson {this.state.moduleId}</Link>
+              </div>
+              <div>
+              {this.state.currentSubunit.frontmatter.moduleTitle}
+              </div>
             </ButtonLerneinheiten>
             
             <UlAside>
