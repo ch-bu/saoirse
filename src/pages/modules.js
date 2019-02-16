@@ -6,7 +6,7 @@ import { graphql } from "gatsby"
 import Helmet from 'react-helmet';
 
 const Modules = styled.div`
-  background-color: #1a2638;
+  background-color: #20232a;
   padding-top: 50px;
   padding-left: 5vw;
   padding-right: 5vw;
@@ -102,13 +102,13 @@ const ModuleDescription = styled.div`
     color: #000;
     font-weight: bold;
     padding: .43em 20px;
-    background: rgba(187,239,253,0.8);
+    background: #bb6d8c;
     text-align: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 
     &:hover {
-      background: rgba(187,239,253,0.5);
+      background: #cb90a7;
     }
   }
 

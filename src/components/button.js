@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 
 const ButtonComponent = styled.button`
-  background-color: #385c8f;
+  background-color: #bb6d8c;
   width: 100%;
   border-radius: 5px;
-  /* border: 1px solid #ccc; */
   min-height: 2rem;
   padding: 0;
   border: none;
@@ -13,7 +12,7 @@ const ButtonComponent = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #5781bd;
+    background-color: #cb90a7;
   }
 `;
 

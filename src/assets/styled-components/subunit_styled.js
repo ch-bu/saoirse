@@ -22,22 +22,6 @@ const Container = styled.div`
   }
 `;
 
-// const ModuleHeader = styled.div`
-//   display: none;
-//   position: fixed;
-//   top: 0;
-//   z-index: 999;
-//   left: 0;
-//   width: 25vw;
-//   height: 70px;
-//   background-color: #141e2c;
-//   background-color: #bb6d8c;
-
-//   @media only screen and (min-width: 900px) {
-//    display: block;
-//   }
-// `;
-
 const BottomNavigation = styled.div`
   z-index: 88;
 
@@ -76,13 +60,13 @@ const Aside = styled.div`
   width: ${props => props.showAside ? "100vw" : "100vw"};
   overflow-y: scroll;
   box-sizing: border-box;
-  /* background-color: #1a2638; */
-  background-color: #f7f7f7;
+  /* background-color: rgb(20, 30, 44); */
+  background-color: #20232a;
   padding-top: 20px;
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
   overflow-x: hidden;
-  border-right: 1px solid rgb(236, 236, 236);
+  border-right: 1px solid #20232a;
 
   @media only screen and (min-width: 900px) {
     padding: 70px 0 20px 0;
@@ -113,7 +97,7 @@ const UlAside = styled.ul`
   li {
 
     a {
-      color: #000;
+      color: rgb(183, 183, 183);
     }
 
     ul {
@@ -132,7 +116,7 @@ const UlAside = styled.ul`
         }
 
         a {
-          color: #000;
+          color: rgb(183, 183, 183);
           font-size: 0.8rem;
           text-decoration: none;
           background-image: none;
@@ -148,7 +132,7 @@ const UlAside = styled.ul`
 
           &.active {
             font-weight: bold;
-            color: #000;
+            color: #fff;
           }
         }
 
@@ -165,7 +149,7 @@ const UlAside = styled.ul`
 const ButtonLerneinheiten = styled.div`
   width: 100%;
   height: 80px;
-  background-color: rgb(26, 38, 56);
+  background-color: #20232a;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -179,8 +163,10 @@ const ButtonLerneinheiten = styled.div`
     flex-direction: row;
     justify-content: flex-start;
     align-self: stretch;
-    background-color: rgb(20, 30, 44);
-    border-right: 1px solid #fff;
+    background-color: #20232a;
+    border-bottom: 1px solid #393f4b;
+    border-right: 1px solid #393f4b;
+    transition: background-color 0.2s;
 
     a:first-child {
       flex-grow: 1;
@@ -199,8 +185,7 @@ const ButtonLerneinheiten = styled.div`
     }
 
     &:hover {
-      /* background-color: rgba(255,229,100,0.3); */
-      /* background-color: #bb6d8c; */
+      background-color: #313640;
     }
   }
 
@@ -208,7 +193,7 @@ const ButtonLerneinheiten = styled.div`
     display: none;
     text-align: center;
     align-self: center;
-    color: #fff;
+    color: rgb(183, 183, 183);
   }
 
   @media only screen and (min-width: 900px) {
@@ -228,17 +213,12 @@ const ButtonLerneinheiten = styled.div`
     width: 100vw;
   }
 
-  &:hover > a {
-    color: #000;
-    color: #d3a1b5;
-  }
-
   a {
     padding: 0 20px;
     align-self: stretch;
     display:flex;
     align-items:center;
-    color: #fff;
+    color: rgb(183, 183, 183);
     transition: color 0.2s;
     font-style: italic;
   }

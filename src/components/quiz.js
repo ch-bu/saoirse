@@ -84,7 +84,7 @@ const Input = styled.input`
   cursor: pointer;
 
   &:checked ~ .checkmark {
-    background-color: #385c8f;
+    background-color: #cb90a7;
     /* border: 1px solid #ccc; */
   }
 `
