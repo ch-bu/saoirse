@@ -109,16 +109,9 @@ const Header = () => (
               </h1>
             </li>
             <li>
-              <Link to="/lerneinheiten">
+              <Link to="/modules">
                 <FaBookOpen /> Lerneinheiten
               </Link>
-            </li>
-            <li>
-              <a target="_blank"
-                rel="noopener noreferrer"
-                href="https://ilias.uni-freiburg.de/goto.php?target=crs_1001276&client_id=unifreiburg">
-                <IoIosSchool /> Zu Ilias
-              </a>
             </li>
           </ul>
     
