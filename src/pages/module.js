@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import rehypeReact from "rehype-react"
 import { Link, navigate } from "gatsby"
+import Shell from '../layouts/shell';
 import { graphql } from "gatsby"
 import Helmet from 'react-helmet';
 import Url from 'url-parse';
@@ -253,7 +254,7 @@ class Module extends Component {
 
   render() {
     return (
-      <div>      
+      <Shell>      
         {this.state.currentSubunit ? <Helmet>
           <title>{this.state.currentSubunit.frontmatter.title}</title>
         </Helmet> : ""}
@@ -341,7 +342,7 @@ class Module extends Component {
           </Link>}
           
         </BottomNavigation>
-      </div>
+      </Shell>
     )
   }
 
