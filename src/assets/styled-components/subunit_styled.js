@@ -167,9 +167,9 @@ const ButtonLerneinheiten = styled.div`
     flex-direction: row;
     justify-content: flex-start;
     align-self: stretch;
-    background-color: #20232a;
-    border-bottom: 1px solid #393f4b;
-    border-right: 1px solid #393f4b;
+    background-color: #bb6d8c;
+    border-bottom: none;
+    border-right: none;
     transition: background-color 0.2s;
 
     a {
@@ -177,9 +177,19 @@ const ButtonLerneinheiten = styled.div`
       align-self: stretch;
       display:flex;
       align-items:center;
-      color: rgb(183, 183, 183);
+      color: #000;
       transition: color 0.2s;
       font-style: italic;
+    }
+
+    @media only screen and (min-width: 900px) {
+      background-color: #20232a;
+      border-right: 1px solid #393f4b;
+      border-bottom: 1px solid #393f4b;
+
+      a {
+        color: rgb(183, 183, 183);
+      }
     }
 
     a:first-child {
@@ -364,7 +374,7 @@ const Main = styled.div`
 const PreviousButton = styled.a`
   position: fixed;
   padding-top: 45vh;
-  padding-left: 1vw;
+  /* padding-left: 1vw; */
   height: 100vh;
   left: 0vw;
   cursor: pointer;
@@ -372,7 +382,7 @@ const PreviousButton = styled.a`
 
   svg {
     height: 60px;
-    width: 80px;
+    width: 100px;
     color: #ccc;
   }
 
@@ -385,14 +395,14 @@ const NextButton = styled.a`
   display: ${props => props.showAsideLeft ? "none" : "inline"};
   position: fixed;
   padding-top: 45vh;
-  padding-right: 1vw;
+  /* padding-right: 1vw; */
   height: 100vh;
   right: 0vw;
   cursor: pointer;
 
   svg {
     height: 60px;
-    width: 80px;
+    width: 100px;
     color: #ccc;
   }
 

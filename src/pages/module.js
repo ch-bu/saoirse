@@ -95,9 +95,6 @@ class Module extends Component {
                 value.node.frontmatter.unit     == parsedURL.unit;
         });
 
-        console.log(subunits);
-
-
         // Get subunit after current subunit
         var next_subunit = subunits.filter((value, index) => {
           return index == current_index + 1;
@@ -200,7 +197,6 @@ class Module extends Component {
   }
 
   updateMainContent = (e) => {
-
     // Get url parameters
     const url = new Url(e.target.href);
     const parsedURL = queryString.parse(url.query);
@@ -255,12 +251,9 @@ class Module extends Component {
   toggleAsideLeft() {
     const currentState = this.state.showAsideLeft;
     this.setState({ showAsideLeft: !currentState });
-
-    console.log(this.state.showAsideLeft);
   }
 
   render() {
-
     return (
       <div>      
         {this.state.currentSubunit ? <Helmet>
