@@ -305,7 +305,7 @@ class Module extends Component {
               </div>
               <div>
               {this.state.showAsideLeft ? <IoMdClose onClick={this.toggleAsideLeft} />: <IoMdMenu onClick={this.toggleAsideLeft}/>}
-                {this.state.currentSubunit.frontmatter.moduleTitle} - {this.state.currentSubunit.frontmatter.unitTitle}
+                {this.state.currentSubunit.frontmatter.moduleTitle} > {this.state.currentSubunit.frontmatter.unitTitle}
               </div>
             </ButtonLerneinheiten>
             
