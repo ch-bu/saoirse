@@ -100,8 +100,6 @@ class Module extends Component {
           return index == current_index + 1;
         });
 
-        console.log(next_subunit[0].node.frontmatter.title);
-
         // Get subunit before current subunit
         var previous_subunit = subunits.filter((value, index) => {
           return index == current_index - 1;
@@ -262,8 +260,30 @@ class Module extends Component {
       
         {this.state.currentSubunit ? <Container showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
 
-          <NextButton showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}><FaAngleRight /></NextButton>
-          <PreviousButton showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}><FaAngleLeft /></PreviousButton>
+          {this.state.nextSubunit.length == 0 ? <a></a> : 
+          <NextButton showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
+            <Link onClick={this.updateMainContent}
+                to={`/module?id=` + this.state.moduleId + 
+                      '&unit='      + this.state.nextSubunit[0].node.frontmatter.unit +
+                      '&subunit='         + this.state.nextSubunit[0].node.frontmatter.subunit}>
+                      
+                        <FaAngleRight />
+                      
+            </Link>
+          </NextButton>}
+          
+          {this.state.previousSubunit.length == 0 ? <a></a> : 
+          <PreviousButton showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
+            <Link onClick={this.updateMainContent}
+                to={`/module?id=` + this.state.moduleId + 
+                      '&unit='      + this.state.previousSubunit[0].node.frontmatter.unit +
+                      '&subunit='         + this.state.previousSubunit[0].node.frontmatter.subunit}>
+                      <FaAngleLeft />
+            </Link>
+          </PreviousButton>}
+
+          {/* <PreviousButton showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}><FaAngleLeft /></PreviousButton> */}
+          
           {this.state.currentSubunit.frontmatter.type == "video" ? 
             <VideoMain>
               {

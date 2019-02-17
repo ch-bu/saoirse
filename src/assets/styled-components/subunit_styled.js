@@ -371,19 +371,25 @@ const Main = styled.div`
   }
 `;
 
-const PreviousButton = styled.a`
+const PreviousButton = styled.div`
+  display: ${props => props.showAsideLeft ? "none" : "flex"};
   position: fixed;
-  padding-top: 45vh;
-  /* padding-left: 1vw; */
   height: 100vh;
   left: 0vw;
+  align-items: stretch;
   cursor: pointer;
-  display: ${props => props.showAsideLeft ? "none" : "inline"};
 
-  svg {
-    height: 60px;
-    width: 100px;
-    color: #ccc;
+  a {
+    height: 100%;
+    display: flex;
+
+    svg {
+      align-self: center;
+      height: 60px;
+      pointer-events: none;
+      width: 100px;
+      color: #ccc;
+    }
   }
 
   &:hover {
@@ -391,19 +397,25 @@ const PreviousButton = styled.a`
   }
 `;
 
-const NextButton = styled.a`
-  display: ${props => props.showAsideLeft ? "none" : "inline"};
+const NextButton = styled.div`
+  display: ${props => props.showAsideLeft ? "none" : "flex"};
   position: fixed;
-  padding-top: 45vh;
-  /* padding-right: 1vw; */
   height: 100vh;
   right: 0vw;
+  align-items: stretch;
   cursor: pointer;
 
-  svg {
-    height: 60px;
-    width: 100px;
-    color: #ccc;
+  a {
+    height: 100%;
+    display: flex;
+
+    svg {
+      align-self: center;
+      height: 60px;
+      pointer-events: none;
+      width: 100px;
+      color: #ccc;
+    }
   }
 
   &:hover {
