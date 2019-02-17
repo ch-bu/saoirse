@@ -13,6 +13,7 @@ import Quiz from "../components/quiz";
 
 // Icons 
 import { FaChevronLeft, FaChevronRight, FaFolderPlus, FaFolderMinus } from "react-icons/fa";
+import {IoMdMenu, IoMdClose} from "react-icons/io";
 
 // Images for articles
 import instruction from '../assets/icons/instruction.png';
@@ -33,6 +34,7 @@ class Module extends Component {
 
     this.state = {
       showAside: true,
+      showAsideLeft: true,
       data: this.props.data.allMarkdownRemark.edges,
       nextSubunit: [],
       previousSubunit: [],
@@ -42,6 +44,7 @@ class Module extends Component {
 
     // Bind methods
     this.showAside         = this.showAside.bind(this);
+    this.toggleAsideLeft   = this.toggleAsideLeft.bind(this);
     this.updateMainContent = this.updateMainContent.bind(this);
     this.linkIsActive      = this.linkIsActive.bind(this);
   }
@@ -245,6 +248,13 @@ class Module extends Component {
     }
   }
 
+  toggleAsideLeft() {
+    const currentState = this.state.showAsideLeft;
+    this.setState({ showAsideLeft: !currentState });
+
+    console.log(this.state.showAsideLeft);
+  }
+
   render() {
 
     return (
@@ -253,7 +263,7 @@ class Module extends Component {
           <title>{this.state.currentSubunit.frontmatter.title}</title>
         </Helmet> : ""}
       
-        {this.state.currentSubunit ? <Container>
+        {this.state.currentSubunit ? <Container showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
 
           {this.state.currentSubunit.frontmatter.type == "video" ? 
             <VideoMain>
@@ -268,8 +278,8 @@ class Module extends Component {
               }
             </Main> }
 
-          <Aside showAside={this.state.showAside} >
-            <ButtonLerneinheiten>
+          <Aside showAside={this.state.showAside} showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
+            <ButtonLerneinheiten showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
               <div>
                 <Link to="/modules">
                   <FaChevronLeft />
@@ -277,7 +287,8 @@ class Module extends Component {
                 <Link to="/modules">Lesson {this.state.moduleId}</Link>
               </div>
               <div>
-              {this.state.currentSubunit.frontmatter.moduleTitle}
+              {this.state.showAsideLeft ? <IoMdClose onClick={this.toggleAsideLeft} />: <IoMdMenu onClick={this.toggleAsideLeft}/>}
+                {this.state.currentSubunit.frontmatter.moduleTitle}
               </div>
             </ButtonLerneinheiten>
             

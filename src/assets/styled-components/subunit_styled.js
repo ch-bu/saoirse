@@ -14,11 +14,14 @@ const Container = styled.div`
   grid-template-rows: 40px auto;
   grid-template-areas: ". ."
                        "main main";
+  transition: width 0.2s;
 
   @media only screen and (min-width: 900px) {
     grid-template-areas: ". main"
                          ". main";
-    width: 100vw;
+    width: ${props => props.showAsideLeft ? "100%" : "60vw"};
+    margin: 0 auto;
+    grid-template-columns: ${props => props.showAsideLeft ? "25% 75%" : "0% 100%"};
   }
 `;
 
@@ -60,8 +63,6 @@ const Aside = styled.div`
   width: ${props => props.showAside ? "100vw" : "100vw"};
   overflow-y: scroll;
   box-sizing: border-box;
-  /* background-color: rgb(20, 30, 44); */
-  background-color: #20232a;
   background-color: #282c35;
   padding-top: 20px;
   transition: bottom 0.2s;
@@ -76,7 +77,9 @@ const Aside = styled.div`
     left: 0;
     top: 0;
     height: 100vh;
-    width: 25vw;
+    /* width: 25vw; */
+    transition: width 0.2s;
+    width: ${props => props.showAsideLeft ? "25vw" : "0vw"};
   }
 
   &::-webkit-scrollbar {
@@ -169,6 +172,16 @@ const ButtonLerneinheiten = styled.div`
     border-right: 1px solid #393f4b;
     transition: background-color 0.2s;
 
+    a {
+      padding: 0 20px;
+      align-self: stretch;
+      display:flex;
+      align-items:center;
+      color: rgb(183, 183, 183);
+      transition: color 0.2s;
+      font-style: italic;
+    }
+
     a:first-child {
       flex-grow: 1;
       align-self: stretch;
@@ -195,33 +208,37 @@ const ButtonLerneinheiten = styled.div`
     text-align: center;
     align-self: center;
     color: rgb(183, 183, 183);
+    position: relative;
+
+    svg {
+      position: absolute;
+      top: 0px;
+      left: 15px;
+      height: 25px;
+      width: 25px;
+      color: #bb6d8c;
+      cursor: pointer;
+    }
   }
 
   @media only screen and (min-width: 900px) {
-    div:first-child {
-      width: 25vw;
-    }
-
-    div:nth-child(2) {
-      width: 75vw;
-      display: block;
-    }
-
     height: 50px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-  }
+    transition: width display 0.2s;
 
-  a {
-    padding: 0 20px;
-    align-self: stretch;
-    display:flex;
-    align-items:center;
-    color: rgb(183, 183, 183);
-    transition: color 0.2s;
-    font-style: italic;
+    div:first-child {
+      width: 25vw;
+      display: ${props => props.showAsideLeft ? "flex" : "none"};
+    }
+
+    div:nth-child(2) {
+      /* width: 75vw; */
+      width: ${props => props.showAsideLeft ? "75vw" : "100vw"};
+      display: block;
+    }
   }
 `;
 
@@ -237,6 +254,7 @@ const VideoMain = styled.div`
 
   @media only screen and (min-width: 900px) {
     top: 0px;
+    /* width: ${props => props.showAsideLeft ? "75vw" : "100vw"}; */
   }
 
   video, iframe {
