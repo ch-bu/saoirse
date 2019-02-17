@@ -12,7 +12,7 @@ import Audio from "../components/audio";
 import Quiz from "../components/quiz";
 
 // Icons 
-import { FaChevronLeft, FaChevronRight, FaFolderPlus, FaFolderMinus } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaFolderPlus, FaFolderMinus, FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import {IoMdMenu, IoMdClose} from "react-icons/io";
 
 // Images for articles
@@ -25,7 +25,7 @@ import information from '../assets/icons/info.png';
 import reflection from '../assets/icons/reflection.png';
 
 // Styled components
-import {Container, Aside, Main, UlAside, BottomNavigation, ButtonLerneinheiten } from '../assets/styled-components/subunit_styled.js';
+import {Container, Aside, Main, UlAside, BottomNavigation, NextButton, PreviousButton, ButtonLerneinheiten } from '../assets/styled-components/subunit_styled.js';
 import {VideoMain} from '../assets/styled-components/subunit_styled.js';
 
 class Module extends Component {
@@ -95,11 +95,15 @@ class Module extends Component {
                 value.node.frontmatter.unit     == parsedURL.unit;
         });
 
+        console.log(subunits);
+
 
         // Get subunit after current subunit
         var next_subunit = subunits.filter((value, index) => {
           return index == current_index + 1;
         });
+
+        console.log(next_subunit[0].node.frontmatter.title);
 
         // Get subunit before current subunit
         var previous_subunit = subunits.filter((value, index) => {
@@ -265,6 +269,8 @@ class Module extends Component {
       
         {this.state.currentSubunit ? <Container showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
 
+          <NextButton showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}><FaAngleRight /></NextButton>
+          <PreviousButton showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}><FaAngleLeft /></PreviousButton>
           {this.state.currentSubunit.frontmatter.type == "video" ? 
             <VideoMain>
               {
@@ -306,8 +312,8 @@ class Module extends Component {
           {this.state.previousSubunit.length == 0 ? <a></a> : 
           <Link onClick={this.updateMainContent}
               to={`/module?id=` + this.state.moduleId + 
-                    '&subunit='      + this.state.previousSubunit[0].node.frontmatter.subunit +
-                    '&unit='         + this.state.previousSubunit[0].node.frontmatter.unit}>
+                    '&unit='      + this.state.previousSubunit[0].node.frontmatter.unit +
+                    '&subunit='         + this.state.previousSubunit[0].node.frontmatter.subunit}>
                     <FaChevronLeft />
           </Link>}
 
@@ -318,8 +324,8 @@ class Module extends Component {
           {this.state.nextSubunit.length == 0 ? <a></a> : 
           <Link onClick={this.updateMainContent}
               to={`/module?id=` + this.state.moduleId + 
-                    '&subunit='      + this.state.nextSubunit[0].node.frontmatter.subunit +
-                    '&unit='         + this.state.nextSubunit[0].node.frontmatter.unit}>
+                    '&unit='      + this.state.nextSubunit[0].node.frontmatter.unit +
+                    '&subunit='         + this.state.nextSubunit[0].node.frontmatter.subunit}>
                     <FaChevronRight /> 
           </Link>}
           
@@ -337,7 +343,7 @@ class Module extends Component {
 
 export const query = graphql`
   {allMarkdownRemark(sort: {fields: [frontmatter___module,
-                                     frontmatter___subunit, frontmatter___unit]}) {
+                                     frontmatter___unit, frontmatter___subunit]}) {
       edges {
         node {
           excerpt

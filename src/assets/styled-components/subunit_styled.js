@@ -269,6 +269,7 @@ const VideoMain = styled.div`
 
 const Main = styled.div`
   grid-area: main;
+  position: relative;
   padding-left: 0;
   margin: 0 auto;
   width: 90%;
@@ -360,6 +361,46 @@ const Main = styled.div`
   }
 `;
 
+const PreviousButton = styled.a`
+  position: fixed;
+  padding-top: 45vh;
+  padding-left: 1vw;
+  height: 100vh;
+  left: 0vw;
+  cursor: pointer;
+  display: ${props => props.showAsideLeft ? "none" : "inline"};
+
+  svg {
+    height: 60px;
+    width: 80px;
+    color: #ccc;
+  }
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+`;
+
+const NextButton = styled.a`
+  display: ${props => props.showAsideLeft ? "none" : "inline"};
+  position: fixed;
+  padding-top: 45vh;
+  padding-right: 1vw;
+  height: 100vh;
+  right: 0vw;
+  cursor: pointer;
+
+  svg {
+    height: 60px;
+    width: 80px;
+    color: #ccc;
+  }
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+`;
+
 export {
   Container,
   Aside,
@@ -367,6 +408,8 @@ export {
   Checkbox,
   UlAside,
   VideoMain,
+  NextButton,
+  PreviousButton,
   BottomNavigation,
   ButtonLerneinheiten
 }
