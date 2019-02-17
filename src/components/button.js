@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 
 const ButtonComponent = styled.button`
-  background-color: #bb6d8c;
+  background-color: ${props => props.theme.primaryColor};
+  border: 1px solid ${props => props.theme.darkColorLight};
   width: 100%;
   border-radius: 5px;
   min-height: 2rem;
   padding: 0;
-  border: none;
-  color: #fff;
+  color: #000;
   cursor: pointer;
 
   &:hover {
-    background-color: #cb90a7;
+    background-color: ${props => props.theme.primaryColorLight};
   }
 `;
 

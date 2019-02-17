@@ -4,9 +4,11 @@ import styled from 'styled-components'
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import Helmet from 'react-helmet';
+import AniLink from "gatsby-plugin-transition-link/AniLink";
+
 
 const Modules = styled.div`
-  background-color: #20232a;
+  background-color: #fff;
   padding-top: 50px;
   padding-left: 5vw;
   padding-right: 5vw;
@@ -16,7 +18,6 @@ const Modules = styled.div`
 
   h1 {
     margin-top: 0;
-    color: #fff;
   }
 
   @media only screen and (min-width: 900px) {
@@ -43,14 +44,14 @@ const ModulesFlexbox = styled.div`
 `;
 
 const FlexElement = styled.div`
-  background-color: #fff;
-  background-color: rgb(247, 247, 247);
+  background-color: ${props => props.theme.darkColorLight};
   width: 100%;
   border-radius: 10px;
   transition: 0.3s;
   text-align: center;
   margin-bottom: 3rem;
   height: 240px;
+  border: 1px solid ${props => props.theme.darkColorLight};
   
   @media only screen and (min-width: 900px) {
     width: 330px;
@@ -59,7 +60,7 @@ const FlexElement = styled.div`
   }
 
   &:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+    /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3); */
   }
 `;
 
@@ -71,6 +72,7 @@ const ModuleDescription = styled.div`
   text-align: left;
   
   h4, p, a {
+    color: #fff;
     margin: 0;
   }
 
@@ -81,9 +83,9 @@ const ModuleDescription = styled.div`
   span {
     position: absolute;
     top: -20px;
-    background-color: #bb6d8c;
+    background-color: ${props => props.theme.primaryColorLight};
+    border: 1px solid ${props => props.theme.darkColorLight};
     font-weight: bold;
-    color: #fff;
     left: 42%;
     width: 45px;
     height: 45px;
@@ -101,13 +103,13 @@ const ModuleDescription = styled.div`
     color: #000;
     font-weight: bold;
     padding: .43em 20px;
-    background: #bb6d8c;
+    background: ${props => props.theme.primaryColor};
     text-align: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 
     &:hover {
-      background: #cb90a7;
+      background: ${props => props.theme.primaryColorLight};
     }
   }
 
@@ -126,25 +128,24 @@ export default ({ data }) => {
         </Helmet>
         <Modules>
           <h1>Modules</h1>
-            <ModulesFlexbox>
-              {modules.map(({ node }) => (
-                <FlexElement key={node.frontmatter.module}>
-                  <ModuleDescription>
-                    <span>{node.frontmatter.module}</span>
-                    
-                    <p className="title">{node.frontmatter.moduleTitle}</p> 
-                    <p>{node.excerpt}</p>
+          <ModulesFlexbox>
+            {modules.map(({ node }) => (
+              <FlexElement key={node.frontmatter.module}>
+                <ModuleDescription>
+                  <span>{node.frontmatter.module}</span>
                   
-                    <Link to={`/module?id=` + node.frontmatter.module + 
-                              '&unit=' + node.frontmatter.unit +
-                              '&subunit=' + node.frontmatter.subunit}>
-                      Zum Modul
-                    </Link>
-                  </ModuleDescription>
-                </FlexElement>
-              ))}  
-
-            </ModulesFlexbox>
+                  <p className="title">{node.frontmatter.moduleTitle}</p> 
+                  <p>{node.excerpt}</p>
+                
+                  <AniLink fade duration={0.3} to={`/module?id=` + node.frontmatter.module + 
+                            '&unit=' + node.frontmatter.unit +
+                            '&subunit=' + node.frontmatter.subunit}>
+                    Zum Modul
+                  </AniLink>
+                </ModuleDescription>
+              </FlexElement>
+            ))}  
+          </ModulesFlexbox>
         </Modules>
       </Shell> 
   );

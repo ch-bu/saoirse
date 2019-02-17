@@ -4,6 +4,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-sharp',
+    'gatsby-plugin-transition-link',
     {
       resolve: 'gatsby-transformer-remark',
       options: {

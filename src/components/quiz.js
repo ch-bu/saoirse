@@ -80,12 +80,11 @@ const Checkmark = styled.span`
 
 const Input = styled.input`
   position: absolute;
-  /* opacity: 0; */
   cursor: pointer;
 
   &:checked ~ .checkmark {
-    background-color: #cb90a7;
-    /* border: 1px solid #ccc; */
+    background-color: ${props => props.theme.primaryColor};
+    border: 1px solid ${props => props.theme.darkColorLight};
   }
 `
 

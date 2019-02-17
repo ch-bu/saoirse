@@ -6,6 +6,7 @@ import { graphql } from "gatsby"
 import Helmet from 'react-helmet';
 import Url from 'url-parse';
 import queryString from 'query-string';
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 // Markdown components
 import Video from "../components/video";
@@ -299,10 +300,10 @@ class Module extends Component {
           <Aside showAside={this.state.showAside} showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
             <ButtonLerneinheiten showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
               <div>
-                <Link to="/modules">
+                <AniLink fade duration={0.2} to="/modules">
                   <FaChevronLeft />
-                </Link>
-                <Link to="/modules">Lesson {this.state.moduleId}</Link>
+                </AniLink>
+                <AniLink fade duration={0.4} to="/modules">Lesson {this.state.moduleId}</AniLink>
               </div>
               <div>
               {this.state.showAsideLeft ? <IoMdClose onClick={this.toggleAsideLeft} />: <IoMdMenu onClick={this.toggleAsideLeft}/>}

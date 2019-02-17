@@ -49,7 +49,7 @@ const BottomNavigation = styled.div`
     align-items:center;
 
     svg {
-      color: #bb6d8c;
+      color: ${props => props.theme.primaryColor};
       pointer-events: none;
     }
   }
@@ -63,7 +63,7 @@ const Aside = styled.div`
   width: ${props => props.showAside ? "100vw" : "100vw"};
   overflow-y: scroll;
   box-sizing: border-box;
-  background-color: #282c35;
+  background-color: ${props => props.theme.darkColorLight};
   padding-top: 20px;
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
@@ -77,7 +77,6 @@ const Aside = styled.div`
     left: 0;
     top: 0;
     height: 100vh;
-    /* width: 25vw; */
     transition: width 0.2s;
     width: ${props => props.showAsideLeft ? "25vw" : "0vw"};
   }
@@ -96,7 +95,6 @@ const UlAside = styled.ul`
   @media only screen and (min-width: 900px) {
     padding: 1rem 1.8rem;
   }
-
 
   li {
 
@@ -153,7 +151,7 @@ const UlAside = styled.ul`
 const ButtonLerneinheiten = styled.div`
   width: 100%;
   height: 80px;
-  background-color: #20232a;
+  background-color: ${props => props.theme.darkColor};
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -167,7 +165,7 @@ const ButtonLerneinheiten = styled.div`
     flex-direction: row;
     justify-content: flex-start;
     align-self: stretch;
-    background-color: #bb6d8c;
+    background-color: ${props => props.theme.primaryColor};
     border-bottom: none;
     border-right: none;
     transition: background-color 0.2s;
@@ -226,11 +224,11 @@ const ButtonLerneinheiten = styled.div`
       left: 15px;
       height: 25px;
       width: 25px;
-      color: #bb6d8c;
+      color: ${props => props.theme.primaryColor};
       cursor: pointer;
 
       &:hover {
-        color: #cb90a7;
+        color: ${props => props.theme.primaryColorLight};
       }
     }
   }
@@ -343,12 +341,12 @@ const Main = styled.div`
     color: #000;
     text-decoration: none;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-    border-bottom: 1px solid #bb6d8c;
-    box-shadow: inset 0 -2px 0px 0px #bb6d8c;
+    border-bottom: 1px solid ${props => props.theme.primaryColor};
+    box-shadow: inset 0 -2px 0px 0px ${props => props.theme.primaryColor};
     font-weight: bold;
 
     &:hover {
-      background: #cb90a7;
+      background: ${props => props.theme.primaryColorLight};
       border-radius: 5px;
     }
   }
