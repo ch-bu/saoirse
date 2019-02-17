@@ -62,6 +62,7 @@ const Aside = styled.div`
   box-sizing: border-box;
   /* background-color: rgb(20, 30, 44); */
   background-color: #20232a;
+  background-color: #282c35;
   padding-top: 20px;
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
@@ -290,6 +291,7 @@ const Main = styled.div`
     width: 100%;
     height: 50vh;
     box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+    padding: 20px 0;
   }
 
   video {
