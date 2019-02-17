@@ -39,8 +39,8 @@ const BottomNavigation = styled.div`
   left: 0;
   height: 60px;
   width: 100vw;
-  background-color: #fbfafc;
-  border-top: 1px solid #ede7f3;
+  background-color: #20232a;
+  /* border-top: 1px solid #ede7f3; */
 
   a {
     padding: 0 20px;
@@ -49,7 +49,7 @@ const BottomNavigation = styled.div`
     align-items:center;
 
     svg {
-      color: #385c8f;
+      color: #bb6d8c;
       pointer-events: none;
     }
   }
@@ -218,6 +218,10 @@ const ButtonLerneinheiten = styled.div`
       width: 25px;
       color: #bb6d8c;
       cursor: pointer;
+
+      &:hover {
+        color: #cb90a7;
+      }
     }
   }
 
@@ -327,13 +331,13 @@ const Main = styled.div`
   a {
     color: #000;
     text-decoration: none;
-    transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
-    border-bottom: 1px solid #e0d6eb;
-    box-shadow: inset 0 -2px 0px 0px #e0d6eb;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid #bb6d8c;
+    box-shadow: inset 0 -2px 0px 0px #bb6d8c;
     font-weight: bold;
 
     &:hover {
-      background: #bbeffd;
+      background: #cb90a7;
       border-radius: 5px;
     }
   }
