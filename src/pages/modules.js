@@ -8,7 +8,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 
 const Modules = styled.div`
-  background-color: #fff;
+  background-color: ${props => props.theme.darkColor};
   padding-top: 50px;
   padding-left: 5vw;
   padding-right: 5vw;
@@ -18,6 +18,7 @@ const Modules = styled.div`
 
   h1 {
     margin-top: 0;
+    color: #fff;
   }
 
   @media only screen and (min-width: 900px) {
@@ -44,78 +45,44 @@ const ModulesFlexbox = styled.div`
 `;
 
 const FlexElement = styled.div`
-  background-color: ${props => props.theme.darkColorLight};
-  width: 100%;
-  border-radius: 10px;
-  transition: 0.3s;
+  background-color: ${props => props.theme.darkColor};
+  width: 90%;
   text-align: center;
-  margin-bottom: 3rem;
-  height: 240px;
-  border: 1px solid ${props => props.theme.darkColorLight};
+  margin-bottom: 2rem;
+  transition: background-color 0.3s;
+  border: 1px solid ${props => props.theme.primaryColorLight};
   
   @media only screen and (min-width: 900px) {
-    width: 330px;
+    width: 100%;
     margin-right: 2rem;
-    height: 280px;
+    height: 180px;
   }
 
   &:hover {
-    /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3); */
-  }
-`;
-
-const ModuleDescription = styled.div`
-  position: relative;
-  height: 100%;
-  padding: 20px;
-  padding-top: 50px;
-  text-align: left;
-  
-  h4, p, a {
-    color: #fff;
-    margin: 0;
-  }
-
-  .title {
-    font-weight: bold;
-  }
-
-  span {
-    position: absolute;
-    top: -20px;
-    background-color: ${props => props.theme.primaryColorLight};
-    border: 1px solid ${props => props.theme.darkColorLight};
-    font-weight: bold;
-    left: 42%;
-    width: 45px;
-    height: 45px;
-    padding-top: 6px;
-    border-radius: 45px;
-    text-align: center;
+    background-color: ${props => props.theme.darkColorLight};
   }
 
   a {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    padding: .43em 20px;
-    background: ${props => props.theme.primaryColor};
-    text-align: center;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-    &:hover {
-      background: ${props => props.theme.primaryColorLight};
-    }
+    display: flex;
+    align-self: stretch;
+    height: 100%;
   }
+`;
 
-  p:nth-child(3) {
-    font-size: 0.8rem;
-  }
+const ModuleNumber = styled.div`
+  align-self: center;
+  font-size: 4rem;
+  color: ${props => props.theme.primaryColor};
+  text-align: center;
+  width: 15%;
+`;
+
+const ModuleDescription = styled.div`
+  width: 85%;
+  color: #fff;
+  text-align: left;
+  align-self: center;
+  font-size: 2rem;
 `;
 
 export default ({ data }) => {
@@ -124,14 +91,21 @@ export default ({ data }) => {
   return (
       <Shell>
         <Helmet>
-          <title>Modules</title>
+          <title>Your Lessons</title>
         </Helmet>
         <Modules>
-          <h1>Modules</h1>
+          <h1>Lessons</h1>
           <ModulesFlexbox>
             {modules.map(({ node }) => (
+              
               <FlexElement key={node.frontmatter.module}>
-                <ModuleDescription>
+                <AniLink fade duration={0.3} to={`/module?id=` + node.frontmatter.module + 
+                            '&unit=' + node.frontmatter.unit +
+                            '&subunit=' + node.frontmatter.subunit}>
+                    <ModuleNumber>{node.frontmatter.module}</ModuleNumber>
+                    <ModuleDescription>{node.frontmatter.moduleTitle}</ModuleDescription>
+                </AniLink>
+                {/* <ModuleDescription>
                   <span>{node.frontmatter.module}</span>
                   
                   <p className="title">{node.frontmatter.moduleTitle}</p> 
@@ -142,8 +116,9 @@ export default ({ data }) => {
                             '&subunit=' + node.frontmatter.subunit}>
                     Zum Modul
                   </AniLink>
-                </ModuleDescription>
+                </ModuleDescription> */}
               </FlexElement>
+
             ))}  
           </ModulesFlexbox>
         </Modules>
