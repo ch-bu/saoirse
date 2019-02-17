@@ -66,7 +66,6 @@ const FlexElement = styled.div`
 const ModuleDescription = styled.div`
   position: relative;
   height: 100%;
-  /* padding-top: 30px; */
   padding: 20px;
   padding-top: 50px;
   text-align: left;
