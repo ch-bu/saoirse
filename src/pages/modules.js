@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import { Link } from "gatsby"
 import { graphql } from "gatsby"
 import Helmet from 'react-helmet';
-import AniLink from "gatsby-plugin-transition-link/AniLink";
-
 
 const Modules = styled.div`
   background-color: ${props => props.theme.darkColor};
@@ -99,12 +97,12 @@ export default ({ data }) => {
             {modules.map(({ node }) => (
               
               <FlexElement key={node.frontmatter.module}>
-                <AniLink fade duration={0.3} to={`/module?id=` + node.frontmatter.module + 
+                <Link to={`/module?id=` + node.frontmatter.module + 
                             '&unit=' + node.frontmatter.unit +
                             '&subunit=' + node.frontmatter.subunit}>
                     <ModuleNumber>{node.frontmatter.module}</ModuleNumber>
                     <ModuleDescription>{node.frontmatter.moduleTitle}</ModuleDescription>
-                </AniLink>
+                </Link>
                 {/* <ModuleDescription>
                   <span>{node.frontmatter.module}</span>
                   
