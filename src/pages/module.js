@@ -10,7 +10,7 @@ import queryString from 'query-string';
 // Markdown components
 import Video from "../components/video";
 import Audio from "../components/audio";
-import Quiz from "../components/quiz";
+import SingleChoice from "../components/singlechoice";
 
 // Icons 
 import { FaChevronLeft, FaChevronRight, FaFolderPlus, FaFolderMinus, FaAngleRight, FaAngleLeft } from "react-icons/fa";
@@ -380,7 +380,7 @@ const renderAst = new rehypeReact({
   components: { 
     "video": Video,
     "audio": Audio,
-    "quiz": Quiz,
+    "singlechoice": SingleChoice,
   },
 }).Compiler
 

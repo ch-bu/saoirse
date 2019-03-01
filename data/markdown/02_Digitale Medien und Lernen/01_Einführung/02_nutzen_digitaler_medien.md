@@ -10,5 +10,5 @@ type: question
 
 Versuche einmal folgende Fragen zu beantworten: 
 
-<quiz question="Sind digitale Medien in der Regel schädlich für Lernen?"></quiz>
+<singlechoice question="Sind digitale Medien in der Regel schädlich für Lernen?"></singlechoice>
 

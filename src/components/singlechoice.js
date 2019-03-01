@@ -89,11 +89,11 @@ const Input = styled.input`
   }
 `
 
-class QuizComponent extends React.Component {
+class SingleChoiceComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this.questions = this.props.data.allMultiplechoiceYaml.edges;
+    this.questions = this.props.data.allSinglechoiceYaml.edges;
 
     this.question = this.questions.filter((question) => {
       return question.node.question == this.props.question;
@@ -158,7 +158,7 @@ export default props => (
   <StaticQuery
     query={graphql`
       query {
-        allMultiplechoiceYaml {
+        allSinglechoiceYaml {
           edges {
             node {
               id
@@ -173,6 +173,6 @@ export default props => (
         }
       }
     `}
-    render={data => <QuizComponent data={data} {...props} />}
+    render={data => <SingleChoiceComponent data={data} {...props} />}
   />
 )
