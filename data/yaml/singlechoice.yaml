@@ -1,15 +1,3 @@
-- question: Wie alt ist günter?
-  answers:
-    - answer: ja
-      correct: True
-      hint: So einfach geht das aber incht
-    - answer: Nicht ganz
-      correct: False
-      hint: So würde ich das nicht sagen
-    - answer: Ein Meter und 80
-      correct: True
-      hint: So würde ich das nicht sagen
-
 - question: Sind digitale Medien in der Regel schädlich für Lernen?
   answers:
     - answer: Ja, digitale Medien lenken beim Lernen ab. Zwar lassen sich gute Lernumgebungen damit erstellen, aber durch die Möglichkeit, schnell auf andere Funktionen zu wechseln, sind Lernende abgelenkt.

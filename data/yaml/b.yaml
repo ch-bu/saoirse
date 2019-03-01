@@ -1,8 +1,0 @@
-- question: Wie alt ist Hans?asdf
-  answers:
-    - answer: ja
-      correct: True
-      hint: So einfach geht das aber incht
-    - answer: Nicht ganz
-      correct: False
-      hint: So würde ich das nicht sagen

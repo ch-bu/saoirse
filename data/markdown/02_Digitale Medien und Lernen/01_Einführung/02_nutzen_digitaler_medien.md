@@ -12,3 +12,5 @@ Versuche einmal folgende Fragen zu beantworten:
 
 <singlechoice question="Sind digitale Medien in der Regel schädlich für Lernen?"></singlechoice>
 
+
+<multiplechoice question="Wie alt ist günter?"></multiplechoice>

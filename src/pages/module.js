@@ -11,6 +11,7 @@ import queryString from 'query-string';
 import Video from "../components/video";
 import Audio from "../components/audio";
 import SingleChoice from "../components/singlechoice";
+import MultipleChoice from "../components/multiplechoice";
 
 // Icons 
 import { FaChevronLeft, FaChevronRight, FaFolderPlus, FaFolderMinus, FaAngleRight, FaAngleLeft } from "react-icons/fa";
@@ -381,6 +382,7 @@ const renderAst = new rehypeReact({
     "video": Video,
     "audio": Audio,
     "singlechoice": SingleChoice,
+    "multiplechoice": MultipleChoice
   },
 }).Compiler
 

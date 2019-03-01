@@ -1,0 +1,9 @@
+- question: Wie alt ist günter?
+  hint: Denk nochmal drüber nach
+  answers:
+    - answer: ja
+      correct: True
+    - answer: Nicht ganz
+      correct: False
+    - answer: Ein Meter und 80
+      correct: True
