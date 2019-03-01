@@ -12,7 +12,7 @@ import Video from "../components/video";
 import Audio from "../components/audio";
 import SingleChoice from "../components/questions/singlechoice";
 import MultipleChoice from "../components/questions/multiplechoice";
-// import OrderQuestion from "../components/questions/orderquestion";
+import OrderQuestion from "../components/questions/orderquestion";
 
 // Icons 
 import { FaChevronLeft, FaChevronRight, FaFolderPlus, FaFolderMinus, FaAngleRight, FaAngleLeft } from "react-icons/fa";
@@ -383,7 +383,8 @@ const renderAst = new rehypeReact({
     "video": Video,
     "audio": Audio,
     "singlechoice": SingleChoice,
-    "multiplechoice": MultipleChoice
+    "multiplechoice": MultipleChoice,
+    "orderquestion": OrderQuestion
   },
 }).Compiler
 

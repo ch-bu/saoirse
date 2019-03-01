@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components'
 import Swal from 'sweetalert2'
-import Button from './button'
+import { StaticQuery, graphql } from "gatsby"
+import Button from '../button'
 
 // fake data generator
 const getItems = count =>
@@ -41,10 +42,10 @@ const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? '#f7f7f7' : '#f7f7f7',
   padding: grid,
   width: '100%',
-  textAlign: 'center',
+  textAlign: 'left',
   border: '1px solid #ccc',
   marginBottom: '20px',
-  boxShadow: '5px 5px 25px 0 rgba(46,61,73,.2)'
+  // boxShadow: '5px 5px 25px 0 rgba(46,61,73,.2)'
 });
 
 
@@ -56,13 +57,25 @@ const QuestionP = styled.p`
   font-weight: bold;
 `;
 
-class DragDrop extends Component {
+class OrderComponent extends Component {
   constructor(props) {
     super(props);
 
+    this.questions = this.props.data.allOrderYaml.edges;
+
+    // Get correct question
+    this.question = this.questions.filter((question) => {
+      return question.node.question == this.props.question;
+    })[0].node;
+
+    // Get answers for questions
+    var answers = this.question.answers.map((answer) => {
+      return answer.answer;
+    });
+
     this.state = {
-      items: this.shuffleArray(JSON.parse(this.props.list)),
-      correctItems: JSON.parse(this.props.list)
+      correctItems: answers.slice(0),
+      items: this.shuffleArray(answers),
     };
 
     this.onDragEnd = this.onDragEnd.bind(this);
@@ -97,10 +110,10 @@ class DragDrop extends Component {
 
   getAnswer() {
     const answerCorrect = this.state.items.toString() == this.state.correctItems.toString();
-    
+
     Swal({
       title: answerCorrect ? 'Richtig': "Leider falsch",
-      text: answerCorrect ? this.props.feedbackcorrect: this.props.feedbackfalse,
+      text: answerCorrect ? "" : this.question.hint,
       type: answerCorrect ? 'success': "error"
     });
   }
@@ -119,7 +132,7 @@ class DragDrop extends Component {
                 style={getListStyle(snapshot.isDraggingOver)}
               >
                 {this.state.items.map((item, index) => (
-                  <Draggable  draggableId={item} index={index}>
+                  <Draggable  draggableId={item} index={index} key={index}>
                     {(provided, snapshot) => (
                       <div
                         ref={provided.innerRef}
@@ -147,4 +160,25 @@ class DragDrop extends Component {
   }
 }
 
-export default DragDrop;
+// export default DragDrop;
+
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query {
+        allOrderYaml {
+          edges {
+            node {
+              question
+              hint
+              answers {
+                answer
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => <OrderComponent data={data} {...props} />}
+  />
+)
