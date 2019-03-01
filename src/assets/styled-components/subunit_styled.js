@@ -123,6 +123,7 @@ const UlAside = styled.ul`
           text-decoration: none;
           background-image: none;
           text-shadow: none;
+          outline: none;
 
           &:hover {
             color: #7f7f7f;
