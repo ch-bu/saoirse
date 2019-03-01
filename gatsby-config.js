@@ -5,6 +5,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-sharp',
     'gatsby-plugin-transition-link',
+    'gatsby-transformer-yaml',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -47,22 +48,11 @@ module.exports = {
         // icon: `src/assets/icons/face.png`,
       },
     },
-    // 'gatsby-plugin-offline',
-    // 'gatsby-plugin-sass',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: `src`,
-        path: `${__dirname}/src/`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        // Setting a color is optional.
-        color: `tomato`,
-        // Disable the loading spinner.
-        showSpinner: false,
+        path: `${__dirname}/src/`
       },
     },
     {

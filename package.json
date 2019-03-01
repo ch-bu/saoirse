@@ -26,6 +26,7 @@
     "gatsby-remark-responsive-iframe": "^1.4.20",
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.44",
+    "gatsby-transformer-yaml": "^2.1.8",
     "gsap": "^2.0.2",
     "history": "^4.7.2",
     "mermaid": "^8.0.0-rc.8",
