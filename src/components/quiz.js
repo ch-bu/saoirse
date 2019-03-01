@@ -2,6 +2,7 @@ import React from "react"
 import styled from 'styled-components'
 import Swal from 'sweetalert2'
 import Button from './button'
+import { StaticQuery, graphql } from "gatsby"
 
 const Quiz = styled.div`
   width: 100%;
@@ -88,14 +89,15 @@ const Input = styled.input`
   }
 `
 
-// https://jsoneditoronline.org/
-// https://www.freeformatter.com/json-formatter.html#ad-output
-
 class QuizComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this.question = JSON.parse(this.props.question);
+    this.questions = this.props.data.allMultiplechoiceYaml.edges;
+
+    this.question = this.questions.filter((question) => {
+      return question.node.question == this.props.question;
+    })[0].node;
 
     this.state = {
       size: "-1",
@@ -133,9 +135,9 @@ class QuizComponent extends React.Component {
       const answer_correct = currentQuestion.correct;
 
       Swal({
-        title: answer_correct === "true" ? 'Richtig': "Leider falsch",
+        title: answer_correct === true ? 'Richtig': "Leider falsch",
         text: currentQuestion.hint,
-        type: answer_correct === "true" ? 'success': "error"
+        type: answer_correct === true ? 'success': "error"
       })
     }
   }
@@ -148,8 +150,29 @@ class QuizComponent extends React.Component {
     this.setState({
       size: event.target.value
     });
-
   }
 }
 
-export default QuizComponent;
+
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query {
+        allMultiplechoiceYaml {
+          edges {
+            node {
+              id
+              question
+              answers {
+                answer
+                correct
+                hint
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => <QuizComponent data={data} {...props} />}
+  />
+)
