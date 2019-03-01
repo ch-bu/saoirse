@@ -1,7 +1,7 @@
 import React from "react"
 import styled from 'styled-components'
 import Swal from 'sweetalert2'
-import Button from './button'
+import Button from '../button'
 import { StaticQuery, graphql } from "gatsby"
 
 const Quiz = styled.div`

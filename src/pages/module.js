@@ -10,8 +10,9 @@ import queryString from 'query-string';
 // Markdown components
 import Video from "../components/video";
 import Audio from "../components/audio";
-import SingleChoice from "../components/singlechoice";
-import MultipleChoice from "../components/multiplechoice";
+import SingleChoice from "../components/questions/singlechoice";
+import MultipleChoice from "../components/questions/multiplechoice";
+// import OrderQuestion from "../components/questions/orderquestion";
 
 // Icons 
 import { FaChevronLeft, FaChevronRight, FaFolderPlus, FaFolderMinus, FaAngleRight, FaAngleLeft } from "react-icons/fa";
