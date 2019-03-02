@@ -5,6 +5,7 @@ title: "Deine Meinung zu Digital Natives"
 module: 1
 unit: 1
 subunit: 10
+type: exercise
 ---
 
 Bevor wir uns ansehen, was dran ist an diesen Aussagen, interessiert mich deine Meinung. Fülle folgendes Formular aus. Im Seminar werden wir auf diese Aussagen eingehen: 

@@ -139,6 +139,14 @@ const UlAside = styled.ul`
           }
         }
 
+        svg {
+          /* color: white; */
+          color: ${props => props.theme.primaryColorLight};
+          padding-right: 6px;
+          filter: sepia(0.4);
+          height: 18px;
+        }
+
         img {
           height: 20px;
           padding-right: 10px;
