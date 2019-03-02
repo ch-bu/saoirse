@@ -21,29 +21,32 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const grid = 10;
-
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   userSelect: 'none',
-  padding: grid * 2,
-  margin: `0 0 ${grid}px 0`,
+  padding: 10 * 2,
+  outline: "none",
+  // margin: `0 0 ${grid}px 0`,
+  margin: "15px 0",
   borderRadius: '5px',
+  boxShadow: "5px 4px 20px 0 rgba(46,61,73,.4)",
 
   // change background colour if dragging
-  background: isDragging ? '#5781bd' : '#ffefa2',
-  color: isDragging ? '#fff' : '#000',
+  background: isDragging ? "#fcf113" : '#fefab8',
+  // color: isDragging ? '#fff' : '#000',
+  color: "#000",
 
   // styles we need to apply on draggables
   ...draggableStyle,
 });
 
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? '#f7f7f7' : '#f7f7f7',
-  padding: grid,
+  // background: isDraggingOver ? '#f7f7f7' : '#f7f7f7',
+  // padding: grid,
+  padding: "10px 0",
   width: '100%',
   textAlign: 'left',
-  border: '1px solid #ccc',
+  // border: '1px solid #ccc',
   marginBottom: '20px',
   // boxShadow: '5px 5px 25px 0 rgba(46,61,73,.2)'
 });
@@ -55,6 +58,7 @@ const DragDropContainer = styled.div`
 
 const QuestionP = styled.p`
   font-weight: bold;
+  margin-bottom: 10px;
 `;
 
 class OrderComponent extends Component {
