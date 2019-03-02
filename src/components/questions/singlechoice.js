@@ -1,8 +1,9 @@
 import React from "react"
 import styled from 'styled-components'
-import Swal from 'sweetalert2'
 import Button from '../button'
 import { StaticQuery, graphql } from "gatsby"
+import Confetti from 'react-dom-confetti';
+
 
 const Quiz = styled.div`
   width: 100%;
@@ -45,6 +46,16 @@ const Label = styled.label`
     font-size: 1.1rem;
   }
 `
+
+const Answer = styled.div`
+  margin-top: 15px;
+  width: 100%;
+  min-height: 100px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: ${props => props.answerCorrect ? "#c7efc7" : "#ecbaba"};
+  box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4);
+`;
 
 const Checkmark = styled.span`
   position: absolute;
@@ -98,7 +109,24 @@ class SingleChoiceComponent extends React.Component {
 
     this.state = {
       size: "-1",
-      answers: this.shuffleAnswers(this.question.answers)
+      answers: this.shuffleAnswers(this.question.answers),
+      answerCorrect: null,
+      showConfetti: false,
+      hint: "",
+      buttonClicked: false
+    };
+
+    this.confettiConfig = {
+      angle: 90,
+      spread: 45,
+      startVelocity: 45,
+      elementCount: 50,
+      dragFriction: 0.1,
+      duration: 3000,
+      delay: 0,
+      width: "10px",
+      height: "10px",
+      colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
     };
 
     this.getAnswer = this.getAnswer.bind(this);
@@ -107,6 +135,17 @@ class SingleChoiceComponent extends React.Component {
   }
 
   render() {
+
+    // Decide wheather to show int
+    let answer = "";
+    if (this.state.buttonClicked) {
+      if (this.state.answerCorrect) {
+        answer = <Answer answerCorrect={true}>{this.state.hint}</Answer>;
+      } else {
+        answer = <Answer answerCorrect={false}>{this.state.hint}</Answer>;
+      }
+    }
+
     return (
       <Quiz key={this.question.name}>
         <p>{this.question.question}</p>
@@ -118,12 +157,14 @@ class SingleChoiceComponent extends React.Component {
                        id={i + this.question.question}
                        name={this.question.question}
                        onClick={this.updateChecked} />
+                  <Confetti active={ this.state.showConfetti } config={ this.config }/>
                 <Checkmark className="checkmark"></Checkmark>
               </Label>
             </li>;
           })}
         </ul>
         <Button onClick={this.getAnswer}>Submit Answer</Button>
+        {answer}
       </Quiz>
     ); 
   }
@@ -152,11 +193,25 @@ class SingleChoiceComponent extends React.Component {
       const currentQuestion = this.question.answers[this.state.size];
       const answer_correct = currentQuestion.correct;
 
-      Swal({
-        title: answer_correct === true ? 'Richtig': "Leider falsch",
-        text: currentQuestion.hint,
-        type: answer_correct === true ? 'success': "error"
-      })
+      this.setState({
+        hint: currentQuestion.hint,
+        buttonClicked: true
+      });
+
+      if (answer_correct) {
+        this.setState({
+          showConfetti: answer_correct,
+          answerCorrect: true
+        }, () => {
+          setTimeout(() => {
+            this.setState({showConfetti: false})
+          }, 1000);
+        });
+      } else {
+        this.setState({
+          answerCorrect: false
+        });
+      }
     }
   }
 
@@ -166,7 +221,8 @@ class SingleChoiceComponent extends React.Component {
 
     // Set state
     this.setState({
-      size: event.target.value
+      size: event.target.value,
+      buttonClicked: false
     });
   }
 }

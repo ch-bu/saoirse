@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Shell from '../layouts/shell';
 
+
 const Hero = styled.div`
   /* background-color: #004a99; */
   background-size: cover;
