@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components'
-import Swal from 'sweetalert2'
 import { StaticQuery, graphql } from "gatsby"
 import Button from '../button'
+import Confetti from 'react-dom-confetti';
 
 // fake data generator
 // const getItems = count =>
@@ -51,6 +51,15 @@ const getListStyle = isDraggingOver => ({
   // boxShadow: '5px 5px 25px 0 rgba(46,61,73,.2)'
 });
 
+const Answer = styled.div`
+  margin-top: 15px;
+  width: 100%;
+  min-height: 100px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: ${props => props.answerCorrect ? "#c7efc7" : "#ecbaba"};
+  box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4);
+`;
 
 const DragDropContainer = styled.div`
   margin: 40px 0;
@@ -77,9 +86,26 @@ class OrderComponent extends Component {
       return answer.answer;
     });
 
+    this.confettiConfig = {
+      angle: 90,
+      spread: 45,
+      startVelocity: 45,
+      elementCount: 50,
+      dragFriction: 0.1,
+      duration: 3000,
+      delay: 0,
+      width: "10px",
+      height: "10px",
+      colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
+    };
+
     this.state = {
       correctItems: answers.slice(0),
       items: this.shuffleArray(answers),
+      showConfetti: false,
+      answerCorrect: null,
+      hint: "",
+      buttonClicked: false
     };
 
     this.onDragEnd = this.onDragEnd.bind(this);
@@ -100,6 +126,7 @@ class OrderComponent extends Component {
 
     this.setState({
       items,
+      buttonClicked: false
     });
   }
 
@@ -115,16 +142,40 @@ class OrderComponent extends Component {
   getAnswer() {
     const answerCorrect = this.state.items.toString() === this.state.correctItems.toString();
 
-    Swal({
-      title: answerCorrect ? 'Richtig': "Leider falsch",
-      text: answerCorrect ? "" : this.question.hint,
-      type: answerCorrect ? 'success': "error"
+    this.setState({
+      buttonClicked: true
     });
+
+    if (answerCorrect) {
+      this.setState({
+        showConfetti: true,
+        answerCorrect: true
+      }, () => {
+        setTimeout(() => {
+          this.setState({showConfetti: false})
+        }, 1000);
+      });
+    } else {
+      this.setState({
+        answerCorrect: false,
+        hint: this.question.hint
+      });
+    }
   }
 
   // Normally you would want to split things out into separate components.
   // But in this example everything is just done in one place for simplicity
   render() {
+
+    let answer = "";
+    if (this.state.buttonClicked) {
+      if (this.state.answerCorrect) {
+        answer = <Answer answerCorrect={true}>{"Well done!"}</Answer>;
+      } else {
+        answer = <Answer answerCorrect={false}>{this.state.hint}</Answer>;
+      }
+    }
+
     return (
       <DragDropContainer >
         <DragDropContext onDragEnd={this.onDragEnd}>
@@ -157,7 +208,9 @@ class OrderComponent extends Component {
               </div>
             )}
           </Droppable>
+          <Confetti active={ this.state.showConfetti } config={ this.config }/>
           <Button onClick={this.getAnswer}>Überprüfe deine Antwort</ Button>
+          {answer}
         </DragDropContext>
       </DragDropContainer>
     );

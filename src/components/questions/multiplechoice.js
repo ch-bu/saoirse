@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Swal from 'sweetalert2'
 import Button from '../button'
 import { StaticQuery, graphql } from "gatsby"
+import Confetti from 'react-dom-confetti';
 
 const Quiz = styled.div`
   width: 100%;
@@ -106,6 +107,16 @@ const Input = styled.input`
   }
 `
 
+const Answer = styled.div`
+  margin-top: 15px;
+  width: 100%;
+  min-height: 100px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: ${props => props.answerCorrect ? "#c7efc7" : "#ecbaba"};
+  box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4);
+`;
+
 class MultipleChoiceComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -126,10 +137,27 @@ class MultipleChoiceComponent extends React.Component {
       correctAnswers[this.question.answers[answer].answer] = this.question.answers[answer].correct;
     }
 
+    this.confettiConfig = {
+      angle: 90,
+      spread: 45,
+      startVelocity: 45,
+      elementCount: 50,
+      dragFriction: 0.1,
+      duration: 3000,
+      delay: 0,
+      width: "10px",
+      height: "10px",
+      colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
+    };
+
     this.state = {
       size: "-1",
       answers: answers,
-      correctAnswers: correctAnswers
+      correctAnswers: correctAnswers,
+      showConfetti: false,
+      answerCorrect: null,
+      hint: "",
+      buttonClicked: false
     };
 
     this.getAnswer = this.getAnswer.bind(this);
@@ -138,6 +166,18 @@ class MultipleChoiceComponent extends React.Component {
   }
 
   render() {
+
+    let answer = "";
+    if (this.state.buttonClicked) {
+      if (this.state.answerCorrect) {
+        answer = <Answer answerCorrect={true}>{"Well done!"}</Answer>;
+      } else {
+        answer = <Answer answerCorrect={false}>{this.state.hint}</Answer>;
+      }
+    }
+
+    console.log(this.state.answerCorrect);
+
     return (
       <Quiz key={this.question.name}>
         <p>{this.question.question}</p>
@@ -148,12 +188,14 @@ class MultipleChoiceComponent extends React.Component {
                 <Input type="checkbox"
                        name={item.answer}
                        onClick={this.updateChecked} />
+                <Confetti active={ this.state.showConfetti } config={ this.config }/>
                 <Checkmark className="checkmark"></Checkmark>
               </Label>
             </li>;
           })}
         </ul>
-        <Button onClick={this.getAnswer}>Prüfe deine Antwort</Button>
+        <Button onClick={this.getAnswer}>Submit Answer</Button>
+        {answer}
       </Quiz>
     ); 
   }
@@ -185,17 +227,24 @@ class MultipleChoiceComponent extends React.Component {
       ([key, value]) => value === this.state.correctAnswers[key] ? "" : equal = false
     );
 
+    this.setState({
+      buttonClicked: true
+    });
+
     if (equal) {
-      Swal({
-        title: "Super. Richtig gemacht.",
-        type: "success"
-      })
+      this.setState({
+        showConfetti: true,
+        answerCorrect: true
+      }, () => {
+        setTimeout(() => {
+          this.setState({showConfetti: false})
+        }, 1000);
+      });
     } else {
-      Swal({
-        title: "Nicht ganz",
-        text: this.question.hint,
-        type: "error"
-      })
+      this.setState({
+        answerCorrect: false,
+        hint: this.question.hint
+      });
     }
   }
 
@@ -204,7 +253,8 @@ class MultipleChoiceComponent extends React.Component {
     updatedAnswers[event.target.name] = event.target.checked
 
     this.setState({
-      answers: updatedAnswers
+      answers: updatedAnswers,
+      buttonClicked: false
     });
   }
 }
