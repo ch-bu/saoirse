@@ -119,7 +119,7 @@ const UlAside = styled.ul`
 
         a {
           color: rgb(183, 183, 183);
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           text-decoration: none;
           background-image: none;
           text-shadow: none;
@@ -282,7 +282,7 @@ const Main = styled.div`
   padding-left: 0;
   margin: 0 auto;
   width: 90%;
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-bottom: 10vh;
   
   h1 {
@@ -309,6 +309,10 @@ const Main = styled.div`
     width: 80%;
     font-size: 1rem;
     padding-top: 90px;
+
+    p, li {
+      font-size: 1.1rem;
+    }
 
     h1 {
       margin-top: 2rem;

@@ -9,7 +9,6 @@ const Quiz = styled.div`
   margin: 2rem 0;
 
   p {
-    font-size: 1rem;
     font-weight: bold;
   }
 
@@ -46,6 +45,10 @@ const Label = styled.label`
     position: absolute;
     opacity: 0;
     cursor: pointer;
+  }
+
+  @media only screen and (min-width: 900px) {
+    font-size: 1.1rem;
   }
 `
 

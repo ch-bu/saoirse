@@ -13,6 +13,11 @@ const Quiz = styled.div`
     font-weight: bold;
   }
 
+
+  @media only screen and (min-width: 900px) {
+    font-size: 1.1rem;
+  }
+  
   ul {
     list-style: none;
     margin: 0;
@@ -46,6 +51,10 @@ const Label = styled.label`
     position: absolute;
     opacity: 0;
     cursor: pointer;
+  }
+
+  @media only screen and (min-width: 900px) {
+    font-size: 1.1rem;
   }
 `
 
