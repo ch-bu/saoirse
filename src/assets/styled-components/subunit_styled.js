@@ -147,11 +147,11 @@ const UlAside = styled.ul`
           height: 18px;
         }
 
-        img {
+        /* img {
           height: 20px;
           padding-right: 10px;
           margin: 0;
-        }
+        } */
       }
     }
   }
@@ -379,6 +379,11 @@ const Main = styled.div`
 
   img {
     width: 100%;
+    box-shadow: 5px 5px 25px 0 rgba(46,61,73,.4);
+  }
+
+  .gatsby-resp-image-image {
+    box-shadow: 5px 5px 25px 0 rgba(46,61,73,.4);
   }
 `;
 

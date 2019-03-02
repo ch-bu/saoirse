@@ -129,7 +129,7 @@ class SingleChoiceComponent extends React.Component {
             </li>;
           })}
         </ul>
-        <Button onClick={this.getAnswer}>Prüfe deine Antwort</Button>
+        <Button onClick={this.getAnswer}>Submit Answer</Button>
       </Quiz>
     ); 
   }

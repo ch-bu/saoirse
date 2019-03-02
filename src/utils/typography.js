@@ -5,7 +5,7 @@ elkGlenTheme.overrideThemeStyles = ({ rhythm }, options) => ({
   'a': {
     textShadow: "none",
     backgroundImage: "none",
-    baseFontSize: "16px"
+    baseFontSize: "16px",
   }
 });
 

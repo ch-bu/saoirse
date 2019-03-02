@@ -2,25 +2,22 @@ import styled from 'styled-components'
 
 const ButtonComponent = styled.button`
   background-color: ${props => props.theme.primaryColor};
-  border: 1px solid ${props => props.theme.darkColorLight};
-  width: 100%;
-  border-radius: 5px;
   min-height: 2rem;
-  padding: 0;
-  color: #000;
+  padding: 10px 15px;
+  border: none;
+  text-transform: uppercase;
+  border-radius: .25rem;
+  font-size: 0.8rem;
+  outline: none;
+  letter-spacing: 1.3px;
+  color: ${props => props.theme.darkColorLight};
+  box-shadow: 5px 5px 25px 0 rgba(46,61,73,.4);
   cursor: pointer;
 
   &:hover {
-    background-color: ${props => props.theme.primaryColorLight};
+    box-shadow: 0 0 4px 0 rgba(17,22,26,.16), 0 2px 4px 0 rgba(17,22,26,.08), 0 4px 8px 0 rgba(17,22,26,.08);
   }
 `;
-
-
-// class Button extends React.Component {
-//   render() {
-//     return <Button></Button>; 
-//   }
-// }
 
 export default ButtonComponent;
 
