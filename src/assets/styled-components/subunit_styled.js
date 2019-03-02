@@ -39,7 +39,7 @@ const BottomNavigation = styled.div`
   left: 0;
   height: 60px;
   width: 100vw;
-  background-color: #20232a;
+  background-color: ${props => props.theme.darkColor};
   /* border-top: 1px solid #ede7f3; */
 
   a {
@@ -68,7 +68,7 @@ const Aside = styled.div`
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
   overflow-x: hidden;
-  border-right: 1px solid #20232a;
+  border-right: 1px solid ${props => props.theme.darkColor};
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 70px 0 20px 0;
@@ -182,7 +182,7 @@ const ButtonLerneinheiten = styled.div`
     }
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      background-color: #20232a;
+      background-color: ${props => props.theme.darkColor};
       border-right: 1px solid #393f4b;
       border-bottom: 1px solid #393f4b;
 
