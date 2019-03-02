@@ -101,10 +101,12 @@ class SingleChoiceComponent extends React.Component {
 
     this.state = {
       size: "-1",
+      answers: this.shuffleAnswers(this.question.answers)
     };
 
     this.getAnswer = this.getAnswer.bind(this);
     this.updateChecked = this.updateChecked.bind(this);
+    this.shuffleAnswers = this.shuffleAnswers.bind(this);
   }
 
   render() {
@@ -112,7 +114,7 @@ class SingleChoiceComponent extends React.Component {
       <Quiz key={this.question.name}>
         <p>{this.question.question}</p>
         <ul>
-          {this.question.answers.map((item, i) => {
+          {this.state.answers.map((item, i) => {
             return <li key={i} >
               <Label htmlFor={i + this.question.question}>{item.answer}
                 <Input type="radio" value={i} 
@@ -127,6 +129,25 @@ class SingleChoiceComponent extends React.Component {
         <Button onClick={this.getAnswer}>Prüfe deine Antwort</Button>
       </Quiz>
     ); 
+  }
+
+  shuffleAnswers(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
   }
 
   getAnswer() {
