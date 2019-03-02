@@ -6,12 +6,6 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-transition-link',
     'gatsby-transformer-yaml',
-    // {
-    //   resolve: 'gatsby-transformer-yaml',
-    //   options: {
-    //     path: `./src/data/`
-    //   }
-    // },
     {
       resolve: 'gatsby-transformer-remark',
       options: {
