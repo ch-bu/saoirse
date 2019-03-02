@@ -12,4 +12,4 @@ Du verwendest sicherlich einen Laptop, um dir Dinge aufzuschreiben oder liest B�
 
 Unter digitalen Medien verstehen wir alle technischen Geräte, die [digital](https://praxistipps.chip.de/was-ist-digital-einfach-erklaert_41596) betrieben werden. Digital bedeutet, dass nicht nur Strom durch die Geräte fließt, sondern, dass die Geräte mit Hilfe von Chips Zustände speichern (durch das Binärsystem). Beispiele für digitale Medien sind das Smartphone, Tablets, E-Reader, der Laptop, aber auch eine digitale Uhr. Wir werden uns in dieser Lerneinheit auf die ersten vier beschränken. 
 
-<singlechoice question="Sind digitale Medien in der Regel schädlich für Lernen?"></singlechoice>
+<multiplechoice question="Welches dieser Tiere ist ein Säugetier?"></multiplechoice>

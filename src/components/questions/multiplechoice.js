@@ -109,7 +109,9 @@ class MultipleChoiceComponent extends React.Component {
       return question.node.question == this.props.question;
     })[0].node;
 
-    // Get answers
+    // Shuffle answers
+    this.shuffleAnswers(this.question.answers);
+    
     var answers = {};
     var correctAnswers = {};
     for (let answer = 0; answer < this.question.answers.length; answer++) {
@@ -125,6 +127,7 @@ class MultipleChoiceComponent extends React.Component {
 
     this.getAnswer = this.getAnswer.bind(this);
     this.updateChecked = this.updateChecked.bind(this);
+    this.shuffleAnswers = this.shuffleAnswers.bind(this);
   }
 
   render() {
@@ -146,6 +149,25 @@ class MultipleChoiceComponent extends React.Component {
         <Button onClick={this.getAnswer}>Prüfe deine Antwort</Button>
       </Quiz>
     ); 
+  }
+
+  shuffleAnswers(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
   }
 
   getAnswer() {
