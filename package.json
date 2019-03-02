@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Christian Burkhart",
   "dependencies": {
-    "babel-plugin-styled-components": "^1.8.0",
+    "babel-plugin-styled-components": "^1.9.3",
     "file-loader": "^2.0.0",
     "gatsby": "^2.0.36",
     "gatsby-cli": "^2.4.4",
