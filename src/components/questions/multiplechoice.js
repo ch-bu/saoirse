@@ -6,13 +6,12 @@ import { StaticQuery, graphql } from "gatsby"
 
 const Quiz = styled.div`
   width: 100%;
-  margin: 2rem 0;
+  margin: 4rem 0;
 
   p {
-    font-size: 1rem;
     font-weight: bold;
+    margin-bottom: 10px;
   }
-
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     font-size: 1.1rem;
@@ -21,17 +20,14 @@ const Quiz = styled.div`
   ul {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 15px;
   }
   
   li {
-    padding: 0.8rem;
+    /* padding: 0.8rem; */
     border-radius: 5px;
-    border: 1px solid #e6e6e6;
-  }
-
-  li:hover {
-    border: 1px solid #2e3d49;
   }
 `
 
@@ -40,6 +36,7 @@ const Label = styled.label`
   position: relative;
   padding-left: 35px;
   margin-bottom: 12px;
+  padding: 10px 10px 10px 50px;
   cursor: pointer;
   font-size: 0.9rem;
   -webkit-user-select: none;
@@ -60,8 +57,8 @@ const Label = styled.label`
 
 const Checkmark = styled.span`
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 13px;
+  left: 5px;
   height: 25px;
   width: 25px;
   background-color: #eee;
@@ -104,7 +101,8 @@ const Input = styled.input`
 
   &:checked ~ .checkmark {
     background-color: ${props => props.theme.primaryColor};
-    border: 1px solid ${props => props.theme.darkColorLight};
+    /* border: 1px solid ${props => props.theme.darkColorLight}; */
+    box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4);
   }
 `
 

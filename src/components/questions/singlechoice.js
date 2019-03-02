@@ -6,10 +6,11 @@ import { StaticQuery, graphql } from "gatsby"
 
 const Quiz = styled.div`
   width: 100%;
-  margin: 2rem 0;
+  margin: 4rem 0;
 
   p {
     font-weight: bold;
+    margin-bottom: 10px;
   }
 
   ul {
@@ -18,10 +19,6 @@ const Quiz = styled.div`
     padding: 10px;
     border: 1px solid #e6e6e6;
     margin-bottom: 15px;
-  }
-  
-  li {
-    border-radius: 5px;
   }
 `
 
@@ -85,7 +82,6 @@ const Input = styled.input`
 
   &:checked ~ .checkmark {
     background-color: ${props => props.theme.primaryColor};
-    /* border: 1px solid ${props => props.theme.darkColorLight}; */
     box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4);
   }
 `
