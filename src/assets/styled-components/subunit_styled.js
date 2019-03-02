@@ -92,7 +92,7 @@ const UlAside = styled.ul`
   padding: 1rem 1rem;
   color: #fff;
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 1rem 1.8rem;
   }
 
