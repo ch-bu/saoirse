@@ -166,7 +166,7 @@ const ButtonLerneinheiten = styled.div`
     flex-direction: row;
     justify-content: flex-start;
     align-self: stretch;
-    background-color: ${props => props.theme.primaryColor};
+    /* background-color: ${props => props.theme.primaryColor}; */
     border-bottom: none;
     border-right: none;
     transition: background-color 0.2s;
@@ -176,7 +176,7 @@ const ButtonLerneinheiten = styled.div`
       align-self: stretch;
       display:flex;
       align-items:center;
-      color: #000;
+      color: ${props => props.theme.primaryColorLight};
       transition: color 0.2s;
       font-style: italic;
     }
