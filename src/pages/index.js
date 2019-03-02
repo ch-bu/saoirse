@@ -23,7 +23,7 @@ const Hero = styled.div`
     font-size: 1rem;
   }
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     grid-template-rows: 2fr 3fr 1fr;
 
     h1 {
@@ -48,8 +48,8 @@ export default ({ data }) => (
   <Shell>
     <Hero>
       <HeroText>
-        <h1>Gesundheitsförderung und Stimme</h1>
-        <h2>Eine Online-Vorlesung des Master of Education</h2>
+        <h1>Saoirse</h1>
+        <h2>An e-learning framework</h2>
       </HeroText>
     </Hero>
   </Shell>

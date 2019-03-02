@@ -16,7 +16,7 @@ const Container = styled.div`
                        "main main";
   transition: width 0.2s;
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     grid-template-areas: ". main"
                          ". main";
     width: ${props => props.showAsideLeft ? "100%" : "60vw"};
@@ -28,7 +28,7 @@ const Container = styled.div`
 const BottomNavigation = styled.div`
   z-index: 88;
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
    display: none;
   }
 
@@ -70,7 +70,7 @@ const Aside = styled.div`
   overflow-x: hidden;
   border-right: 1px solid #20232a;
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 70px 0 20px 0;
     position: fixed;
     z-index: 1;
@@ -181,7 +181,7 @@ const ButtonLerneinheiten = styled.div`
       font-style: italic;
     }
 
-    @media only screen and (min-width: 900px) {
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
       background-color: #20232a;
       border-right: 1px solid #393f4b;
       border-bottom: 1px solid #393f4b;
@@ -234,7 +234,7 @@ const ButtonLerneinheiten = styled.div`
     }
   }
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     height: 50px;
     position: fixed;
     top: 0;
@@ -265,7 +265,7 @@ const VideoMain = styled.div`
   overflow-y: hidden;
   background-color: #000;
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     top: 0px;
     /* width: ${props => props.showAsideLeft ? "75vw" : "100vw"}; */
   }
@@ -292,7 +292,7 @@ const Main = styled.div`
   h1:first-child {
     font-size: 1.6rem;
 
-    @media only screen and (min-width: 900px) {
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
       font-size: 2rem;
     }
   }
@@ -305,7 +305,7 @@ const Main = styled.div`
     color: red;
   }
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 80%;
     font-size: 1rem;
     padding-top: 90px;
@@ -319,7 +319,7 @@ const Main = styled.div`
     }
   }
 
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointTwo}) {
     width: 60%;
   }
   

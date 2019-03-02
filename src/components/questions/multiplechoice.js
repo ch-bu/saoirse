@@ -14,10 +14,10 @@ const Quiz = styled.div`
   }
 
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     font-size: 1.1rem;
   }
-  
+
   ul {
     list-style: none;
     margin: 0;
@@ -53,7 +53,7 @@ const Label = styled.label`
     cursor: pointer;
   }
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     font-size: 1.1rem;
   }
 `

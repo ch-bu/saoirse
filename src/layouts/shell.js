@@ -2,7 +2,6 @@
 import React, { Component } from "react"
 import {ThemeProvider} from 'styled-components';
 
-
 // Define what props.theme will look like
 // Define our `fg` and `bg` on the theme
 const theme = {
@@ -12,7 +11,9 @@ const theme = {
   primaryColorLight: "#fefab8",
   darkColor: "#20232a",
   // darkColorLight: "#282c35",
-  darkColorLight: "#262c30"
+  darkColorLight: "#262c30",
+  breakpointOne: "1100px",
+  breakpointTwo: "1200px"
 };
 
 

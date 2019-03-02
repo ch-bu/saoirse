@@ -19,7 +19,7 @@ const Modules = styled.div`
     color: #fff;
   }
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     text-align: left;
     padding-left: 20vw;
     padding-right: 20vw;
@@ -37,7 +37,7 @@ const ModulesFlexbox = styled.div`
   justify-content: center;
   padding-top: 3vh;
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     justify-content: flex-start;
   }
 `;
@@ -50,7 +50,7 @@ const FlexElement = styled.div`
   transition: background-color 0.3s;
   border: 1px solid ${props => props.theme.primaryColorLight};
   
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 100%;
     margin-right: 2rem;
     height: 180px;
@@ -103,20 +103,8 @@ export default ({ data }) => {
                     <ModuleNumber>{node.frontmatter.module}</ModuleNumber>
                     <ModuleDescription>{node.frontmatter.moduleTitle}</ModuleDescription>
                 </Link>
-                {/* <ModuleDescription>
-                  <span>{node.frontmatter.module}</span>
-                  
-                  <p className="title">{node.frontmatter.moduleTitle}</p> 
-                  <p>{node.excerpt}</p>
-                
-                  <AniLink fade duration={0.3} to={`/module?id=` + node.frontmatter.module + 
-                            '&unit=' + node.frontmatter.unit +
-                            '&subunit=' + node.frontmatter.subunit}>
-                    Zum Modul
-                  </AniLink>
-                </ModuleDescription> */}
               </FlexElement>
-
+              
             ))}  
           </ModulesFlexbox>
         </Modules>
