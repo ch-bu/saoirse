@@ -106,7 +106,7 @@ class MultipleChoiceComponent extends React.Component {
     this.questions = this.props.data.allMultiplechoiceYaml.edges;
 
     this.question = this.questions.filter((question) => {
-      return question.node.question == this.props.question;
+      return question.node.question === this.props.question;
     })[0].node;
 
     // Shuffle answers
@@ -175,7 +175,7 @@ class MultipleChoiceComponent extends React.Component {
     var equal = true;
 
     Object.entries(this.state.answers).forEach(
-      ([key, value]) => value == this.state.correctAnswers[key] ? "" : equal = false
+      ([key, value]) => value === this.state.correctAnswers[key] ? "" : equal = false
     );
 
     if (equal) {
@@ -193,8 +193,6 @@ class MultipleChoiceComponent extends React.Component {
   }
 
   updateChecked(event) {
-    var self = this;
-
     var updatedAnswers = this.state.answers;
     updatedAnswers[event.target.name] = event.target.checked
 

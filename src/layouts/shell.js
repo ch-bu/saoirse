@@ -1,6 +1,6 @@
 // import React from 'react'
 import React, { Component } from "react"
-import styled, {ThemeProvider} from 'styled-components';
+import {ThemeProvider} from 'styled-components';
 
 
 // Define what props.theme will look like
@@ -17,10 +17,6 @@ const theme = {
 
 
 class Shell extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <ThemeProvider theme={theme}>

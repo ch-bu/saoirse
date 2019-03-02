@@ -6,11 +6,11 @@ import { StaticQuery, graphql } from "gatsby"
 import Button from '../button'
 
 // fake data generator
-const getItems = count =>
-  Array.from({ length: count }, (v, k) => k).map(k => ({
-    id: `item-${k}`,
-    content: `item ${k}`,
-  }));
+// const getItems = count =>
+//   Array.from({ length: count }, (v, k) => k).map(k => ({
+//     id: `item-${k}`,
+//     content: `item ${k}`,
+//   }));
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -65,7 +65,7 @@ class OrderComponent extends Component {
 
     // Get correct question
     this.question = this.questions.filter((question) => {
-      return question.node.question == this.props.question;
+      return question.node.question === this.props.question;
     })[0].node;
 
     // Get answers for questions
@@ -109,7 +109,7 @@ class OrderComponent extends Component {
   }
 
   getAnswer() {
-    const answerCorrect = this.state.items.toString() == this.state.correctItems.toString();
+    const answerCorrect = this.state.items.toString() === this.state.correctItems.toString();
 
     Swal({
       title: answerCorrect ? 'Richtig': "Leider falsch",

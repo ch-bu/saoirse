@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import rehypeReact from "rehype-react"
-import { Link, navigate } from "gatsby"
+import { Link } from "gatsby"
 import Shell from '../layouts/shell';
 import { graphql } from "gatsby"
 import Helmet from 'react-helmet';
@@ -100,7 +100,7 @@ class Module extends Component {
 
         // Get subunit after current subunit
         var next_subunit = subunits.filter((value, index) => {
-          return index == current_index + 1;
+          return index === current_index + 1;
         });
 
         // Get subunit before current subunit
@@ -124,7 +124,7 @@ class Module extends Component {
           // I need to get the units for each subunit
           const units = {};
           subunits.map(function(unit) {
-            units[unit.node.frontmatter.unit] = unit.node.frontmatter.unitTitle;
+            return units[unit.node.frontmatter.unit] = unit.node.frontmatter.unitTitle;
           });
 
           // Get li of subunits

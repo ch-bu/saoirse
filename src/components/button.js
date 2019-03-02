@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import styled from 'styled-components'
 
 const ButtonComponent = styled.button`
@@ -17,11 +16,11 @@ const ButtonComponent = styled.button`
 `;
 
 
-class Button extends React.Component {
-  render() {
-    return <Button></Button>; 
-  }
-}
+// class Button extends React.Component {
+//   render() {
+//     return <Button></Button>; 
+//   }
+// }
 
 export default ButtonComponent;
 

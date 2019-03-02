@@ -96,7 +96,7 @@ class SingleChoiceComponent extends React.Component {
     this.questions = this.props.data.allSinglechoiceYaml.edges;
 
     this.question = this.questions.filter((question) => {
-      return question.node.question == this.props.question;
+      return question.node.question === this.props.question;
     })[0].node;
 
     this.state = {
