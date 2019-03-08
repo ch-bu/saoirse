@@ -411,7 +411,7 @@ const PreviousButton = styled.div`
       align-self: center;
       height: 60px;
       pointer-events: none;
-      width: 100px;
+      width: 300px;
       color: #ccc;
     }
   }
@@ -437,7 +437,7 @@ const NextButton = styled.div`
       align-self: center;
       height: 60px;
       pointer-events: none;
-      width: 100px;
+      width: 300px;
       color: #ccc;
     }
   }
