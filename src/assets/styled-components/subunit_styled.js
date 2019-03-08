@@ -17,7 +17,7 @@ const Container = styled.div`
   transition: width 0.2s;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    grid-template-areas: ". main"
+    grid-template-areas: ". ."
                          ". main";
     width: ${props => props.showAsideLeft ? "100%" : "60vw"};
     margin: 0 auto;
@@ -270,12 +270,14 @@ const VideoMain = styled.div`
   top: -41px;
   grid-area: main;
   width: 100%;
+  padding-top: 20vh;
   height: 100%;
   overflow-y: hidden;
   background-color: #000;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     top: 0px;
+    padding-top: 0;
     /* width: ${props => props.showAsideLeft ? "75vw" : "100vw"}; */
   }
 
