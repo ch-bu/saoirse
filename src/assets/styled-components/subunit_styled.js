@@ -319,7 +319,7 @@ const Main = styled.div`
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 80%;
     font-size: 1rem;
-    padding-top: 90px;
+    padding-top: 50px;
 
     p, li {
       font-size: 1.1rem;
