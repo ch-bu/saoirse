@@ -364,6 +364,13 @@ const Main = styled.div`
     }
   }
 
+  .gatsby-resp-image-link {
+    margin: 40px 0;
+    box-shadow: none;
+    border: none;
+    box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+  }
+
   blockquote {
       margin-left: 0;
       margin-right: 1.6rem;
