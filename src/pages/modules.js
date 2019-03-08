@@ -69,18 +69,27 @@ const FlexElement = styled.div`
 
 const ModuleNumber = styled.div`
   align-self: center;
-  font-size: 4rem;
+  font-size: 3rem;
   color: ${props => props.theme.primaryColor};
   text-align: center;
-  width: 15%;
+  width: 29%;
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    font-size: 5rem;
+  }
 `;
 
 const ModuleDescription = styled.div`
-  width: 85%;
+  width: 80%;
   color: #fff;
   text-align: left;
+  padding: 20px;
   align-self: center;
-  font-size: 2rem;
+  font-size: 1.3rem;
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    font-size: 2rem;
+  }
 `;
 
 export default ({ data }) => {
