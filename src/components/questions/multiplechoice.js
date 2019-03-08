@@ -176,8 +176,6 @@ class MultipleChoiceComponent extends React.Component {
       }
     }
 
-    console.log(this.state.answerCorrect);
-
     return (
       <Quiz key={this.question.name}>
         <p>{this.question.question}</p>
