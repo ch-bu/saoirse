@@ -68,8 +68,6 @@ const Aside = styled.div`
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
   overflow-x: hidden;
-  /* border-right: 1px solid ${props => props.theme.darkColor}; */
-  margin-right: -14px!important;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 70px 0 20px 0;
