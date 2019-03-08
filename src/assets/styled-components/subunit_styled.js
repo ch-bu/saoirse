@@ -68,7 +68,8 @@ const Aside = styled.div`
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
   overflow-x: hidden;
-  border-right: 1px solid ${props => props.theme.darkColor};
+  /* border-right: 1px solid ${props => props.theme.darkColor}; */
+  margin-right: -14px!important;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 70px 0 20px 0;
@@ -145,6 +146,7 @@ const UlAside = styled.ul`
           padding-right: 6px;
           filter: sepia(0.4);
           height: 18px;
+          z-index: 1;
         }
 
         /* img {
@@ -168,7 +170,8 @@ const ButtonLerneinheiten = styled.div`
   font-size: 0.9rem;
   font-style: italic;
   box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2);
-
+  z-index: 99;
+  
   div:first-child {
     width: 100vw;
     display: flex;
