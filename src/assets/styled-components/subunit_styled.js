@@ -167,6 +167,7 @@ const ButtonLerneinheiten = styled.div`
   transition: background-color 0.4s;
   font-size: 0.9rem;
   font-style: italic;
+  box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2);
 
   div:first-child {
     width: 100vw;
