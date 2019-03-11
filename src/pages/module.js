@@ -6,6 +6,8 @@ import { graphql } from "gatsby"
 import Helmet from 'react-helmet';
 import Url from 'url-parse';
 import queryString from 'query-string';
+import prism from "prismjs/themes/prism-okaidia.css";
+import katex from "katex/dist/katex.min.css"
 
 // Markdown components
 import Video from "../components/video";
