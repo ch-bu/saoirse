@@ -138,19 +138,12 @@ const UlAside = styled.ul`
         }
 
         svg {
-          /* color: white; */
           color: ${props => props.theme.primaryColorLight};
           padding-right: 6px;
           filter: sepia(0.4);
           height: 18px;
           z-index: 1;
         }
-
-        /* img {
-          height: 20px;
-          padding-right: 10px;
-          margin: 0;
-        } */
       }
     }
   }
@@ -175,7 +168,6 @@ const ButtonLerneinheiten = styled.div`
     flex-direction: row;
     justify-content: flex-start;
     align-self: stretch;
-    /* background-color: ${props => props.theme.primaryColor}; */
     border-bottom: none;
     border-right: none;
     transition: background-color 0.2s;
