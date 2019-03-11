@@ -1,15 +1,20 @@
 import Typography from "typography";
-import elkGlenTheme from 'typography-theme-elk-glen';
+// import elkGlenTheme from 'typography-theme-elk-glen';
+import githubTheme from 'typography-theme-github';
 
-elkGlenTheme.overrideThemeStyles = ({ rhythm }, options) => ({
+githubTheme.overrideThemeStyles = ({ rhythm }, options) => ({
   'a': {
     textShadow: "none",
     backgroundImage: "none",
-    baseFontSize: "16px",
+    textDecoration: "none"
+    // baseFontSize: "20px",
+  },
+  'div': {
+    textDecoration: "none"
   }
 });
 
-const typography = new Typography(elkGlenTheme);
+const typography = new Typography(githubTheme);
 
 // export default typography;
 const { rhythm, scale } = typography;

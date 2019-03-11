@@ -68,6 +68,7 @@ const DragDropContainer = styled.div`
 const QuestionP = styled.p`
   font-weight: bold;
   margin-bottom: 10px;
+  font-size: 1rem;
 `;
 
 class OrderComponent extends Component {

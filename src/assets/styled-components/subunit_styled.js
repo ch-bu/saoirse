@@ -67,7 +67,9 @@ const Aside = styled.div`
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
   overflow-x: hidden;
-  box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2);
+  border-right: ${props => props.theme.darkColor};
+  border-right: 1px solid #ececec;
+  /* box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2); */
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 70px 0 20px 0;
@@ -95,15 +97,16 @@ const UlAside = styled.ul`
   }
 
   li {
-
     a {
       /* color: rgb(183, 183, 183); */
       /* color: #6d6d6d; */
       color: #000;
+      font-size: 1.1rem;
     }
 
     ul {
       margin: 0;
+      margin-bottom: 20px;
       padding-left: 0.4rem;
 
       li {
@@ -119,7 +122,7 @@ const UlAside = styled.ul`
         a {
           color: rgb(183, 183, 183);
           color: #000;
-          font-size: 0.9rem;
+          font-size: 1.1rem;
           text-decoration: none;
           background-image: none;
           text-shadow: none;
@@ -161,7 +164,7 @@ const ButtonLerneinheiten = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   transition: background-color 0.4s;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-style: italic;
   box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2);
   z-index: 99;
@@ -293,18 +296,23 @@ const Main = styled.div`
   
   h1 {
     margin-top: 0;
+    font-size: 4rem;
+    font-weight: 700;
+    border: none;
   }
   
   h1:first-child {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      font-size: 2rem;
+      font-size: 2.6rem;
     }
   }
 
   h2 {
-    font-size: 1.4rem;
+    font-size: 1.7rem;
+    border: none;
+    margin-top: 40px;
   }
 
   input[type=checkbox]:checked ~ h1 {
@@ -312,12 +320,12 @@ const Main = styled.div`
   }
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    width: 80%;
+    width: 65%;
     font-size: 1rem;
     padding-top: 50px;
 
     p, li {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
     }
 
     h1 {

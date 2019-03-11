@@ -7,7 +7,7 @@ const ButtonComponent = styled.button`
   border: none;
   text-transform: uppercase;
   border-radius: .25rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   outline: none;
   letter-spacing: 1.3px;
   color: ${props => props.theme.darkColorLight};
