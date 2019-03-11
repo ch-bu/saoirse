@@ -154,7 +154,7 @@ const UlAside = styled.ul`
 
 const ButtonLerneinheiten = styled.div`
   width: 100%;
-  height: 80px;
+  height: 50px;
   background-color: ${props => props.theme.darkColor};
   display: flex;
   flex-direction: row;
@@ -164,6 +164,14 @@ const ButtonLerneinheiten = styled.div`
   font-style: italic;
   box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2);
   z-index: 99;
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    transition: width display 0.2s;
+  }
   
   div:first-child {
     width: 100vw;
@@ -189,6 +197,8 @@ const ButtonLerneinheiten = styled.div`
       background-color: ${props => props.theme.darkColor};
       border-right: 1px solid #393f4b;
       border-bottom: 1px solid #393f4b;
+      width: 20vw;
+      display: ${props => props.showAsideLeft ? "flex" : "none"};
 
       a {
         color: rgb(183, 183, 183);
@@ -217,7 +227,9 @@ const ButtonLerneinheiten = styled.div`
   }
 
   div:nth-child(2) {
-    display: none;
+    display: fixed;
+    top: -1000px;
+    left: -1000px;
     text-align: center;
     align-self: center;
     color: rgb(183, 183, 183);
@@ -236,24 +248,12 @@ const ButtonLerneinheiten = styled.div`
         color: ${props => props.theme.primaryColorLight};
       }
     }
-  }
 
-  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    height: 50px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    transition: width display 0.2s;
-
-    div:first-child {
-      width: 20vw;
-      display: ${props => props.showAsideLeft ? "flex" : "none"};
-    }
-
-    div:nth-child(2) {
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
       width: ${props => props.showAsideLeft ? "75vw" : "100vw"};
       display: block;
+      top: 0px;
+      left: 0px;
     }
   }
 `;
