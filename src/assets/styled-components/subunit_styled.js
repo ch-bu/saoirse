@@ -331,6 +331,10 @@ const Main = styled.div`
     h1 {
       margin-top: 2rem;
     }
+
+    code {
+      font-size: 1.3rem;
+    }
   }
 
   @media only screen and (min-width: ${props => props.theme.breakpointTwo}) {
@@ -375,6 +379,14 @@ const Main = styled.div`
     box-shadow: none;
     border: none;
     box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+  }
+
+  .gatsby-highlight {
+    margin: 2.3rem 0;
+  }
+
+  span.katex {
+    margin: 2.3rem 0;
   }
 
   blockquote {
