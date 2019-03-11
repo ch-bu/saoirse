@@ -141,9 +141,10 @@ const UlAside = styled.ul`
 
         svg {
           color: ${props => props.theme.primaryColor};
-          color: #000;
+          /* color: #000; */
+          filter: brightness(65%);
           padding-right: 6px;
-          /* filter: sepia(0.4); */
+          /* filter: sepia(0.2); */
           height: 18px;
           z-index: 1;
         }
