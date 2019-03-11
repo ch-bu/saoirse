@@ -21,7 +21,7 @@ const Container = styled.div`
                          ". main";
     width: ${props => props.showAsideLeft ? "100%" : "60vw"};
     margin: 0 auto;
-    grid-template-columns: ${props => props.showAsideLeft ? "25% 75%" : "0% 100%"};
+    grid-template-columns: ${props => props.showAsideLeft ? "20% 80%" : "0% 100%"};
   }
 `;
 
@@ -40,7 +40,6 @@ const BottomNavigation = styled.div`
   height: 60px;
   width: 100vw;
   background-color: ${props => props.theme.darkColor};
-  /* border-top: 1px solid #ede7f3; */
 
   a {
     padding: 0 20px;
@@ -77,7 +76,7 @@ const Aside = styled.div`
     top: 0;
     height: 100vh;
     transition: width 0.2s;
-    width: ${props => props.showAsideLeft ? "25vw" : "0vw"};
+    width: ${props => props.showAsideLeft ? "20vw" : "0vw"};
   }
 
   &::-webkit-scrollbar {
@@ -253,12 +252,11 @@ const ButtonLerneinheiten = styled.div`
     transition: width display 0.2s;
 
     div:first-child {
-      width: 25vw;
+      width: 20vw;
       display: ${props => props.showAsideLeft ? "flex" : "none"};
     }
 
     div:nth-child(2) {
-      /* width: 75vw; */
       width: ${props => props.showAsideLeft ? "75vw" : "100vw"};
       display: block;
     }
