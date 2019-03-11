@@ -62,11 +62,12 @@ const Aside = styled.div`
   width: ${props => props.showAside ? "100vw" : "100vw"};
   overflow-y: scroll;
   box-sizing: border-box;
-  background-color: ${props => props.theme.darkColorLight};
+  background-color: ${props => props.theme.greyColor};
   padding-top: 20px;
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
   overflow-x: hidden;
+  box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2);
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 70px 0 20px 0;
@@ -88,7 +89,6 @@ const UlAside = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 1rem 1rem;
-  color: #fff;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 1rem 1.8rem;
@@ -97,13 +97,14 @@ const UlAside = styled.ul`
   li {
 
     a {
-      color: rgb(183, 183, 183);
+      /* color: rgb(183, 183, 183); */
+      /* color: #6d6d6d; */
+      color: #000;
     }
 
     ul {
       margin: 0;
       padding-left: 0.4rem;
-      color: #000;
 
       li {
         padding-bottom: 0.1rem;
@@ -117,6 +118,7 @@ const UlAside = styled.ul`
 
         a {
           color: rgb(183, 183, 183);
+          color: #000;
           font-size: 0.9rem;
           text-decoration: none;
           background-image: none;
@@ -133,14 +135,15 @@ const UlAside = styled.ul`
 
           &.active {
             font-weight: bold;
-            color: #fff;
+            /* color: #fff; */
           }
         }
 
         svg {
-          color: ${props => props.theme.primaryColorLight};
+          color: ${props => props.theme.primaryColor};
+          color: #000;
           padding-right: 6px;
-          filter: sepia(0.4);
+          /* filter: sepia(0.4); */
           height: 18px;
           z-index: 1;
         }
