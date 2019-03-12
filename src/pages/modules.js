@@ -7,6 +7,9 @@ import Helmet from 'react-helmet';
 
 const Modules = styled.div`
   background-color: ${props => props.theme.darkColor};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   padding-top: 50px;
   padding-left: 5vw;
   padding-right: 5vw;
@@ -17,6 +20,7 @@ const Modules = styled.div`
   h1 {
     margin-top: 0;
     color: #fff;
+    border: none;
   }
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
@@ -25,6 +29,8 @@ const Modules = styled.div`
     padding-right: 20vw;
 
     h1 {
+      font-size: 3rem;
+      font-weight: 700;
       margin-top: 2rem;
     }
   }
@@ -44,6 +50,7 @@ const ModulesFlexbox = styled.div`
 
 const FlexElement = styled.div`
   background-color: ${props => props.theme.darkColor};
+  opacity: .9;
   width: 90%;
   text-align: center;
   margin-bottom: 2rem;

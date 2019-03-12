@@ -18,7 +18,7 @@ import OrderQuestion from "../components/questions/orderquestion";
 import Flipcard from "../components/questions/flipcard";
 
 // Icons 
-import { FaChevronLeft, FaChevronRight, FaRunning, FaFolderPlus, FaLightbulb, FaQuestion, FaVideo, FaInfo, FaFolderMinus, FaAngleRight, FaBookOpen, FaAngleLeft } from "react-icons/fa";
+import { FaCaretLeft, FaChevronLeft, FaChevronRight, FaRunning, FaFolderPlus, FaLightbulb, FaQuestion, FaVideo, FaInfo, FaFolderMinus, FaAngleRight, FaBookOpen, FaAngleLeft } from "react-icons/fa";
 import {IoMdMenu, IoMdClose} from "react-icons/io";
 
 // Styled components
@@ -297,7 +297,7 @@ class Module extends Component {
             <TopNav showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
               <div>
                 <Link to="/modules">
-                  <FaChevronLeft />
+                  <FaCaretLeft />
                 </Link>
                 <Link to="/modules">Lesson {this.state.moduleId}</Link>
               </div>

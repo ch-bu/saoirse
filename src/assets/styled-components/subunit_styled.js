@@ -11,7 +11,7 @@ const Container = styled.div`
   max-width: 100%;
   display: grid;
   grid-template-columns: 25% 75%;
-  grid-template-rows: 40px auto;
+  grid-template-rows: 50px auto;
   grid-template-areas: ". ."
                        "main main";
   transition: width 0.2s;
@@ -63,7 +63,7 @@ const TopNav = styled.div`
   justify-content: flex-start;
   transition: background-color 0.4s;
   font-size: 1rem;
-  font-style: italic;
+  /* font-style: italic; */
   box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2);
   z-index: 99;
 
@@ -88,12 +88,12 @@ const TopNav = styled.div`
     a {
       padding: 0 20px;
       align-self: stretch;
-      display:flex;
+      display: flex;
       align-items:center;
       color: ${props => props.theme.primaryColorLight};
       transition: color 0.2s;
       text-decoration: none;
-      font-style: italic;
+      /* font-style: italic; */
     }
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
@@ -104,7 +104,8 @@ const TopNav = styled.div`
       display: ${props => props.showAsideLeft ? "flex" : "none"};
 
       a {
-        color: rgb(183, 183, 183);
+        /* color: rgb(183, 183, 183); */
+        color: #fff;
       }
     }
 
@@ -117,11 +118,12 @@ const TopNav = styled.div`
       svg {
         display: block;
         margin: auto;
+        height: 25px;
       }
     }
 
     a:nth-child(2) {
-      flex-grow: 4;
+      flex-grow: 8;
     }
 
     &:hover {
@@ -135,7 +137,8 @@ const TopNav = styled.div`
     left: -1000px;
     text-align: center;
     align-self: center;
-    color: rgb(183, 183, 183);
+    /* color: rgb(183, 183, 183); */
+    color: #fff;
     position: relative;
 
     svg {
