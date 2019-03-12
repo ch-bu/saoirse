@@ -64,6 +64,7 @@ const FlexElement = styled.div`
     display: flex;
     align-self: stretch;
     height: 100%;
+    text-decoration: none;
   }
 `;
 

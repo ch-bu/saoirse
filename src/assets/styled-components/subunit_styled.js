@@ -92,6 +92,7 @@ const TopNav = styled.div`
       align-items:center;
       color: ${props => props.theme.primaryColorLight};
       transition: color 0.2s;
+      text-decoration: none;
       font-style: italic;
     }
 
