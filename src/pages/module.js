@@ -22,8 +22,9 @@ import { FaChevronLeft, FaChevronRight, FaRunning, FaFolderPlus, FaLightbulb, Fa
 import {IoMdMenu, IoMdClose} from "react-icons/io";
 
 // Styled components
-import {Container, Aside, Main, UlAside, BottomNavigation, NextButton, PreviousButton, ButtonLerneinheiten } from '../assets/styled-components/subunit_styled.js';
-import {VideoMain} from '../assets/styled-components/subunit_styled.js';
+import {Container, TopNav, NextButton, PreviousButton, BottomNavigation } from '../assets/styled-components/subunit_styled.js';
+import {Main, VideoMain} from '../assets/styled-components/module/main.js';
+import {Aside, UlAside} from '../assets/styled-components/module/aside.js';
 
 class Module extends Component {
   constructor(props) {
@@ -293,7 +294,7 @@ class Module extends Component {
             </Main> }
 
           <Aside showAside={this.state.showAside} showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
-            <ButtonLerneinheiten showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
+            <TopNav showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
               <div>
                 <Link to="/modules">
                   <FaChevronLeft />
@@ -304,7 +305,7 @@ class Module extends Component {
               {this.state.showAsideLeft ? <IoMdClose onClick={this.toggleAsideLeft} />: <IoMdMenu onClick={this.toggleAsideLeft}/>}
                 {this.state.currentSubunit.frontmatter.moduleTitle} > {this.state.currentSubunit.frontmatter.unitTitle}
               </div>
-            </ButtonLerneinheiten>
+            </TopNav>
             
             <UlAside>
             {
