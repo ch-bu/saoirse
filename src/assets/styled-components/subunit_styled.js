@@ -66,6 +66,7 @@ const TopNav = styled.div`
   font-size: 1rem;
   /* font-style: italic; */
   box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2);
+  border-bottom: 1px solid #ccc;
   z-index: 99;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
