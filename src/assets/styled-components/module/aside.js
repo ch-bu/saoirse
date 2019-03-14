@@ -51,6 +51,7 @@ const UlAside = styled.ul`
       /* color: #fff; */
       color: #000;
       font-size: 1.1rem;
+      text-decoration: none;
     }
 
     ul {
@@ -94,8 +95,8 @@ const UlAside = styled.ul`
 
         svg {
           /* color: ${props => props.theme.primaryColor}; */
-          /* color: #000; */
-          color: #7f7f7f;
+          color: #000;
+          color: #ccc;
           /* filter: brightness(65%); */
           padding-right: 6px;
           filter: sepia(0.2);

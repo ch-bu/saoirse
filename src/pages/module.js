@@ -293,8 +293,11 @@ class Module extends Component {
               }
             </Main> }
 
-          <Aside showAside={this.state.showAside} showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
-            <TopNav showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
+          <Aside showAside={this.state.showAside} 
+                 showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}
+                 videoActive={this.state.currentSubunit.frontmatter.type == "video"}>
+            <TopNav showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}
+                    videoActive={this.state.currentSubunit.frontmatter.type == "video"}>
               <div>
                 <Link to="/modules">
                   <FaCaretLeft />
