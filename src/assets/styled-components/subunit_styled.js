@@ -57,7 +57,8 @@ const BottomNavigation = styled.div`
 const TopNav = styled.div`
   width: 100%;
   height: 50px;
-  background-color: ${props => props.theme.darkColor};
+  /* background-color: ${props => props.theme.darkColor}; */
+  background-color: #fff;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -83,29 +84,32 @@ const TopNav = styled.div`
     align-self: stretch;
     border-bottom: none;
     border-right: none;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s;
 
     a {
       padding: 0 20px;
       align-self: stretch;
       display: flex;
       align-items:center;
-      color: ${props => props.theme.primaryColorLight};
+      /* color: ${props => props.theme.primaryColorLight}; */
+      color: #000;
       transition: color 0.2s;
       text-decoration: none;
       /* font-style: italic; */
     }
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      background-color: ${props => props.theme.darkColor};
-      border-right: 1px solid #393f4b;
-      border-bottom: 1px solid #393f4b;
+      /* background-color: ${props => props.theme.darkColor}; */
+      background-color: rgb(245, 245, 245);
+      /* border-right: 1px solid #393f4b; */
+      /* border-bottom: 1px solid #393f4b; */
       width: 20vw;
       display: ${props => props.showAsideLeft ? "flex" : "none"};
 
       a {
         /* color: rgb(183, 183, 183); */
         color: #fff;
+        color: #000;
       }
     }
 
@@ -127,7 +131,7 @@ const TopNav = styled.div`
     }
 
     &:hover {
-      background-color: #313640;
+      background-color: #e5e5e5;
     }
   }
 
@@ -138,7 +142,8 @@ const TopNav = styled.div`
     text-align: center;
     align-self: center;
     /* color: rgb(183, 183, 183); */
-    color: #fff;
+    /* color: #fff; */
+    color: #000;
     position: relative;
 
     svg {
@@ -148,11 +153,12 @@ const TopNav = styled.div`
       height: 25px;
       width: 25px;
       color: ${props => props.theme.primaryColor};
+      color: #000;
       cursor: pointer;
-
+/* 
       &:hover {
         color: ${props => props.theme.primaryColorLight};
-      }
+      } */
     }
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {

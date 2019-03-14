@@ -9,14 +9,15 @@ const Aside = styled.div`
   overflow-y: scroll;
   box-sizing: border-box;
   /* background-color: ${props => props.theme.greyColor}; */
-  background-color: ${props => props.theme.darkColorLight};
+  /* background-color: ${props => props.theme.darkColorLight}; */
+  background-color: rgb(245, 245, 245);
   padding-top: 20px;
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
   overflow-x: hidden;
   border-right: ${props => props.theme.darkColor};
   /* border-right: 1px solid #ececec; */
-  box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2);
+  /* box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2); */
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 30px 0 20px 0;
@@ -48,6 +49,7 @@ const UlAside = styled.ul`
       color: rgb(183, 183, 183);
       /* color: #6d6d6d; */
       /* color: #fff; */
+      color: #000;
       font-size: 1.1rem;
     }
 
@@ -69,6 +71,7 @@ const UlAside = styled.ul`
         a {
           color: rgb(183, 183, 183);
           /* color: #fff; */
+          color: #000;
           font-size: 1.1rem;
           text-decoration: none;
           background-image: none;
@@ -85,13 +88,14 @@ const UlAside = styled.ul`
 
           &.active {
             font-weight: bold;
-            color: #fff;
+            /* color: #fff; */
           }
         }
 
         svg {
-          color: ${props => props.theme.primaryColor};
+          /* color: ${props => props.theme.primaryColor}; */
           /* color: #000; */
+          color: #7f7f7f;
           /* filter: brightness(65%); */
           padding-right: 6px;
           filter: sepia(0.2);

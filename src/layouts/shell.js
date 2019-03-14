@@ -11,6 +11,7 @@ const theme = {
   primaryColorLight: "#fefab8",
   darkColor: "#1c1f25",
   darkColorLight: "#262c30",
+  // darkColorLight: "#17141d",
   // darkColorLight: "#f7f7f7",
   greyColor: "#f7f7f7",
   breakpointOne: "1200px",
