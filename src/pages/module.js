@@ -18,8 +18,15 @@ import OrderQuestion from "../components/questions/orderquestion";
 import Flipcard from "../components/questions/flipcard";
 
 // Icons 
-import { FaCaretLeft, FaChevronLeft, FaChevronRight, FaRunning, FaFolderPlus, FaLightbulb, FaQuestion, FaVideo, FaInfo, FaFolderMinus, FaAngleRight, FaBookOpen, FaAngleLeft } from "react-icons/fa";
+import { FaCaretLeft, FaChevronLeft, FaChevronRight, FaFolderPlus, FaFolderMinus, FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import {IoMdMenu, IoMdClose} from "react-icons/io";
+import Reflection from "../assets/icons/reflection.png";
+import Question from "../assets/icons/question.png";
+import Instruction from "../assets/icons/instruction.png";
+import VideoIcon from "../assets/icons/video.png";
+import Exercise from "../assets/icons/exercise.png";
+import Information from "../assets/icons/info.png";
+import Poll from "../assets/icons/poll.png";
 
 // Styled components
 import {Container, TopNav, NextButton, PreviousButton, BottomNavigation } from '../assets/styled-components/subunit_styled.js';
@@ -58,13 +65,14 @@ class Module extends Component {
       });
 
       // We need images for the aside articles
-      const types = {'instruction': <FaBookOpen />,
-                    'question': <FaQuestion />,
-                    'poll': <FaFolderPlus />,
-                    'video': <FaVideo />,
-                    'exercise': <FaRunning />,
-                    'reflection': <FaLightbulb />,
-                    'information': <FaInfo />};
+      const types = {'instruction': Instruction,
+                    'question': Question,
+                    'poll': Poll,
+                    'video': VideoIcon,
+                    'videoinstruction': VideoIcon,
+                    'exercise': Exercise,
+                    'reflection': Reflection,
+                    'information': Information};
 
       // In case the unit could not be found navigate back
       // to /module
@@ -153,7 +161,7 @@ class Module extends Component {
               
               subunitLi.push(
                 <li key={unitSorted[unit].frontmatter.title}>
-                  {type}
+                  <img alt={unitSorted[unit].type} src={type}></img>
                   <Link key={unit} 
                         onClick={this.updateMainContent}
                         to={`/module?id=` + parsedURL.id + 

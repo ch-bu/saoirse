@@ -93,15 +93,19 @@ const UlAside = styled.ul`
           }
         }
 
-        svg {
-          /* color: ${props => props.theme.primaryColor}; */
+        /* svg {
           color: #000;
           color: #ccc;
-          /* filter: brightness(65%); */
           padding-right: 6px;
           filter: sepia(0.2);
           height: 18px;
           z-index: 1;
+        } */
+
+        img {
+          height: 20px;
+          padding-right: 10px;
+          margin: 0;
         }
       }
     }
