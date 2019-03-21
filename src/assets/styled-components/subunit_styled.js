@@ -59,7 +59,7 @@ const TopNav = styled.div`
   width: 100%;
   flex-wrap: wrap;
   flex-basis: 100vw;
-  height: 50px;
+  height: 70px;
   background-color: #fff;
   display: flex;
   flex-direction: row;
@@ -73,6 +73,7 @@ const TopNav = styled.div`
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     flex-wrap: nowrap;
     position: fixed;
+    height: 50px;
     flex-basis: 20vw;
     top: 0;
     left: 0;

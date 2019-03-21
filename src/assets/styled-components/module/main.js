@@ -148,18 +148,15 @@ const Main = styled.div`
 const VideoMain = styled.div`
   position: relative;
   left: 0;
-  top: -41px;
+  top: -51px;
   grid-area: main;
   width: 100%;
-  padding-top: 20vh;
   height: 100%;
   overflow-y: hidden;
   background-color: #fff;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     top: 0px;
-    padding-top: 0;
-    /* width: ${props => props.showAsideLeft ? "75vw" : "100vw"}; */
   }
 
   video, iframe {
