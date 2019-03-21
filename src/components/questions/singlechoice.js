@@ -149,7 +149,6 @@ class SingleChoiceComponent extends React.Component {
     let answer = "";
     if (this.state.buttonClicked | this.state.alreadyAnswered) {
       if (this.state.answerCorrect) {
-        console.log(this.state.hint);
         answer = <Answer answerCorrect={true}>{this.state.hint}</Answer>;
       } else {
         answer = <Answer answerCorrect={false}>{this.state.hint}</Answer>;

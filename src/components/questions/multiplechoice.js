@@ -1,9 +1,10 @@
 import React from "react"
 import styled from 'styled-components'
-import Swal from 'sweetalert2'
 import Button from '../button'
 import { StaticQuery, graphql } from "gatsby"
 import Confetti from 'react-dom-confetti';
+import {reactLocalStorage} from 'reactjs-localstorage';
+
 
 const Quiz = styled.div`
   width: 100%;
@@ -72,17 +73,6 @@ const Checkmark = styled.span`
     background-color: #ffefa2;
   }
 
-  /* &:after {
-    content: "";
-    position: absolute;
-    display: none;
-    top: 9px;
-    left: 9px;
-    width: 8px;
-    height: 8px;
-    background: white;
-  } */
-
   &::after {
     left: 9px;
     top: 9px;
@@ -102,7 +92,6 @@ const Input = styled.input`
 
   &:checked ~ .checkmark {
     background-color: ${props => props.theme.primaryColor};
-    /* border: 1px solid ${props => props.theme.darkColorLight}; */
     box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4);
   }
 `
@@ -157,10 +146,11 @@ class MultipleChoiceComponent extends React.Component {
     this.state = {
       size: "-1",
       answers: answers,
+      alreadyAnswered: reactLocalStorage.get(this.question.question) ? true : false,
       correctAnswers: correctAnswers,
       showConfetti: false,
-      answerCorrect: null,
-      hint: "",
+      answerCorrect: reactLocalStorage.get(this.question.question) ? true : null,
+      hint: reactLocalStorage.get(this.question.question) ? this.question.hint : "",
       buttonClicked: false
     };
 
@@ -172,7 +162,7 @@ class MultipleChoiceComponent extends React.Component {
   render() {
 
     let answer = "";
-    if (this.state.buttonClicked) {
+    if (this.state.buttonClicked | this.state.alreadyAnswered) {
       if (this.state.answerCorrect) {
         answer = <Answer answerCorrect={true}>{"Well done!"}</Answer>;
       } else {
@@ -189,7 +179,8 @@ class MultipleChoiceComponent extends React.Component {
               <Label className="mc">{item.answer}
                 <Input type="checkbox"
                        name={item.answer}
-                       onClick={this.updateChecked} />
+                       checked={this.state.alreadyAnswered ? item.correct : null}
+                       onChange={this.updateChecked} />
                 <Confetti active={ this.state.showConfetti } config={ this.config }/>
                 <Checkmark className="checkmark"></Checkmark>
               </Label>
@@ -234,19 +225,25 @@ class MultipleChoiceComponent extends React.Component {
     });
 
     if (equal) {
+      // Store correct answer in local storage
+      reactLocalStorage.set(this.question.question, this.question.hint);
+
       this.setState({
         showConfetti: true,
-        answerCorrect: true
+        answerCorrect: true,
+        alreadyAnswered: true
       }, () => {
         setTimeout(() => {
           this.setState({showConfetti: false})
         }, 1000);
       });
     } else {
-      this.setState({
-        answerCorrect: false,
-        hint: this.question.hint
-      });
+      if (!this.state.alreadyAnswered) {
+        this.setState({
+          answerCorrect: false,
+          hint: this.question.hint
+        });
+      }
     }
   }
 
