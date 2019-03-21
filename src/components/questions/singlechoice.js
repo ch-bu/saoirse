@@ -162,7 +162,8 @@ class SingleChoiceComponent extends React.Component {
           {this.state.answers.map((item, i) => {
             return <li key={i} >
               <Label htmlFor={i + this.question.question}>{item.answer}
-                <Input type="radio" value={i} 
+                <Input type="radio" 
+                       value={i} 
                        id={i + this.question.question}
                        checked={this.state.alreadyAnswered ? item.correct : null}
                        name={this.question.question}

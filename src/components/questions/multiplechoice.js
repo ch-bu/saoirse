@@ -160,7 +160,7 @@ class MultipleChoiceComponent extends React.Component {
   }
 
   render() {
-
+    // Decide wheather to show int
     let answer = "";
     if (this.state.buttonClicked | this.state.alreadyAnswered) {
       if (this.state.answerCorrect) {
@@ -179,6 +179,7 @@ class MultipleChoiceComponent extends React.Component {
               <Label className="mc">{item.answer}
                 <Input type="checkbox"
                        name={item.answer}
+                       id={i + this.question.question}
                        checked={this.state.alreadyAnswered ? item.correct : null}
                        onChange={this.updateChecked} />
                 <Confetti active={ this.state.showConfetti } config={ this.config }/>
