@@ -65,7 +65,7 @@ const TopNav = styled.div`
   transition: background-color 0.4s;
   font-size: 1rem;
   /* font-style: italic; */
-  box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2);
+  box-shadow: 5px 5px 20px 0 rgba(46,61,73,.2);
   border-bottom: 1px solid #ccc;
   z-index: 99;
 
