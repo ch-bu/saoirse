@@ -52,9 +52,14 @@ const Answer = styled.div`
   width: 100%;
   min-height: 100px;
   padding: 15px;
+  font-size: 1rem;
   border-radius: 5px;
   background-color: ${props => props.answerCorrect ? "#c7efc7" : "#ecbaba"};
   box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4);
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    font-size: 1.2rem;
+  }
 `;
 
 const Checkmark = styled.span`
