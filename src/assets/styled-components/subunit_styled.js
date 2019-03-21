@@ -39,7 +39,8 @@ const BottomNavigation = styled.div`
   left: 0;
   height: 60px;
   width: 100vw;
-  background-color: ${props => props.theme.darkColor};
+  background-color: #fff;
+  border-top: 1px solid #ccc;
 
   a {
     padding: 0 20px;
@@ -48,7 +49,7 @@ const BottomNavigation = styled.div`
     align-items:center;
 
     svg {
-      color: ${props => props.theme.primaryColor};
+      color: black;
       pointer-events: none;
     }
   }
@@ -56,21 +57,23 @@ const BottomNavigation = styled.div`
 
 const TopNav = styled.div`
   width: 100%;
+  flex-wrap: wrap;
+  flex-basis: 100vw;
   height: 50px;
-  /* background-color: ${props => props.theme.darkColor}; */
   background-color: #fff;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   transition: background-color 0.4s;
   font-size: 1rem;
-  /* font-style: italic; */
   box-shadow: 5px 5px 20px 0 rgba(46,61,73,.2);
   border-bottom: 1px solid #ccc;
   z-index: 99;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    flex-wrap: nowrap;
     position: fixed;
+    flex-basis: 20vw;
     top: 0;
     left: 0;
     width: 100vw;
@@ -78,10 +81,11 @@ const TopNav = styled.div`
   }
   
   div:first-child {
-    width: 100vw;
+    width: 100%;
     display: flex;
+    position: relative;
+    height: 100%;
     flex-direction: row;
-    justify-content: flex-start;
     align-self: stretch;
     border-bottom: none;
     border-right: none;
@@ -92,23 +96,17 @@ const TopNav = styled.div`
       align-self: stretch;
       display: flex;
       align-items:center;
-      /* color: ${props => props.theme.primaryColorLight}; */
       color: #000;
       transition: color 0.2s;
       text-decoration: none;
-      /* font-style: italic; */
     }
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      /* background-color: ${props => props.theme.darkColor}; */
       background-color: rgb(245, 245, 245);
-      /* border-right: 1px solid #393f4b; */
-      /* border-bottom: 1px solid #393f4b; */
-      width: 20vw;
+      width: 20%;
       display: ${props => props.showAsideLeft ? "flex" : "none"};
 
       a {
-        /* color: rgb(183, 183, 183); */
         color: #fff;
         color: #000;
       }
@@ -142,8 +140,6 @@ const TopNav = styled.div`
     left: -1000px;
     text-align: center;
     align-self: center;
-    /* color: rgb(183, 183, 183); */
-    /* color: #fff; */
     color: #000;
     position: relative;
 
@@ -153,13 +149,8 @@ const TopNav = styled.div`
       left: 15px;
       height: 25px;
       width: 25px;
-      color: ${props => props.theme.primaryColor};
       color: #000;
       cursor: pointer;
-/* 
-      &:hover {
-        color: ${props => props.theme.primaryColorLight};
-      } */
     }
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {

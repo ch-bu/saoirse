@@ -38,7 +38,7 @@ const Aside = styled.div`
 const UlAside = styled.ul`
   list-style-type: none;
   margin: 0;
-  padding: 1rem 1rem;
+  padding: 2rem 1rem;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 1rem 1.8rem;
@@ -47,8 +47,6 @@ const UlAside = styled.ul`
   li {
     a {
       color: rgb(183, 183, 183);
-      /* color: #6d6d6d; */
-      /* color: #fff; */
       color: #000;
       font-size: 1.1rem;
       text-decoration: none;
@@ -71,9 +69,8 @@ const UlAside = styled.ul`
 
         a {
           color: rgb(183, 183, 183);
-          /* color: #fff; */
           color: #000;
-          font-size: 1.1rem;
+          font-size: 1rem;
           text-decoration: none;
           background-image: none;
           text-shadow: none;
@@ -89,18 +86,8 @@ const UlAside = styled.ul`
 
           &.active {
             font-weight: bold;
-            /* color: #fff; */
           }
         }
-
-        /* svg {
-          color: #000;
-          color: #ccc;
-          padding-right: 6px;
-          filter: sepia(0.2);
-          height: 18px;
-          z-index: 1;
-        } */
 
         img {
           height: 20px;
