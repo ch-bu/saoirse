@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Button from '../button'
 import { StaticQuery, graphql } from "gatsby"
 import Confetti from 'react-dom-confetti';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 
 const Quiz = styled.div`
@@ -106,18 +107,22 @@ class SingleChoiceComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    // All questions
     this.questions = this.props.data.allSinglechoiceYaml.edges;
 
+    // Get current question
     this.question = this.questions.filter((question) => {
       return question.node.question === this.props.question;
     })[0].node;
 
     this.state = {
       size: "-1",
+      // Check if questions has already been answered?
+      alreadyAnswered: reactLocalStorage.get(this.question.question) ? true : false,
       answers: this.shuffleAnswers(this.question.answers),
-      answerCorrect: null,
+      answerCorrect: reactLocalStorage.get(this.question.question) ? true : null,
       showConfetti: false,
-      hint: "",
+      hint: reactLocalStorage.get(this.question.question),
       buttonClicked: false
     };
 
@@ -140,11 +145,11 @@ class SingleChoiceComponent extends React.Component {
   }
 
   render() {
-
     // Decide wheather to show int
     let answer = "";
-    if (this.state.buttonClicked) {
+    if (this.state.buttonClicked | this.state.alreadyAnswered) {
       if (this.state.answerCorrect) {
+        console.log(this.state.hint);
         answer = <Answer answerCorrect={true}>{this.state.hint}</Answer>;
       } else {
         answer = <Answer answerCorrect={false}>{this.state.hint}</Answer>;
@@ -160,10 +165,11 @@ class SingleChoiceComponent extends React.Component {
               <Label htmlFor={i + this.question.question}>{item.answer}
                 <Input type="radio" value={i} 
                        id={i + this.question.question}
+                       checked={this.state.alreadyAnswered ? item.correct : null}
                        name={this.question.question}
-                       onClick={this.updateChecked} />
+                       onChange={this.updateChecked} />
                   <Confetti active={ this.state.showConfetti } config={ this.config }/>
-                <Checkmark className="checkmark"></Checkmark>
+                <Checkmark className="checkmark" ></Checkmark>
               </Label>
             </li>;
           })}
@@ -194,7 +200,7 @@ class SingleChoiceComponent extends React.Component {
   }
 
   getAnswer() {
-    if (parseInt(this.state.size) >= 0) {
+    if (parseInt(this.state.size) >= 0 & !this.state.alreadyAnswered) {
       const currentQuestion = this.question.answers[this.state.size];
       const answer_correct = currentQuestion.correct;
 
@@ -204,9 +210,13 @@ class SingleChoiceComponent extends React.Component {
       });
 
       if (answer_correct) {
+        // Store correct answer in local storage
+        reactLocalStorage.set(this.question.question, currentQuestion.hint);
+
         this.setState({
           showConfetti: answer_correct,
-          answerCorrect: true
+          answerCorrect: true,
+          alreadyAnswered: true
         }, () => {
           setTimeout(() => {
             this.setState({showConfetti: false})
