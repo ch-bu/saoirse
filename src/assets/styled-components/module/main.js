@@ -75,9 +75,9 @@ const Main = styled.div`
   
   iframe {
     width: 100%;
-    height: 50vh;
-    box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
-    padding: 20px 0;
+    /* height: 50vh; */
+    /* box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2); */
+    /* padding: 20px 0; */
   }
 
   video {
