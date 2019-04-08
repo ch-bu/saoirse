@@ -21,7 +21,7 @@ const Container = styled.div`
                          ". main";
     width: ${props => props.showAsideLeft ? "100%" : "60vw"};
     margin: 0 auto;
-    grid-template-columns: ${props => props.showAsideLeft ? "20% 80%" : "0% 100%"};
+    grid-template-columns: ${props => props.showAsideLeft ? "17% 83%" : "0% 100%"};
   }
 `;
 
@@ -74,7 +74,7 @@ const TopNav = styled.div`
     flex-wrap: nowrap;
     position: fixed;
     height: 50px;
-    flex-basis: 20vw;
+    flex-basis: 17vw;
     top: 0;
     left: 0;
     width: 100vw;
@@ -104,7 +104,7 @@ const TopNav = styled.div`
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
       background-color: ${props => props.theme.topNavigationBackButtonBackgroundColor};
-      width: 20%;
+      width: 17%;
       display: ${props => props.showAsideLeft ? "flex" : "none"};
 
       a {

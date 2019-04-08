@@ -22,7 +22,7 @@ const Aside = styled.div`
     top: 50px;
     height: calc(100vh - 50px);
     transition: width 0.2s;
-    width: ${props => props.showAsideLeft ? "20vw" : "0vw"};
+    width: ${props => props.showAsideLeft ? "17vw" : "0vw"};
   }
 
   &::-webkit-scrollbar {
