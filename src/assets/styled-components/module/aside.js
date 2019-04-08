@@ -34,7 +34,7 @@ const UlAside = styled.ul`
   list-style-type: none;
   margin: 0;
   position: absolute;
-  padding: 2rem 1rem;
+  padding: 0;
   height: 100%;
   width: 100%;
 
@@ -54,10 +54,12 @@ const UlAside = styled.ul`
   }
 
   #problem {
-    position: absolute;
-    width: 100%;
-    bottom: 0px;
-    left: 0;
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+      position: absolute;
+      width: 100%;
+      bottom: 0px;
+      left: 0;
+    }
   }
 
   label {

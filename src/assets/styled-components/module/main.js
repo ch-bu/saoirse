@@ -52,7 +52,7 @@ const Main = styled.div`
   }
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    width: 65%;
+    width: 70%;
     font-size: 1rem;
     padding-top: 50px;
 
@@ -154,9 +154,11 @@ const VideoMain = styled.div`
   height: 100%;
   overflow-y: hidden;
   background-color: #000;
+  padding-top: 20vh;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     top: 0px;
+    padding-top: 0;
   }
 
   video, iframe {

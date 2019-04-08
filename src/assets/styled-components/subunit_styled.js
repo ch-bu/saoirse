@@ -39,8 +39,8 @@ const BottomNavigation = styled.div`
   left: 0;
   height: 60px;
   width: 100vw;
-  background-color: #fff;
-  border-top: 1px solid #ccc;
+  background-color: ${props => props.theme.topNavigationBackgroundColor};
+  border-top: 1px solid ${props => props.theme.topNavigationBorderBottom};
 
   a {
     padding: 0 20px;
@@ -49,7 +49,7 @@ const BottomNavigation = styled.div`
     align-items:center;
 
     svg {
-      color: black;
+      color: #fff;
       pointer-events: none;
     }
   }
