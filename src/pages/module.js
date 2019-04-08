@@ -74,8 +74,7 @@ class Module extends Component {
                     'reflection': Reflection,
                     'information': Information};
 
-      // In case the unit could not be found navigate back
-      // to /module
+      // Make sure that the url has all necessary paramters
       if (parsedURL.id && parsedURL.subunit && parsedURL.unit) {
         // Filter all markdown files by module_id
         const subunits = this.state.data.filter((value, index, array) => {
@@ -175,14 +174,17 @@ class Module extends Component {
             }
 
             unitLi.push(
-              <li key={unit}>
-                <a key={unit}>{unitSorted[unit].frontmatter.unitTitle}
-                </a>
-          
-                <ul>
+              <div>
+                <label for={unitSorted[unit].frontmatter.unitTitle}
+                       key={unit}>{unitSorted[unit].frontmatter.unitTitle}</label>
+                <input type="checkbox" 
+                  id={unitSorted[unit].frontmatter.unitTitle}
+                  className="menu-toggle" />
+                <ul className="menu">
                   {subunitLi}
                 </ul>
-              </li>);
+              </div>
+              );
           }
       
           this.setState({

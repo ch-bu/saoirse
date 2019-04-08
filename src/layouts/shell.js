@@ -5,16 +5,13 @@ import {ThemeProvider} from 'styled-components';
 // Define what props.theme will look like
 // Define our `fg` and `bg` on the theme
 const theme = {
-  primaryColor: "#004a99",
-  primaryColorLight: "#7fa4cc",
   breakpointOne: "1200px",
   breakpointTwo: "1600px",
 
   // Theme 1
-  primaryColor: "#a692bd",
-  primaryColorLight: "#cebedf",
+  primaryColor: "#01a1cd",
+  primaryColorLight: "#02b3e4",
 
-  
   // Top Bar
   colorTopNavigation: "#202B32",
   colorBorderNav: "#42505b",
@@ -30,6 +27,10 @@ const theme = {
   colorTextAside: "hsla(0,0%,100%,.8)",
   colorTextAsideHover: "hsla(0,0%,100%,1)",
   colorTextAsideUnit: "#fff",
+
+  // Aside - Dropdown
+  dropdownTitle: "#42505b",
+  dropdownTitleTextColor: "#fff"
 };
 
 

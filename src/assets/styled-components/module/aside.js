@@ -16,7 +16,6 @@ const Aside = styled.div`
   border-right: 1px solid ${props => props.theme.colorAsideBorderRight};
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    padding: 30px 0 20px 0;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -37,61 +36,76 @@ const UlAside = styled.ul`
   padding: 2rem 1rem;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    padding: 1rem 1.8rem;
+    padding: 0;
   }
 
-  li {
-    a {
-      color: ${props => props.theme.colorTextAsideUnit};
-      font-size: 1.1rem;
-      text-decoration: none;
+  label {
+    background-color: ${props => props.theme.dropdownTitle};
+    cursor: pointer;
+    width: 100%;
+    padding: 20px;
+    display: block;
+    font-size: 0.9rem;
+    color: ${props => props.theme.dropdownTitleTextColor};
+    border-bottom: 1px solid ${props => props.theme.navigationColor};
+    text-transform: uppercase;
+
+    &:hover {
+     background-color: #57636d; 
     }
+  }
 
-    ul {
-      margin: 0;
-      margin-bottom: 20px;
-      padding-left: 0.4rem;
+  .menu-toggle {
+    display: none;
+  }
 
-      li {
-        padding-bottom: 0.1rem;
-        margin-bottom: 0;
-        display: flex;
-        flex-direction: row;
-        
-        &:first-child {
-          padding-top: 0.2rem;
+  // https://codepen.io/Sfate/pen/nLBGr
+  .menu {
+    background-color: ${props => props.theme.navigationColor};
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    margin: 0 auto;
+    -webkit-transition: all 0.3s ease;
+    padding: 20px;
+    display: none;
+
+    li {
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: row;
+
+      a {
+        color: ${props => props.theme.colorTextAside};
+        font-size: 1rem;
+        text-decoration: none;
+        background-image: none;
+        text-shadow: none;
+        outline: none;
+
+        &:hover {
+          color: ${props => props.theme.colorTextAsideHover};
         }
 
-        a {
-          color: ${props => props.theme.colorTextAside};
-          font-size: 1rem;
-          text-decoration: none;
-          background-image: none;
-          text-shadow: none;
-          outline: none;
-
-          &:hover {
-            color: ${props => props.theme.colorTextAsideHover};
-          }
-
-          li > &:hover {
-            border-right: 4px solid red;
-          }
-
-          &.active {
-            font-weight: bold;
-          }
+        &.active {
+          font-weight: bold;
+          color: #fff;
         }
+      }
 
-        img {
-          height: 20px;
-          padding-right: 10px;
-          margin: 0;
-        }
+      img {
+        height: 20px;
+        padding-right: 10px;
+        margin: 0;
       }
     }
   }
-`;
+
+  .menu-toggle:checked + .menu {
+    max-height: 600px;
+    display: block;
+  }
+}`;
 
 
 export {
