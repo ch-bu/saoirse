@@ -127,9 +127,9 @@ const Main = styled.div`
       margin-top: 1.6rem;
       padding: 0.8rem;
       margin-bottom: 1.6rem;
-      border-left: 0.4rem solid #ffe564;
-      color: hsla(291, 0%, 18%,0.8);
-      background-color: rgba(255, 229, 100, 0.3);
+      border-left: 0.4rem solid ${props => props.theme.colorTopNavigation};
+      color: hsla(291, 0%, 18%,0.9);
+      background-color: #e5ecf4;
       font-style: italic;
       font-size: 1rem;
   }

@@ -5,17 +5,31 @@ import {ThemeProvider} from 'styled-components';
 // Define what props.theme will look like
 // Define our `fg` and `bg` on the theme
 const theme = {
-  // primaryColor: "#bb6d8c",
-  primaryColor: "#fcf113",
-  // primaryColorLight: "#cb90a7",
-  primaryColorLight: "#fefab8",
-  darkColor: "#1c1f25",
-  darkColorLight: "#262c30",
-  // darkColorLight: "#17141d",
-  // darkColorLight: "#f7f7f7",
-  greyColor: "#f7f7f7",
+  primaryColor: "#004a99",
+  primaryColorLight: "#7fa4cc",
   breakpointOne: "1200px",
-  breakpointTwo: "1600px"
+  breakpointTwo: "1600px",
+
+  // Theme 1
+  primaryColor: "#a692bd",
+  primaryColorLight: "#cebedf",
+
+  
+  // Top Bar
+  colorTopNavigation: "#202B32",
+  colorBorderNav: "#42505b",
+  colorNavigationText: "#fff",
+  colorBigBackButton: "#2e3d49",
+  colorBigBackButtonHover: "#202B32",
+  colorIcons: "#fff",
+  colorBigBackButtonBorder: "#42505b",
+
+  // Aside
+  navigationColor: "#2e3d49",
+  colorAsideBorderRight: "#42505b",
+  colorTextAside: "hsla(0,0%,100%,.8)",
+  colorTextAsideHover: "hsla(0,0%,100%,1)",
+  colorTextAsideUnit: "#fff",
 };
 
 

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const ButtonComponent = styled.button`
   background-color: ${props => props.theme.primaryColor};
+  /* background-color: #195ca3; */
   min-height: 2rem;
   padding: 10px 15px;
   border: none;
@@ -10,7 +11,8 @@ const ButtonComponent = styled.button`
   font-size: 0.9rem;
   outline: none;
   letter-spacing: 1.3px;
-  color: ${props => props.theme.darkColorLight};
+  /* color: ${props => props.theme.darkColorLight}; */
+  color: #fff;
   box-shadow: 5px 5px 25px 0 rgba(46,61,73,.4);
   cursor: pointer;
 
@@ -20,4 +22,3 @@ const ButtonComponent = styled.button`
 `;
 
 export default ButtonComponent;
-

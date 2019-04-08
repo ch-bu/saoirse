@@ -60,14 +60,14 @@ const TopNav = styled.div`
   flex-wrap: wrap;
   flex-basis: 100vw;
   height: 70px;
-  background-color: #fff;
+  background-color: ${props => props.theme.colorTopNavigation};
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   transition: background-color 0.4s;
   font-size: 1rem;
-  box-shadow: 5px 5px 20px 0 rgba(46,61,73,.2);
-  border-bottom: 1px solid #ccc;
+  box-shadow: 5px 5px 15px 0 rgba(46,61,73,.2);
+  border-bottom: 1px solid ${props => props.theme.colorBorderNav};
   z-index: 99;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
@@ -90,6 +90,7 @@ const TopNav = styled.div`
     align-self: stretch;
     border-bottom: none;
     border-right: none;
+    border-right: 1px solid ${props => props.theme.colorBigBackButtonBorder};
     transition: background-color 0.3s;
 
     a {
@@ -97,19 +98,18 @@ const TopNav = styled.div`
       align-self: stretch;
       display: flex;
       align-items:center;
-      color: #000;
+      color: ${props => props.theme.colorNavigationText};
       transition: color 0.2s;
       text-decoration: none;
     }
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      background-color: rgb(245, 245, 245);
+      background-color: ${props => props.theme.colorBigBackButton};
       width: 20%;
       display: ${props => props.showAsideLeft ? "flex" : "none"};
 
       a {
-        color: #fff;
-        color: #000;
+        color: ${props => props.theme.colorNavigationText};
       }
     }
 
@@ -121,6 +121,7 @@ const TopNav = styled.div`
 
       svg {
         display: block;
+        color: ${props => props.theme.colorIcons};
         margin: auto;
         height: 25px;
       }
@@ -131,7 +132,7 @@ const TopNav = styled.div`
     }
 
     &:hover {
-      background-color: #e5e5e5;
+      background-color: ${props => props.theme.colorBigBackButtonHover};;
     }
   }
 
@@ -141,7 +142,7 @@ const TopNav = styled.div`
     left: -1000px;
     text-align: center;
     align-self: center;
-    color: #000;
+    color: ${props => props.theme.colorNavigationText};
     position: relative;
 
     svg {
@@ -150,7 +151,7 @@ const TopNav = styled.div`
       left: 15px;
       height: 25px;
       width: 25px;
-      color: #000;
+      color: ${props => props.theme.colorIcons};
       cursor: pointer;
     }
 
