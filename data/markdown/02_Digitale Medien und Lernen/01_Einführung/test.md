@@ -8,4 +8,4 @@ subunit: 80
 type: instruction
 ---
 
-<multiplechoice question="Wie alt ist günter?"></multiplechoice>
+<multiplechoice id="2"></multiplechoice>

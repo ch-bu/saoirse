@@ -174,9 +174,9 @@ class Module extends Component {
             }
 
             unitLi.push(
-
-              <div id={unitSorted[unit].frontmatter.unitTitle == "Problem" ? "problem" : ""}>
-                <label for={unitSorted[unit].frontmatter.unitTitle}
+              <div id={unitSorted[unit].frontmatter.unitTitle == "Problem" ? "problem" : ""}
+                   key={unitSorted[unit].frontmatter.unitTitle}>
+                <label htmlFor={unitSorted[unit].frontmatter.unitTitle}
                        key={unit}>{unitSorted[unit].frontmatter.unitTitle}</label>
                 <input type="checkbox" 
                   id={unitSorted[unit].frontmatter.unitTitle}

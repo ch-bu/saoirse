@@ -112,7 +112,7 @@ class SingleChoiceComponent extends React.Component {
 
     // Get current question
     this.question = this.questions.filter((question) => {
-      return question.node.question === this.props.question;
+      return parseInt(question.node.questionid) === parseInt(this.props.id);
     })[0].node;
 
     this.state = {
@@ -252,6 +252,7 @@ export default props => (
             node {
               id
               question
+              questionid
               answers {
                 answer
                 correct

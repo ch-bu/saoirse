@@ -33,7 +33,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   boxShadow: "5px 4px 20px 0 rgba(46,61,73,.4)",
 
   // change background colour if dragging
-  background: isDragging ? "#fcf113" : '#fefab8',
+  background: isDragging ? "#01a1cd" : '#02b3e4',
   // color: isDragging ? '#fff' : '#000',
   color: "#000",
 
@@ -82,7 +82,7 @@ class OrderComponent extends Component {
 
     // Get correct question
     this.question = this.questions.filter((question) => {
-      return question.node.question === this.props.question;
+      return parseInt(question.node.questionid) === parseInt(this.props.id);
     })[0].node;
 
     // Get answers for questions
@@ -239,6 +239,7 @@ export default props => (
           edges {
             node {
               question
+              questionid
               hint
               answers {
                 answer

@@ -5,6 +5,7 @@ title: "Weiterführende Literatur"
 module: 1
 unit: 2
 subunit: 5
+type: information
 ---
 
 

@@ -1,4 +1,5 @@
 - question: Wie alt ist günter?
+  questionid: 1
   hint: Denk nochmal drüber nach
   answers:
     - answer: ja
@@ -8,8 +9,8 @@
     - answer: Ein Meter und 80
       correct: True
 
-      
 - question: Welches dieser Tiere ist ein Säugetier?
+  questionid: 2
   hint: Denk nochmal drüber nach
   answers:
     - answer: Hund

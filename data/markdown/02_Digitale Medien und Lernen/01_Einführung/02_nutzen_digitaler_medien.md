@@ -11,10 +11,10 @@ type: question
 Versuche einmal folgende Fragen zu beantworten: 
 
 
-<orderquestion question="Bring folgende Begriffe in die richtige Reihenfolge."></orderquestion>
+<orderquestion id="1"></orderquestion>
 
-<singlechoice question="Sind digitale Medien in der Regel schädlich für Lernen?"></singlechoice>
+<singlechoice id="1"></singlechoice>
 
-<multiplechoice question="Wie alt ist günter?"></multiplechoice>
+<multiplechoice id="2"></multiplechoice>
 
 

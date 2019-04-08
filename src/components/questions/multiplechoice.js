@@ -117,7 +117,7 @@ class MultipleChoiceComponent extends React.Component {
     this.questions = this.props.data.allMultiplechoiceYaml.edges;
 
     this.question = this.questions.filter((question) => {
-      return question.node.question === this.props.question;
+      return parseInt(question.node.questionid) === parseInt(this.props.id);
     })[0].node;
 
     // Shuffle answers
@@ -269,6 +269,7 @@ export default props => (
             node {
               id
               question
+              questionid
               hint
               answers {
                 answer

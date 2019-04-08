@@ -5,6 +5,7 @@ title: "Theorie: Lesen mit digitalen Medien"
 module: 1
 unit: 2
 subunit: 1
+type: instruction
 ---
 
 
