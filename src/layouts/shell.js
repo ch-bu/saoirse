@@ -17,7 +17,7 @@ const theme = {
   topNavigationBackgroundColor: "#202B32",
   topNavigationBorderBottom: "#42505b",
   topNavigationTextColor: "#fff",
-  topNavigationBackButtonBackgroundColor: "#2e3d49",
+  topNavigationBackButtonBackgroundColor: "#293641",
   topNavigationBackButtonBackgroundColorHover: "#202B32",
   topNavigationBackButtonBorderRight: "#42505b",
 

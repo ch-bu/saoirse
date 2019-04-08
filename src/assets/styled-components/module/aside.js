@@ -33,10 +33,30 @@ const Aside = styled.div`
 const UlAside = styled.ul`
   list-style-type: none;
   margin: 0;
+  position: absolute;
   padding: 2rem 1rem;
+  height: 100%;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 0;
+  }
+
+
+  #problem > label {
+    background-color: ${props => props.theme.primaryColor};
+    filter: saturate(.5);
+
+    &:hover {
+      background-color: ${props => props.theme.primaryColor};
+      filter: saturate(1);
+    }
+  }
+
+  #problem {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    left: 0;
   }
 
   label {
@@ -49,6 +69,8 @@ const UlAside = styled.ul`
     color: ${props => props.theme.asideDropdownTitleTextColor};
     border-bottom: 1px solid ${props => props.theme.asideBackgroundColor};
     text-transform: uppercase;
+
+
 
     &:hover {
      background-color: #57636d; 
