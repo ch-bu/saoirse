@@ -23,7 +23,7 @@ const theme = {
 
   // Aside
   asideBackgroundColor: "#2e3d49",
-  asideBorderRightColor: "#42505b",
+  // asideBorderRightColor: "#42505b",
   asideSubunitTextColor: "hsla(0,0%,100%,.8)",
   asideSubunitTextColorHover: "hsla(0,0%,100%,1)",
   asideUnitTextColor: "#fff",

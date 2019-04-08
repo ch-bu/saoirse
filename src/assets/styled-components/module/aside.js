@@ -13,7 +13,7 @@ const Aside = styled.div`
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
   overflow-x: hidden;
-  border-right: 1px solid ${props => props.theme.asideBorderRightColor};
+  /* border-right: 1px solid ${props => props.theme.asideBorderRightColor}; */
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     position: fixed;
@@ -36,6 +36,7 @@ const UlAside = styled.ul`
   position: absolute;
   padding: 2rem 1rem;
   height: 100%;
+  width: 100%;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     padding: 0;
