@@ -8,29 +8,27 @@ const theme = {
   breakpointOne: "1200px",
   breakpointTwo: "1600px",
 
-  // Theme 1
+  // ***** Theme 1 *****
   primaryColor: "#01a1cd",
   primaryColorLight: "#02b3e4",
+  colorIcons: "#fff",
 
   // Top Bar
-  colorTopNavigation: "#202B32",
-  colorBorderNav: "#42505b",
-  colorNavigationText: "#fff",
-  colorBigBackButton: "#2e3d49",
-  colorBigBackButtonHover: "#202B32",
-  colorIcons: "#fff",
-  colorBigBackButtonBorder: "#42505b",
+  topNavigationBackgroundColor: "#202B32",
+  topNavigationBorderBottom: "#42505b",
+  topNavigationTextColor: "#fff",
+  topNavigationBackButtonBackgroundColor: "#2e3d49",
+  topNavigationBackButtonBackgroundColorHover: "#202B32",
+  topNavigationBackButtonBorderRight: "#42505b",
 
   // Aside
-  navigationColor: "#2e3d49",
-  colorAsideBorderRight: "#42505b",
-  colorTextAside: "hsla(0,0%,100%,.8)",
-  colorTextAsideHover: "hsla(0,0%,100%,1)",
-  colorTextAsideUnit: "#fff",
-
-  // Aside - Dropdown
-  dropdownTitle: "#42505b",
-  dropdownTitleTextColor: "#fff"
+  asideBackgroundColor: "#2e3d49",
+  asideBorderRightColor: "#42505b",
+  asideSubunitTextColor: "hsla(0,0%,100%,.8)",
+  asideSubunitTextColorHover: "hsla(0,0%,100%,1)",
+  asideUnitTextColor: "#fff",
+  asideDropdownBackgroundColor: "#42505b",
+  asideDropdownTitleTextColor: "#fff",
 };
 
 

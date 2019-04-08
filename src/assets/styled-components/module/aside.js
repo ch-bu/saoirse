@@ -8,12 +8,12 @@ const Aside = styled.div`
   width: ${props => props.showAside ? "100vw" : "100vw"};
   overflow-y: scroll;
   box-sizing: border-box;
-  background-color: ${props => props.theme.navigationColor};
+  background-color: ${props => props.theme.asideBackgroundColor};
   padding-top: 20px;
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
   overflow-x: hidden;
-  border-right: 1px solid ${props => props.theme.colorAsideBorderRight};
+  border-right: 1px solid ${props => props.theme.asideBorderRightColor};
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     position: fixed;
@@ -40,14 +40,14 @@ const UlAside = styled.ul`
   }
 
   label {
-    background-color: ${props => props.theme.dropdownTitle};
+    background-color: ${props => props.theme.asideDropdownBackgroundColor};
     cursor: pointer;
     width: 100%;
     padding: 20px;
     display: block;
     font-size: 0.9rem;
-    color: ${props => props.theme.dropdownTitleTextColor};
-    border-bottom: 1px solid ${props => props.theme.navigationColor};
+    color: ${props => props.theme.asideDropdownTitleTextColor};
+    border-bottom: 1px solid ${props => props.theme.asideBackgroundColor};
     text-transform: uppercase;
 
     &:hover {
@@ -61,7 +61,7 @@ const UlAside = styled.ul`
 
   // https://codepen.io/Sfate/pen/nLBGr
   .menu {
-    background-color: ${props => props.theme.navigationColor};
+    background-color: ${props => props.theme.asideBackgroundColor};
     width: 100%;
     overflow: hidden;
     max-height: 0;
@@ -76,7 +76,7 @@ const UlAside = styled.ul`
       flex-direction: row;
 
       a {
-        color: ${props => props.theme.colorTextAside};
+        color: ${props => props.theme.asideSubunitTextColor};
         font-size: 1rem;
         text-decoration: none;
         background-image: none;
@@ -84,7 +84,7 @@ const UlAside = styled.ul`
         outline: none;
 
         &:hover {
-          color: ${props => props.theme.colorTextAsideHover};
+          color: ${props => props.theme.asideSubunitTextColorHover};
         }
 
         &.active {

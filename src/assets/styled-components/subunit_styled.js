@@ -60,14 +60,14 @@ const TopNav = styled.div`
   flex-wrap: wrap;
   flex-basis: 100vw;
   height: 70px;
-  background-color: ${props => props.theme.colorTopNavigation};
+  background-color: ${props => props.theme.topNavigationBackgroundColor};
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   transition: background-color 0.4s;
   font-size: 1rem;
   box-shadow: 5px 5px 15px 0 rgba(46,61,73,.2);
-  border-bottom: 1px solid ${props => props.theme.colorBorderNav};
+  border-bottom: 1px solid ${props => props.theme.topNavigationBorderBottom};
   z-index: 99;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
@@ -89,8 +89,7 @@ const TopNav = styled.div`
     flex-direction: row;
     align-self: stretch;
     border-bottom: none;
-    border-right: none;
-    border-right: 1px solid ${props => props.theme.colorBigBackButtonBorder};
+    border-right: 1px solid ${props => props.theme.topNavigationBackButtonBorderRight};
     transition: background-color 0.3s;
 
     a {
@@ -98,18 +97,18 @@ const TopNav = styled.div`
       align-self: stretch;
       display: flex;
       align-items:center;
-      color: ${props => props.theme.colorNavigationText};
+      color: ${props => props.theme.topNavigationTextColor};
       transition: color 0.2s;
       text-decoration: none;
     }
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      background-color: ${props => props.theme.colorBigBackButton};
+      background-color: ${props => props.theme.topNavigationBackButtonBackgroundColor};
       width: 20%;
       display: ${props => props.showAsideLeft ? "flex" : "none"};
 
       a {
-        color: ${props => props.theme.colorNavigationText};
+        color: ${props => props.theme.topNavigationTextColor};
       }
     }
 
@@ -132,7 +131,7 @@ const TopNav = styled.div`
     }
 
     &:hover {
-      background-color: ${props => props.theme.colorBigBackButtonHover};;
+      background-color: ${props => props.theme.topNavigationBackButtonBackgroundColorHover};;
     }
   }
 
@@ -142,7 +141,7 @@ const TopNav = styled.div`
     left: -1000px;
     text-align: center;
     align-self: center;
-    color: ${props => props.theme.colorNavigationText};
+    color: ${props => props.theme.topNavigationTextColor};
     position: relative;
 
     svg {
