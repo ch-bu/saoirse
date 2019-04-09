@@ -15,6 +15,7 @@ import Audio from "../components/audio";
 import SingleChoice from "../components/questions/singlechoice";
 import MultipleChoice from "../components/questions/multiplechoice";
 import OrderQuestion from "../components/questions/orderquestion";
+import Flipcard from "../components/questions/flipcard";
 import VideoModeling from "../components/questions/youtubevideomodeling";
 
 // Icons 
@@ -394,7 +395,8 @@ const renderAst = new rehypeReact({
     "singlechoice": SingleChoice,
     "multiplechoice": MultipleChoice,
     "orderquestion": OrderQuestion,
-    "videomodeling": VideoModeling
+    "videomodeling": VideoModeling,
+    "flipcard": Flipcard
   },
 }).Compiler
 

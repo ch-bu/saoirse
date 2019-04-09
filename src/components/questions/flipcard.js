@@ -1,126 +1,64 @@
-import React from "react"
+import React, {useState} from "react"
 import styled from 'styled-components'
-import Button from '../button'
+import { useSpring, animated as a } from 'react-spring'
 import { StaticQuery, graphql } from "gatsby"
-import FlipCard from 'react-flipcard-2';
 
+const Container = styled.div`
 
-const FlipCardContainer = styled.div`
-  div:first-child {
-    height: 400px;
-    min-width: 300px;
+  .front,
+  .back {
+    background-size: cover;
 
-    .ReactFlipCard__Front, .ReactFlipCard__Back {
-      border-radius: 10px;
-      box-shadow: 5px 5px 25px 0 rgba(46,61,73,.4);
-      outline: none;
-      /* cursor: pointer; */
-
-      p {
-        padding: 30px;
-        text-align: center;
-      }
+    p {
+      margin: 20px;
+      color: #fff;
     }
+  }
 
-    .ReactFlipCard__Front {
-      background-color: ${props => props.theme.primaryColor};
-    }
+  .c {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    width: 50ch;
+    height: 50ch;
+    cursor: pointer;
+    will-change: transform, opacity;
+    border-radius: 10px;
+    box-shadow: 5px 10px 25px 0 rgba(46,61,73,.2);
+  }
 
-    .ReactFlipCard__Back {
-      background-color: ${props => props.theme.primaryColorLight};
-    }
+  .back {
+    background-color: ${props => props.theme.primaryColorLight};
+  }
+
+  .front {
+    background-color: ${props => props.theme.primaryColor};
   }
 `;
 
-class FlipCardComponent extends React.Component {
-  constructor(props) {
-    super(props);
+function Card() {
+  const [flipped, set] = useState(false)
+  const { transform, opacity } = useSpring({
+    opacity: flipped ? 1 : 0,
+    transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+    config: { mass: 5, tension: 500, friction: 80 }
+  })
 
-    this.state = {
-      isFlipped: false
-    };
-
-    console.log(this.props);
-    this.flipCard = this.flipCard.bind(this);
-  }
-
-  render() {
-    return (
-      <div>
-        {/* Default behavior is horizontal flip on hover, or focus */}
-        <FlipCardContainer>
-          <FlipCard
-            // disabled={true}
-            // flipped={this.state.isFlipped}
-          >
-            {/* The first child is used as the front of the card */}
-            <div onClick={this.flipCard}>
-              <div><p>{this.props.front}</p></div>
-            </div>
-            {/* The second child is used as the back of the card */}
-            <div onClick={this.flipCard}>
-              <p>{this.props.back}</p>
-            </div>
-          </FlipCard>
-        </FlipCardContainer>
-      </div>
-    ); 
-  }
-
-  // getInitialState() {
-  //   return {
-  //     isFlipped: false
-  //   };
-  // }
-
-  flipCard() {
-    // this.setState(prevState => ({
-    //   isFlipped: !prevState.isFlipped
-    // }));
-
-    // this.setState({
-    //   isFlipped: true
-    // });
-
-    // console.log(this.state.isFlipped);
-
-    // if (this.state.isFlipped) {
-    //   this.setState({
-    //     isFlipped: false
-    //   });
-    // } else {
-    //   this.setState({
-    //     isFlipped: true
-    //   });
-    // }
-  }
- 
-  // showBack() {
-  //   this.setState({
-  //     isFlipped: true
-  //   });
-  // }
- 
-  // showFront() {
-  //   this.setState({
-  //     isFlipped: false
-  //   });
-  // }
- 
-  // handleOnFlip(flipped) {
-  //   if (flipped) {
-  //     this.refs.backButton.getDOMNode().focus();
-  //   }
-  // }
- 
-  // handleKeyDown(e) {
-  //   if (this.state.isFlipped && e.keyCode === 27) {
-  //     this.showFront();
-  //   }
-  // }
+  return (
+    <Container onClick={() => set(state => !state)}>
+      <a.div className="c back" 
+        style={{ opacity: opacity.interpolate(o => 1 - o), transform }}>
+        <p>asdfadsf</p>  
+      </a.div>
+      <a.div className="c front" 
+        style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }}>
+        <p>bdsdsfsdf</p>  
+      </a.div>
+    </Container>
+  )
 }
 
-export default FlipCardComponent;
+export default Card;
 // export default props => (
 //   <StaticQuery
 //     query={graphql`
