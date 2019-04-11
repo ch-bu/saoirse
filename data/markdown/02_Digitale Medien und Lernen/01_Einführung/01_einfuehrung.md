@@ -8,4 +8,4 @@ subunit: 0
 type: instruction
 ---
 
-<flipcard front="adsölkfj" back="asdöflj"></flipcard>
+<flipcard id="1"></flipcard>

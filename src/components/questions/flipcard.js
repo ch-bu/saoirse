@@ -4,7 +4,6 @@ import { useSpring, animated as a } from 'react-spring'
 import { StaticQuery, graphql } from "gatsby"
 
 const Container = styled.div`
-
   .front,
   .back {
     background-size: cover;
@@ -29,15 +28,26 @@ const Container = styled.div`
 
   .back {
     background-color: ${props => props.theme.primaryColorLight};
+    /* background: url(${props => props.frontimage}); */
+    /* background-size: cover; */
   }
 
   .front {
     background-color: ${props => props.theme.primaryColor};
+    /* background: url(${props => props.backimage}); */
+    background-size: cover;
   }
 `;
 
-function Card() {
+function FlipCardComponent(props) {
   const [flipped, set] = useState(false)
+
+  // Get correct flipcard
+  const card = props.data.allFlipcardYaml.edges.filter((card) => {
+    console.log(card.node.flipcardid);
+    return parseInt(card.node.flipcardid) === parseInt(props.id);
+  })[0].node;
+
   const { transform, opacity } = useSpring({
     opacity: flipped ? 1 : 0,
     transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
@@ -48,36 +58,79 @@ function Card() {
     <Container onClick={() => set(state => !state)}>
       <a.div className="c back" 
         style={{ opacity: opacity.interpolate(o => 1 - o), transform }}>
-        <p>asdfadsf</p>  
+        <p>{card.front}</p>  
       </a.div>
       <a.div className="c front" 
         style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }}>
-        <p>bdsdsfsdf</p>  
+        <p>{card.back}</p>  
       </a.div>
     </Container>
   )
 }
 
-export default Card;
-// export default props => (
-//   <StaticQuery
-//     query={graphql`
-//       query {
-//         allSinglechoiceYaml {
-//           edges {
-//             node {
-//               id
-//               question
-//               answers {
-//                 answer
-//                 correct
-//                 hint
-//               }
-//             }
-//           }
-//         }
-//       }
-//     `}
-//     render={data => <FlipCardComponent data={data} {...props} />}
-//   />
-// )
+// class FlipCardComponent extends React.Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       flipped: false,
+//       set: false
+//     };
+
+//     const { transform, opacity } = useSpring({
+//       opacity: this.state.flipped ? 1 : 0,
+//       // transform: `perspective(600px) rotateX(${this.state.flipped ? 180 : 0}deg)`,
+//       // config: { mass: 5, tension: 500, friction: 80 }
+//     });
+
+//     // console.log(transform);
+
+//   }
+
+//   render() {
+
+//     return (
+//       <p>Flipcard</p>
+//       // <Container onClick={() => set(state => !state)}>
+//       //   <a.div className="c back" 
+//       //     style={{ opacity: opacity.interpolate(o => 1 - o), transform }}>
+//       //     <p>asdfadsf</p>  
+//       //   </a.div>
+//       //   <a.div className="c front" 
+//       //     style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }}>
+//       //     <p>bdsdsfsdf</p>  
+//       //   </a.div>
+//       // </Container>
+//     )
+//   }
+// }
+
+
+// export default FlipCardComponent;
+// https://github.com/gatsbyjs/gatsby/issues/8078
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query {
+        allFlipcardYaml {
+          edges {
+            node {
+              flipcardid
+              back
+              front
+              # imagefront {
+              #   id
+              #   publicURL
+              #   relativePath
+              # }
+              # imageback {
+              #   publicURL
+              # }
+            }
+          }
+        }
+      }
+    `}
+    render={data => <FlipCardComponent data={data} {...props} />}
+  />
+)
