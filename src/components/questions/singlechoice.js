@@ -1,5 +1,5 @@
 import React from "react"
-import styled from 'styled-components'
+import styled, { consolidateStreamedStyles } from 'styled-components'
 import Button from '../button'
 import { StaticQuery, graphql } from "gatsby"
 import Confetti from 'react-dom-confetti';
@@ -118,11 +118,11 @@ class SingleChoiceComponent extends React.Component {
     this.state = {
       size: "-1",
       // Check if questions has already been answered?
-      alreadyAnswered: reactLocalStorage.get(this.question.question) ? true : false,
+      alreadyAnswered: reactLocalStorage.get("singlechoice-" + this.question.questionid) ? true : false,
       answers: this.shuffleAnswers(this.question.answers),
-      answerCorrect: reactLocalStorage.get(this.question.question) ? true : null,
+      answerCorrect: reactLocalStorage.get("singlechoice-" + this.question.questionid) ? true : null,
       showConfetti: false,
-      hint: reactLocalStorage.get(this.question.question),
+      hint: reactLocalStorage.get("singlechoice-" + this.question.questionid + "-hint"),
       buttonClicked: false
     };
 
@@ -147,8 +147,8 @@ class SingleChoiceComponent extends React.Component {
   render() {
     // Decide wheather to show int
     let answer = "";
-    if (this.state.buttonClicked | this.state.alreadyAnswered) {
-      if (this.state.answerCorrect) {
+    if (this.state.buttonClicked || this.state.alreadyAnswered) {
+      if (this.state.answerCorrect || this.state.alreadyAnswered) {
         answer = <Answer answerCorrect={true}>{this.state.hint}</Answer>;
       } else {
         answer = <Answer answerCorrect={false}>{this.state.hint}</Answer>;
@@ -211,7 +211,8 @@ class SingleChoiceComponent extends React.Component {
 
       if (answer_correct) {
         // Store correct answer in local storage
-        reactLocalStorage.set(this.question.question, currentQuestion.hint);
+        reactLocalStorage.set("singlechoice-" + this.question.questionid, true);
+        reactLocalStorage.set("singlechoice-" + this.question.questionid + "-hint", currentQuestion.hint);
 
         this.setState({
           showConfetti: answer_correct,
