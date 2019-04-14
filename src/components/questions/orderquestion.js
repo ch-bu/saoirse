@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from "gatsby"
 import Button from '../button'
 import Confetti from 'react-dom-confetti';
 import {reactLocalStorage} from 'reactjs-localstorage';
+import { ShakeLittle } from 'reshake'
 
 // fake data generator
 // const getItems = count =>
@@ -110,7 +111,8 @@ class OrderComponent extends Component {
       showConfetti: false,
       answerCorrect: null,
       hint: reactLocalStorage.get("orderquestion-" + this.question.questionid) ? "Well, done!" : "",
-      buttonClicked: false
+      buttonClicked: false,
+      shakeButton: false
     };
 
     this.onDragEnd = this.onDragEnd.bind(this);
@@ -145,6 +147,8 @@ class OrderComponent extends Component {
   }
 
   getAnswer() {
+    var self = this;
+    
     const answerCorrect = this.state.items.toString() === this.state.correctItems.toString();
 
     this.setState({
@@ -167,8 +171,13 @@ class OrderComponent extends Component {
     } else {
       this.setState({
         answerCorrect: false,
-        hint: this.question.hint
+        hint: this.question.hint,
+        shakeButton: !this.state.shakeButton
       });
+
+      setTimeout(function() {
+        self.setState({shakeButton: false})
+      }, 400);
     }
   }
 
@@ -221,7 +230,14 @@ class OrderComponent extends Component {
             )}
           </Droppable>
           <Confetti active={ this.state.showConfetti } config={ this.config }/>
-          <Button onClick={this.getAnswer}>Überprüfe deine Antwort</ Button>
+
+          {this.state.shakeButton ? 
+          <ShakeLittle >
+            <Button onClick={this.getAnswer}>Submit Answer</Button>
+          </ShakeLittle> : 
+          
+          <Button onClick={this.getAnswer}>Submit Answer</Button>}
+
           {answer}
         </DragDropContext>
       </DragDropContainer>
