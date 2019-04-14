@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import ReactDOM from 'react-dom'
 import rehypeReact from "rehype-react"
 import { Link } from "gatsby"
 import Shell from '../layouts/shell';
@@ -45,9 +46,11 @@ class Module extends Component {
       nextSubunit: [],
       previousSubunit: [],
       moduleId: null,
-      currentUnit: 0,
       title: ""
     };
+
+    // this.myRef = React.createRef();
+    this.unitLabels = [];
 
     // Bind methods
     this.showAside         = this.showAside.bind(this);
@@ -179,7 +182,9 @@ class Module extends Component {
               <div id={unitSorted[unit].frontmatter.unitTitle == "Problem" ? "problem" : ""}
                    key={unitSorted[unit].frontmatter.unitTitle}>
                 <label htmlFor={unitSorted[unit].frontmatter.unitTitle}
-                       className={unitSorted[unit].frontmatter.unit == this.state.currentUnit ? "unit-active" : ""}
+                       data-unit={unitSorted[unit].frontmatter.unit}
+                       ref={(label) => { this.unitLabels.push(label) }}
+                       className={unitSorted[unit].frontmatter.unit == current_subunit.frontmatter.unit ? "unit-active" : ""}
                        key={unit}>
                        {unitSorted[unit].frontmatter.unitTitle}
                 </label>
@@ -231,7 +236,22 @@ class Module extends Component {
         this.setState({
           currentSubunit: current_subunit[0].node,
           showAside: true,
-          currentUnit: current_subunit[0].node.frontmatter.unit
+        });
+
+        // *************************************
+        // Highlight active unit programmatically
+        // *************************************
+        const currentUnitID = current_subunit[0].node.frontmatter.unit;
+
+        this.unitLabels.forEach((label) => {
+          const currentLabel = label;
+          const unitId = currentLabel.getAttribute('data-unit');
+
+          if (unitId == currentUnitID) {
+            currentLabel.classList.add("unit-active");
+          } else {
+            currentLabel.classList.remove("unit-active");
+          }
         });
 
         // *************************************

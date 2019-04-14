@@ -28,10 +28,6 @@ const Aside = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-
-  label.unit-active {
-    /* border-left: 5px solid ${props => props.theme.primaryColor}; */
-  }
 `;
 
 const UlAside = styled.ul`
@@ -49,7 +45,11 @@ const UlAside = styled.ul`
 
   #problem > label {
     background-color: ${props => props.theme.primaryColor};
-    filter: saturate(.5);
+    filter: saturate(.3);
+
+    &.unit-active {
+      border-left: 5px solid ${props => props.theme.primaryColorLight};
+    }
 
     &:hover {
       background-color: ${props => props.theme.primaryColor};
@@ -76,9 +76,14 @@ const UlAside = styled.ul`
     color: ${props => props.theme.asideDropdownTitleTextColor};
     border-bottom: 1px solid ${props => props.theme.asideBackgroundColor};
     text-transform: uppercase;
+    transition: border 0.2s;
 
     &:hover {
      background-color: #57636d; 
+    }
+
+    &.unit-active {
+      border-left: 5px solid ${props => props.theme.primaryColor};
     }
   }
 
