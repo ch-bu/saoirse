@@ -12,5 +12,3 @@ Fasst jeder Mensch in Deutschland kann Lesen und Schreiben. Lesen ist eine ersta
 ## Wie beeinflussen digitale Medien das Lesen und Schreiben
 
 Nicht nur entscheiden die Inhalte der Texte, was und wie man daraus lernt, sondern auch das Medium hat einen Einfluss auf das Lesen und Schreiben. Aber wie? Versuche einmal selbst eine theoretische Begründung aufzustellen, weshalb es einen Unterschied macht, ob man mit einem Kindle oder auf Papier liest, und weshalb es einen Unterschied macht, ob man auf Papier oder auf einem Laptop schreibt.
-
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSemUtHJTUh5_mBhCJr01_JKeqbgESXA9Tr8PwlPcdtck71HOQ/viewform?embedded=true" width="640" height="681" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>

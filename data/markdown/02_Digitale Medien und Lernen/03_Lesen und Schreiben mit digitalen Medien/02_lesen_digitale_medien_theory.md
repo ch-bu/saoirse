@@ -8,5 +8,3 @@ subunit: 1
 type: instruction
 ---
 
-
-<flipcard front="How is your day" back="It so aweseom."></flipcard>

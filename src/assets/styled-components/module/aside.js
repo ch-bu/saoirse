@@ -28,6 +28,10 @@ const Aside = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  label.unit-active {
+    /* border-left: 5px solid ${props => props.theme.primaryColor}; */
+  }
 `;
 
 const UlAside = styled.ul`
@@ -72,8 +76,6 @@ const UlAside = styled.ul`
     color: ${props => props.theme.asideDropdownTitleTextColor};
     border-bottom: 1px solid ${props => props.theme.asideBackgroundColor};
     text-transform: uppercase;
-
-
 
     &:hover {
      background-color: #57636d; 

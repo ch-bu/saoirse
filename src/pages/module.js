@@ -45,6 +45,7 @@ class Module extends Component {
       nextSubunit: [],
       previousSubunit: [],
       moduleId: null,
+      currentUnit: 0,
       title: ""
     };
 
@@ -178,7 +179,10 @@ class Module extends Component {
               <div id={unitSorted[unit].frontmatter.unitTitle == "Problem" ? "problem" : ""}
                    key={unitSorted[unit].frontmatter.unitTitle}>
                 <label htmlFor={unitSorted[unit].frontmatter.unitTitle}
-                       key={unit}>{unitSorted[unit].frontmatter.unitTitle}</label>
+                       className={unitSorted[unit].frontmatter.unit == this.state.currentUnit ? "unit-active" : ""}
+                       key={unit}>
+                       {unitSorted[unit].frontmatter.unitTitle}
+                </label>
                 <input type="checkbox" 
                   id={unitSorted[unit].frontmatter.unitTitle}
                   className="menu-toggle" />
@@ -227,6 +231,7 @@ class Module extends Component {
         this.setState({
           currentSubunit: current_subunit[0].node,
           showAside: true,
+          currentUnit: current_subunit[0].node.frontmatter.unit
         });
 
         // *************************************
@@ -306,10 +311,9 @@ class Module extends Component {
             </Main> }
 
           <Aside showAside={this.state.showAside} 
-                 showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}
-                 videoActive={this.state.currentSubunit.frontmatter.type == "video"}>
-            <TopNav showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}
-                    videoActive={this.state.currentSubunit.frontmatter.type == "video"}>
+                 currentUnit={this.state.currentUnit}
+                 showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
+            <TopNav showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
               <div>
                 <Link to="/modules">
                   <FaCaretLeft />
