@@ -105,11 +105,11 @@ class OrderComponent extends Component {
 
     this.state = {
       correctItems: answers.slice(0),
-      items: reactLocalStorage.get(this.question.question) ? answers : this.shuffleArray(answers),
-      alreadyAnswered: reactLocalStorage.get(this.question.question) ? true : false,
+      items: reactLocalStorage.get("orderquestion-" + this.question.questionid) ? answers : this.shuffleArray(answers),
+      alreadyAnswered: reactLocalStorage.get("orderquestion-" + this.question.questionid) ? true : false,
       showConfetti: false,
       answerCorrect: null,
-      hint: reactLocalStorage.get(this.question.question) ? "Well, done!" : "",
+      hint: reactLocalStorage.get("orderquestion-" + this.question.questionid) ? "Well, done!" : "",
       buttonClicked: false
     };
 
@@ -153,7 +153,7 @@ class OrderComponent extends Component {
 
     if (answerCorrect) {
       // Store correct answer in local storage
-      reactLocalStorage.set(this.question.question, this.question.hint);
+      reactLocalStorage.set("orderquestion-" + this.question.questionid, true);
 
       this.setState({
         showConfetti: true,
