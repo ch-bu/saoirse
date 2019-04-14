@@ -146,11 +146,11 @@ class MultipleChoiceComponent extends React.Component {
     this.state = {
       size: "-1",
       answers: answers,
-      alreadyAnswered: reactLocalStorage.get(this.question.question) ? true : false,
+      alreadyAnswered: reactLocalStorage.get("multiplechoice-" + this.question.questionid),
       correctAnswers: correctAnswers,
       showConfetti: false,
-      answerCorrect: reactLocalStorage.get(this.question.question) ? true : null,
-      hint: reactLocalStorage.get(this.question.question) ? this.question.hint : "",
+      answerCorrect: reactLocalStorage.get("multiplechoice-" + this.question.questionid) ? true : null,
+      hint: reactLocalStorage.get("multiplechoice-" + this.question.questionid) ? this.question.hint : "",
       buttonClicked: false
     };
 
@@ -162,8 +162,8 @@ class MultipleChoiceComponent extends React.Component {
   render() {
     // Decide wheather to show int
     let answer = "";
-    if (this.state.buttonClicked | this.state.alreadyAnswered) {
-      if (this.state.answerCorrect) {
+    if (this.state.buttonClicked || this.state.alreadyAnswered) {
+      if (this.state.answerCorrect || this.state.alreadyAnswered) {
         answer = <Answer answerCorrect={true}>{"Well done!"}</Answer>;
       } else {
         answer = <Answer answerCorrect={false}>{this.state.hint}</Answer>;
@@ -227,7 +227,8 @@ class MultipleChoiceComponent extends React.Component {
 
     if (equal) {
       // Store correct answer in local storage
-      reactLocalStorage.set(this.question.question, this.question.hint);
+      // reactLocalStorage.set(this.question.question, this.question.hint);
+      reactLocalStorage.set("multiplechoice-" + this.question.questionid, true);
 
       this.setState({
         showConfetti: true,
