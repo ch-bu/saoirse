@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Saoirse',
   },
+  pathPrefix: "/saoirse",
   plugins: [
     'gatsby-plugin-sharp',
     'gatsby-plugin-transition-link',
