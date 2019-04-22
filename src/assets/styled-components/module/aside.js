@@ -9,6 +9,7 @@ const Aside = styled.div`
   overflow-y: scroll;
   box-sizing: border-box;
   background-color: ${props => props.theme.asideBackgroundColor};
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.29' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   padding-top: 20px;
   transition: bottom 0.2s;
   padding: 0px 0 80px 0;
@@ -59,10 +60,10 @@ const UlAside = styled.ul`
 
   #problem {
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      position: absolute;
+      /* position: absolute;
       width: 100%;
       bottom: 0px;
-      left: 0;
+      left: 0; */
     }
   }
 
@@ -94,6 +95,7 @@ const UlAside = styled.ul`
   // https://codepen.io/Sfate/pen/nLBGr
   .menu {
     background-color: ${props => props.theme.asideBackgroundColor};
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.29' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
     width: 100%;
     overflow: hidden;
     max-height: 0;

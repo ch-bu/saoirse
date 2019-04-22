@@ -142,6 +142,7 @@ const TopNav = styled.div`
     text-align: center;
     align-self: center;
     color: ${props => props.theme.topNavigationTextColor};
+    color: rgba(255, 255, 255, 0.8);
     position: relative;
 
     svg {
