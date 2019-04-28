@@ -165,7 +165,7 @@ class Module extends Component {
               
               subunitLi.push(
                 <li key={unitSorted[unit].frontmatter.title}>
-                  <img alt={unitSorted[unit].type} src={type}></img>
+                  {/* <img alt={unitSorted[unit].type} src={type}></img> */}
                   <Link key={unit} 
                         onClick={this.updateMainContent}
                         to={`/module?id=` + parsedURL.id + 

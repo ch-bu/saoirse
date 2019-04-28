@@ -11,6 +11,7 @@ const Main = styled.div`
 
   h1, h2, h3 {
     font-weight: 700;
+    color: rgba(0, 0, 0, .8);
   }
   
   h1 {

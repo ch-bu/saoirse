@@ -39,8 +39,8 @@ const BottomNavigation = styled.div`
   left: 0;
   height: 60px;
   width: 100vw;
-  background-color: ${props => props.theme.topNavigationBackgroundColor};
-  border-top: 1px solid ${props => props.theme.topNavigationBorderBottom};
+  background-color: ${props => props.theme.asideBackgroundColor};
+  border-top: 1px solid ${props => props.theme.asideBorderRightColor};
 
   a {
     padding: 0 20px;
@@ -49,7 +49,7 @@ const BottomNavigation = styled.div`
     align-items:center;
 
     svg {
-      color: #fff;
+      color: ${props => props.theme.colorIconsMobile};
       pointer-events: none;
     }
   }
@@ -66,8 +66,8 @@ const TopNav = styled.div`
   justify-content: flex-start;
   transition: background-color 0.4s;
   font-size: 1rem;
-  box-shadow: 5px 5px 15px 0 rgba(46,61,73,.2);
-  border-bottom: 1px solid ${props => props.theme.topNavigationBorderBottom};
+  /* box-shadow: 5px 5px 15px 0 rgba(46,61,73,.2); */
+  /* border-bottom: 1px solid ${props => props.theme.topNavigationBorderBottom}; */
   z-index: 99;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
@@ -82,6 +82,7 @@ const TopNav = styled.div`
   }
   
   div:first-child {
+    background-color: ${props => props.theme.topNavigationBackgroundColor};
     width: 100%;
     display: flex;
     position: relative;
@@ -103,7 +104,7 @@ const TopNav = styled.div`
     }
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      background-color: ${props => props.theme.topNavigationBackButtonBackgroundColor};
+      
       width: 17%;
       display: ${props => props.showAsideLeft ? "flex" : "none"};
 
@@ -130,8 +131,12 @@ const TopNav = styled.div`
       flex-grow: 8;
     }
 
-    &:hover {
-      background-color: ${props => props.theme.topNavigationBackButtonBackgroundColorHover};;
+    &:hover > a {
+      color: ${props => props.theme.topNavigationBackButtonBackgroundColorHover};
+    }
+
+    &:hover > a > svg {
+      color: ${props => props.theme.topNavigationBackButtonBackgroundColorHover};
     }
   }
 
@@ -153,6 +158,10 @@ const TopNav = styled.div`
       width: 25px;
       color: ${props => props.theme.colorIcons};
       cursor: pointer;
+
+      &:hover {
+        color: ${props => props.theme.colorIconsHover};
+      }
     }
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
