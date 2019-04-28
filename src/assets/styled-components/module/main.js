@@ -154,7 +154,7 @@ const VideoMain = styled.div`
   width: 100%;
   height: 100%;
   overflow-y: hidden;
-  background-color: #000;
+  /* background-color: #000; */
   padding-top: 20vh;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {

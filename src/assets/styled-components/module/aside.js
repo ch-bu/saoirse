@@ -76,7 +76,7 @@ const UlAside = styled.ul`
     transition: border 0.2s;
 
     &:hover {
-     /* filter: brightness(.9); */
+     filter: brightness(.97);
     }
 
     &.unit-active {

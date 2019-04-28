@@ -9,34 +9,35 @@ import { FaStar } from "react-icons/fa";
 
 
 const Container = styled.div`
-  min-width: 95vw;
-  min-height: 100vh;
-  background-color: #000;
-  background-color: ${props => props.theme.primaryColor};
-  filter: saturate(.6);
-  padding: 2.5vh;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffc600;
+  overflow-y: hidden;
 `;
 
 const Modules = styled.div`
-  background-color: ${props => props.theme.asideBackgroundColor};
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.29' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  background-color: ${props => props.theme.primaryColor};
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  margin-top: 1.5vh;
   padding: 5vh;
-  min-height: 95vh;
+  min-height: 98.5vh;
 
   h1 {
     margin-top: 0;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-align: center;
     color: #fff;
+    text-shadow: 8px 8px 3px rgba(0,0,0,0.1);
     border: none;
     width: 100%;
     filter: rotate(1deg);
-    /* border-bottom: 5px solid ${props => props.theme.primaryColor}; */
   }
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     h1 {
       margin-top: 5vh;
-      width: 60%;
-      font-size: 3rem;
+      font-size: 3.3rem;
     }
   }
 `;
@@ -55,23 +56,24 @@ const ModulesFlexbox = styled.div`
 
 
 const FlexElement = styled.div`
-  background-color: ${props => props.theme.asideDropdownBackgroundColor};
+  border-radius: 6px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, .85);
   width: 100%;
   text-align: center;
   margin-bottom: 1rem;
-  transition: all 0.3s;
+  transition: all 0.2s;
   box-sizing: border-box;
-  border-left: 10px solid ${props => props.theme.asideDropdownBackgroundColor};
+  border-left: 20px solid rgba(255, 255, 255, 0);
   
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    width: 33%;
-    margin-right: 5px;
+    width: calc(25% - 10px);
+    margin-right: 10px;
     height: 180px;
   }
 
   &:hover {
-    background-color: #4e4e4e;
-    border-left: 10px solid ${props => props.theme.primaryColor};
+    border-left: 20px solid ${props => props.theme.secondaryColor};
   }
 
   a {
@@ -85,10 +87,10 @@ const FlexElement = styled.div`
 const ModuleNumber = styled.div`
   align-self: center;
   font-size: 3rem;
-  color: ${props => props.theme.asideDropdownTitleTextColor};
+  color: #000;
   text-align: center;
   width: 29%;
-  border-right: 1px solid #626262;
+  border-right: 1px solid rgba(0, 0, 0, .1);
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     font-size: 5rem;
@@ -97,7 +99,7 @@ const ModuleNumber = styled.div`
 
 const ModuleDescription = styled.div`
   width: 80%;
-  color: ${props => props.theme.asideDropdownTitleTextColor};
+  color: #000;
   text-align: left;
   padding: 20px;
   align-self: center;
@@ -109,20 +111,30 @@ const ModuleDescription = styled.div`
 `;
 
 const Credits = styled.div`
-  position: fixed;
-  bottom: 5vh;
-  right: 10vh;
-  color: #fff;
+  display: none;
+  color: #000;
   padding: 10px;
   padding-left: 20px;
-  background-color: ${props => props.theme.asideDropdownBackgroundColor};
+  /* background-color: ${props => props.theme.asideDropdownBackgroundColor}; */
+  background-color: #fff;
   border-radius: 5px;
-  transform: rotate(-3deg);
   border: 1px solid #626262;
+  margin-top: 5vh;
+  width: 50%;
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    display: block;
+    transform: rotate(-2deg);
+    position: fixed;
+    bottom: 5vh;
+    width: auto;
+    margin-top: 0;
+    right: 10vh;
+  }
 
   a {
     color: ${props => props.theme.primaryColor};
-    color: #fff;
+    color: #000;
     border-bottom: 2px solid ${props => props.theme.primaryColor};
     text-decoration: none;
 
@@ -132,7 +144,7 @@ const Credits = styled.div`
   }
 
   svg {
-    color: ${props => props.theme.primaryColor};
+    color: ${props => props.theme.secondaryColor};
     position: absolute;
     font-size: 2.5rem;
     top: -27%;

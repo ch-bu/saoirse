@@ -33,6 +33,7 @@ const theme = {
   colorIconsHover: "rgba(255, 255, 255, .9)",
   colorIconsMobile: "rgba(0, 0, 0, .7)",
   primaryColor: "#3690ff",
+  secondaryColor: "#ffc600",
   topNavigationBackgroundColor: "#20232a",
   topNavigationBorderBottom: "#20232a",
   topNavigationTextColor: "rgba(255, 255, 255, .7)",
