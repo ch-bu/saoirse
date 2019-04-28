@@ -45,6 +45,7 @@ const theme = {
   asideSubunitTextColorHover: "hsla(0,0%,100%,1)",
   asideUnitTextColor: "#fff",
   asideDropdownBackgroundColor: "#3b3b3b",
+  asideDropdownHoverColor: "#57636d",
   asideDropdownTitleTextColor: "#fff",
 };
 

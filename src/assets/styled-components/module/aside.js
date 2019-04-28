@@ -54,16 +54,13 @@ const UlAside = styled.ul`
 
     &:hover {
       background-color: ${props => props.theme.primaryColor};
+      /* background-color: rgba(255, 255, 255, .3); */
       filter: saturate(1);
     }
   }
 
   #problem {
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      /* position: absolute;
-      width: 100%;
-      bottom: 0px;
-      left: 0; */
     }
   }
 
@@ -80,7 +77,7 @@ const UlAside = styled.ul`
     transition: border 0.2s;
 
     &:hover {
-     background-color: #57636d; 
+     filter: brightness(.9);
     }
 
     &.unit-active {
