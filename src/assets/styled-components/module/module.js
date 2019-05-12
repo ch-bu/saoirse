@@ -20,6 +20,27 @@ const Main = styled.div`
   grid-area: main;
   max-height: 100%;
   overflow-y: scroll;
+
+  & > h1 {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-top: 3vh;
+    text-decoration: none;
+    border: none;
+    letter-spacing: 1px;
+
+    span {
+      display: block;
+      padding-top: 6px;
+      color: rgba(0, 0, 0, .5);
+      font-size: 0.8rem;
+    }
+  }
+
 `;
 
 const MarkdownDocument = styled.div`
@@ -30,7 +51,6 @@ const MarkdownDocument = styled.div`
     width: 60%;
     margin: 0 auto;
   }
-
 
   h1, h2, h3 {
     font-weight: 700;
@@ -43,14 +63,6 @@ const MarkdownDocument = styled.div`
     border: none;
   }
   
-  h1:first-child {
-    font-size: 1.7rem;
-
-    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      font-size: 2.6rem;
-    }
-  }
-
   h2 {
     font-size: 1.4rem;
     border: none;
@@ -76,9 +88,7 @@ const MarkdownDocument = styled.div`
   }
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    /* width: 70%; */
     font-size: 1rem;
-    padding-top: 50px;
 
     p, li {
       font-size: 1.3rem;
@@ -93,15 +103,8 @@ const MarkdownDocument = styled.div`
     }
   }
 
-  @media only screen and (min-width: ${props => props.theme.breakpointTwo}) {
-    /* width: 60%; */
-  }
-  
   iframe {
     width: 100%;
-    /* height: 50vh; */
-    /* box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2); */
-    /* padding: 20px 0; */
   }
 
   video {
@@ -199,12 +202,11 @@ const NavigationButtons = styled.div`
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     visibility: visible;
     position: fixed;
-    top: 5vh;
+    bottom: 5vh;
     right: 4vh;
     display: flex;
     width: 100px;
     height: 80px;
-    /* justify-content: space-between; */
     align-items: center;
 
     a {
@@ -246,7 +248,8 @@ const NavigationBottom = styled.div`
   left: 0;
   width: 100vw;
   height: 8vh;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: #f7f7f7;
+  border-top: 1px solid rgb(236, 236, 236);
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     grid-area: nav;

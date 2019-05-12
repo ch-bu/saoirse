@@ -14,7 +14,6 @@ import filterMarkdown from "../components/helper/filter_markdown";
 import getNextPrevious from "../components/helper/next_and_previous";
 import { Container,Main, MarkdownDocument, Chapter, Sidebar, NavigationButtons, NavigationBottom } from '../assets/styled-components/module/module.js';
 
-import AniLink from "gatsby-plugin-transition-link/AniLink";
 import { FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
 
 // Markdown components
@@ -25,7 +24,6 @@ import MultipleChoice from "../components/questions/multiplechoice";
 import OrderQuestion from "../components/questions/orderquestion";
 import Flipcard from "../components/questions/flipcard";
 import VideoModeling from "../components/questions/youtubevideomodeling";
-
 
 // https://whereispoland.com/a-nation-without-a-state/2
 
@@ -74,6 +72,8 @@ class Module extends Component {
         <Shell>
           <Container>
             <Main>
+              <h1>Chapter {this.state.markdownCurrent.frontmatter.module} <br />
+                <span>{this.state.markdownCurrent.frontmatter.title}</span></h1>
               <MarkdownDocument>
                 <div>
                   {renderAst(this.state.markdownCurrent.htmlAst)}
@@ -81,7 +81,7 @@ class Module extends Component {
               </MarkdownDocument>
             </Main>
             <Sidebar>Sidebar</Sidebar>
-            <NavigationBottom>Navigation_bottom</NavigationBottom>
+            <NavigationBottom></NavigationBottom>
             <NavigationButtons>
               {PreviousLink}
               {NextLink}     
