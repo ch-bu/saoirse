@@ -10,7 +10,7 @@ const Container = styled.div`
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     grid-template-columns: 7vw calc(100vw - 7vw) ;
-    grid-template-rows: 92vh 8vh;
+    grid-template-rows: 94vh 6vh;
     grid-template-areas: "sidebar main"
                          "sidebar nav";
   }
@@ -166,9 +166,6 @@ const MarkdownDocument = styled.div`
   .gatsby-resp-image-image {
     box-shadow: 5px 5px 25px 0 rgba(46,61,73,.4);
   }
-
-
-
 `;
 
 const Chapter = styled.div`
@@ -197,16 +194,17 @@ const Sidebar = styled.div`
 `;
 
 const NavigationButtons = styled.div`
-  display: hidden;
+  visibility: hidden;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    visibility: visible;
     position: fixed;
-    top: 0;
+    top: 5vh;
     right: 4vh;
     display: flex;
-    width: 90px;
-    height: 100px;
-    justify-content: space-between;
+    width: 100px;
+    height: 80px;
+    /* justify-content: space-between; */
     align-items: center;
 
     a {
@@ -216,6 +214,18 @@ const NavigationButtons = styled.div`
       padding: 0;
     }
 
+    a.previous {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    a.next {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
     svg {
       height: 35px;
       width: 35px;
@@ -223,8 +233,7 @@ const NavigationButtons = styled.div`
       cursor: pointer;
 
       &:hover {
-        height: 45px;
-        width: 45px;
+        transform: scale(1.3);
       }
     }
   }
@@ -237,7 +246,7 @@ const NavigationBottom = styled.div`
   left: 0;
   width: 100vw;
   height: 8vh;
-  background-color: #1f232b;
+  background-color: rgba(0, 0, 0, .8);
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     grid-area: nav;

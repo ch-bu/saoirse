@@ -14,6 +14,7 @@ import filterMarkdown from "../components/helper/filter_markdown";
 import getNextPrevious from "../components/helper/next_and_previous";
 import { Container,Main, MarkdownDocument, Chapter, Sidebar, NavigationButtons, NavigationBottom } from '../assets/styled-components/module/module.js';
 
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 import { FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
 
 // Markdown components
@@ -56,12 +57,14 @@ class Module extends Component {
     // Generate Links
     const PreviousLink = this.state.markdownPrevious ? <Link 
       onClick={() => this.updateCurrentMarkdown("previous")}
+      className="previous"
       to={`/module?id=${this.state.markdownPrevious.frontmatter.module}&unit=${this.state.markdownPrevious.frontmatter.unit}&subunit=${this.state.markdownPrevious.frontmatter.subunit}`}>
       <FaArrowCircleLeft />
     </Link> : "";
 
     const NextLink = this.state.markdownNext ? <Link 
       onClick={() => this.updateCurrentMarkdown("next")}
+      className="next"
       to={`/module?id=${this.state.markdownNext.frontmatter.module}&unit=${this.state.markdownNext.frontmatter.unit}&subunit=${this.state.markdownNext.frontmatter.subunit}`}>
       <FaArrowCircleRight />
       </Link> : "";
@@ -90,16 +93,21 @@ class Module extends Component {
   }
 
   updateCurrentMarkdown(direction) {
-    
-    const [markdownPrevious, markdownCurrent, markdownNext] = [...getNextPrevious(this.state.markdownSubunits, 
-      this.props.location)];
-    // console.log(markdownNext);
-    
-    this.setState({
-      markdownCurrent: direction == "previous" ? markdownPrevious : markdownNext
-    }, () => {
-      console.log(this.state.markdownCurrent);
-    });
+    // I have to make sure that the url has changed before I get the current component
+    setTimeout(
+      function() {
+        const [markdownPrevious, markdownCurrent, markdownNext] = [...getNextPrevious(this.state.markdownSubunits, 
+          this.props.location)];
+        
+        this.setState({
+          markdownCurrent,
+          markdownNext,
+          markdownPrevious
+        });
+      }
+      .bind(this),
+      100
+    );
   }
 }
 
