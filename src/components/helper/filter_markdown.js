@@ -13,20 +13,13 @@ function filterMarkdownFiles(data, location) {
       return value.node.frontmatter.module == parsedURL.id;
     });
 
-    // Get current page
-    const markdownCurrent = markdownSubunits.filter((value) => {
-      return value.node.frontmatter.subunit == parsedURL.subunit &&
-            value.node.frontmatter.unit     == parsedURL.unit;
-    })[0].node;
-
     // Get start pages for each unit
-    const startMarkdown = data.filter((value) => {
+    const markdownFirst = data.filter((value) => {
       return value.node.frontmatter.subunit == 0 &&
              value.node.frontmatter.unit == 0;
     });
 
-    return [markdownSubunits, markdownCurrent, 
-            startMarkdown, markdownSubunits[0]];
+    return [markdownSubunits, markdownFirst];
   }
 }
 
