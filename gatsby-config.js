@@ -63,18 +63,18 @@ module.exports = {
     },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Saoirse`,
-        short_name: `saoirse`,
-        start_url: `/`,
-        background_color: `#5781bd`,
-        theme_color: `#1c262f`,
-        display: `minimal-ui`
-        // icon: `src/assets/icons/face.png`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: `Saoirse`,
+    //     short_name: `saoirse`,
+    //     start_url: `/`,
+    //     background_color: `#5781bd`,
+    //     theme_color: `#1c262f`,
+    //     display: `minimal-ui`
+    //     // icon: `src/assets/icons/face.png`,
+    //   },
+    // },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
