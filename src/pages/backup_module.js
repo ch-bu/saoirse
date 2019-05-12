@@ -296,8 +296,8 @@
 //         {this.state.currentSubunit ? <Container showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
 
 //           {this.state.nextSubunit.length == 0 ? <a></a> : 
-//           <NextButton showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}>
-//             <Link onClick={this.updateMainContent}
+//           <NextButton showAsideLeft={this.state.showAsideLeft ? 'showAsideLeft': null}> 
+//             <LinkonClick={this.updateMainContent}
 //                 to={`/module?id=` + this.state.moduleId + 
 //                       '&unit='      + this.state.nextSubunit[0].node.frontmatter.unit +
 //                       '&subunit='         + this.state.nextSubunit[0].node.frontmatter.subunit}>

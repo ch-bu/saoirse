@@ -26,6 +26,8 @@ import Flipcard from "../components/questions/flipcard";
 import VideoModeling from "../components/questions/youtubevideomodeling";
 
 
+// https://whereispoland.com/a-nation-without-a-state/2
+
 class Module extends Component {
   constructor(props) {
     super(props);
@@ -50,6 +52,20 @@ class Module extends Component {
   }
 
   render() {
+
+    // Generate Links
+    const PreviousLink = this.state.markdownPrevious ? <Link 
+      onClick={() => this.updateCurrentMarkdown("previous")}
+      to={`/module?id=${this.state.markdownPrevious.frontmatter.module}&unit=${this.state.markdownPrevious.frontmatter.unit}&subunit=${this.state.markdownPrevious.frontmatter.subunit}`}>
+      <FaArrowCircleLeft />
+    </Link> : "";
+
+    const NextLink = this.state.markdownNext ? <Link 
+      onClick={() => this.updateCurrentMarkdown("next")}
+      to={`/module?id=${this.state.markdownNext.frontmatter.module}&unit=${this.state.markdownNext.frontmatter.unit}&subunit=${this.state.markdownNext.frontmatter.subunit}`}>
+      <FaArrowCircleRight />
+      </Link> : "";
+
     return (
       <div>
         <Shell>
@@ -64,13 +80,8 @@ class Module extends Component {
             <Sidebar>Sidebar</Sidebar>
             <NavigationBottom>Navigation_bottom</NavigationBottom>
             <NavigationButtons>
-              <Link onClick={this.updateCurrentMarkdown}
-                  to={`/module?id=` + this.state.moduleId + 
-                       '&unit='      + this.state.nextSubunit[0].node.frontmatter.unit +
-                       '&subunit='         + this.state.nextSubunit[0].node.frontmatter.subunit}>
-                <FaArrowCircleLeft /> 
-              </Link>
-              <FaArrowCircleRight onClick={this.updateCurrentMarkdown} />      
+              {PreviousLink}
+              {NextLink}     
             </NavigationButtons>
           </Container>
         </Shell>
@@ -78,12 +89,17 @@ class Module extends Component {
     )
   }
 
-  updateCurrentMarkdown() {
-    console.log("test");
-    // const [markdownPrevious, markdownNext, markdownCurrent] = [...getNextPrevious(this.state.markdownSubunits, 
-    //   this.props.location)];
-
-    // return [markdownPrevious, markdownCurrent, markdownNext];
+  updateCurrentMarkdown(direction) {
+    
+    const [markdownPrevious, markdownCurrent, markdownNext] = [...getNextPrevious(this.state.markdownSubunits, 
+      this.props.location)];
+    // console.log(markdownNext);
+    
+    this.setState({
+      markdownCurrent: direction == "previous" ? markdownPrevious : markdownNext
+    }, () => {
+      console.log(this.state.markdownCurrent);
+    });
   }
 }
 

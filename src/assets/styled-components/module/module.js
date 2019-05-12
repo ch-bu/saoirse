@@ -209,6 +209,13 @@ const NavigationButtons = styled.div`
     justify-content: space-between;
     align-items: center;
 
+    a {
+      color: #000;
+      text-decoration: none;
+      margin: 0;
+      padding: 0;
+    }
+
     svg {
       height: 35px;
       width: 35px;
