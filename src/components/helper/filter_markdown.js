@@ -10,7 +10,8 @@ function filterMarkdownFiles(data, location) {
   if (parsedURL.id && parsedURL.subunit && parsedURL.unit) {
     // Filter all markdown files by module_id
     const markdownSubunits = data.filter((value, index, array) => {
-      return value.node.frontmatter.module == parsedURL.id;
+      return value.node.frontmatter.module == parsedURL.id &&
+             value.node.frontmatter.unit   == parsedURL.unit;
     });
 
     // Get start pages for each unit

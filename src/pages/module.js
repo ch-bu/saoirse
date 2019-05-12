@@ -34,7 +34,6 @@ class Module extends Component {
     // Filter markdown files for current chapter
     const [markdownSubunits, markdownFirst] = [...filterMarkdown(this.props.data.allMarkdownRemark.edges, 
                                                           this.props.location)];
-                
     const [markdownPrevious, markdownCurrent, markdownNext] = [...getNextPrevious(markdownSubunits, 
       this.props.location)];
     
@@ -81,7 +80,11 @@ class Module extends Component {
               </MarkdownDocument>
             </Main>
             <Sidebar>Sidebar</Sidebar>
-            <NavigationBottom></NavigationBottom>
+            <NavigationBottom>
+              {this.state.markdownSubunits.map((subunit) => {
+                return <a href="#">{subunit.node.frontmatter.title}</a>
+              })}
+            </NavigationBottom>
             <NavigationButtons>
               {PreviousLink}
               {NextLink}     

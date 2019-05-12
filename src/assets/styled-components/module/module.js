@@ -244,12 +244,38 @@ const NavigationButtons = styled.div`
 
 const NavigationBottom = styled.div`
   position: fixed;
+  padding: 0 10px;
   bottom: 0;
   left: 0;
-  width: 100vw;
   height: 8vh;
   background-color: #f7f7f7;
   border-top: 1px solid rgb(236, 236, 236);
+  display: flex; 
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow-x: auto;
+  justify-content: space-between;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+      display: none;
+  }
+
+  a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+
+    /* flex: 1; */
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, .6);
+    text-decoration: none;
+
+    &:hover {
+      color: rgba(0, 0, 0, .9);
+    }
+  }
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     grid-area: nav;
