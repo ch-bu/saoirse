@@ -12,25 +12,6 @@ const Container = styled.div`
 `;
 
 const Main = styled.div`
-  /* & > h1 {
-    width: 60%;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: normal;
-    text-transform: uppercase;
-    margin-top: 3vh;
-    text-decoration: none;
-    border: none;
-    letter-spacing: 1px;
-
-    span {
-      display: block;
-      padding-top: 6px;
-      color: rgba(0, 0, 0, .5);
-      font-size: 0.8rem;
-    }
-  } */
 `;
 
 const MainHeading = styled.div`
@@ -313,24 +294,71 @@ const NavigationBottom = styled.div`
 `;
 
 const Menu = styled.div`
-  background-color: #1f232b;
-  height: 100vh;
+  /* background-color: #1f232b; */
+  background-image: linear-gradient(to right bottom, #1f232b, #25292f, #2b2e34, #313438, #383a3d);
+  background-image: linear-gradient(to right bottom, #1f232b, #21252c, #23272d, #25282d, #272a2e);
+  min-height: 100vh;
   width: 100vw;
   position: fixed;
   z-index: 99;
   top: 0;
   left: -94vw;
-  transition: all 0.3s cubic-bezier(.17,.67,.28,.27);
+  transition: all 0.15s cubic-bezier(.17,.67,.28,.27);
+  /* overflow-y: scroll; */
 
   ${props => props.menuOpen ? css`
-    /* background: blue; */
-    opacity: 0.95;
     left: 0;
   ` : css`
     color: black;
-    opacity: 1;
-    background: #1f232b;
   `}
+
+  .menu-wrapper {
+    margin: 0 auto;
+    width: 50%;
+    height: 100%;
+    padding-top: 10vh;
+    color: #fff;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 3vh;
+      color: rgba(255, 255, 255, .8);
+      cursor: default;
+    }
+
+    ul {
+      margin: 0;
+      list-style-type: none;
+
+      span {
+        font-weight: bold;
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, .8);
+        cursor: default;
+      }
+
+      li {
+        color: #fff;
+
+        ul {
+          li {
+            margin-left: 2vw;
+            a {
+              color: rgba(255, 255, 255, .8);
+              font-size: 1.3rem;
+
+              &:hover {
+                text-decoration: none;
+                color: rgba(255, 255, 255, 1);
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+
 `;
 
 export {

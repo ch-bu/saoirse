@@ -44,14 +44,13 @@ class Module extends Component {
       markdownCurrent,
       markdownPrevious,
       markdownNext,
-      menuOpen: false
+      menuOpen: true
     };
 
     this.updateCurrentMarkdown = this.updateCurrentMarkdown.bind(this);
   }
 
   render() {
-
     // Generate Links
     const PreviousLink = this.state.markdownPrevious ? <Link 
       onClick={() => this.updateCurrentMarkdown("previous")}
@@ -72,6 +71,13 @@ class Module extends Component {
         <Shell>
           <Menu menuOpen={this.state.menuOpen} 
                 onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}> 
+
+              <div className="menu-wrapper">
+                <h2>Inhaltsverzeichnis</h2>
+                <ul>
+                  {this.state.aside}
+                </ul>
+              </div>
           </Menu>
           <Container>
             <MainHeading>Chapter {this.state.markdownCurrent.frontmatter.module} <br />
@@ -115,6 +121,78 @@ class Module extends Component {
       .bind(this),
       100
     );
+  }
+
+  componentDidMount() {
+    // *************************************
+    // Build Aside navigation
+    // *************************************
+
+    // I need to get the units for each subunit
+    const units = {};
+    this.state.markdownSubunits.map(function(unit) {
+      return units[unit.node.frontmatter.unit] = unit.node.frontmatter.unitTitle;
+    });
+
+    // Get li of subunits
+    var unitLi = [];
+  
+    // Generate li tags for aside
+    for (var unit in units) {
+      // Get all relevant subunits
+      let unitByKey = this.state.markdownSubunits.filter((subunit) => {
+        return subunit.node.frontmatter.unit == unit;
+      });
+
+      // Make Dictionary of units with index as key
+      let unitSorted = {};
+      unitByKey.map((unit) => {
+        unitSorted[unit.node.frontmatter.subunit] = {frontmatter: {
+                                                    title: unit.node.frontmatter.title,
+                                                    module: unit.node.frontmatter.module,
+                                                    unitTitle: unit.node.frontmatter.unitTitle,
+                                                    unit: unit.node.frontmatter.unit,
+                                                    subunit: unit.node.frontmatter.subunit},
+                                                  type: unit.node.frontmatter.type,
+                                                  htmlAst:  unit.node.htmlAst};
+      });
+
+      // Unit li
+      const subunitLi = [];
+        
+      for (var unit in unitSorted) {
+        console.log(unitSorted[unit]);
+        // Get appropriate type
+        subunitLi.push(
+          <li key={unitSorted[unit].frontmatter.title}>
+            <Link key={unit} 
+                  onClick={this.updateMainContent}
+                  to={`/module?id=` + unitSorted[unit].frontmatter.module + 
+                        '&unit='      + unitSorted[unit].frontmatter.unit +
+                        '&subunit='         + unitSorted[unit].frontmatter.subunit}>
+                  {/* getProps={this.linkIsActive}> */}
+                {unitSorted[unit].frontmatter.title}  
+            </Link>
+          </li>
+        );
+      } 
+
+      unitLi.push(
+        <li id={unitSorted[unit].frontmatter.unitTitle == "Problem" ? "problem" : ""}
+              key={unitSorted[unit].frontmatter.unitTitle}>
+          <span>{unitSorted[unit].frontmatter.unitTitle}</span>
+          <ul className="menu">
+            {subunitLi}
+          </ul>
+        </li>
+        );
+    }
+
+    // console.log(unitLi);
+  
+    this.setState({
+      aside: unitLi
+    });
   }
 }
 
