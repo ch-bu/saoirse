@@ -1,27 +1,18 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: minmax(100vh, auto);
-  grid-template-areas: "main";
-  overflow: hidden;
+  min-height: 100vh;
+  width: 100vw;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    grid-template-columns: 7vw calc(100vw - 7vw) ;
-    grid-template-rows: 94vh 6vh;
-    grid-template-areas: "sidebar main"
-                         "sidebar nav";
+    width: 94vw;
+    margin-left: 6vw;
   }
 `;
 
 const Main = styled.div`
-  grid-area: main;
-  max-height: 100%;
-  overflow-y: scroll;
-
-  & > h1 {
+  /* & > h1 {
     width: 60%;
     margin: 0 auto;
     text-align: center;
@@ -39,16 +30,52 @@ const Main = styled.div`
       color: rgba(0, 0, 0, .5);
       font-size: 0.8rem;
     }
+  } */
+`;
+
+const MainHeading = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100vw;
+  margin: 0 auto;
+  z-index: 98;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  padding: 1vh 0;
+  opacity: 0.96;
+  text-decoration: none;
+  border: none;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgb(236, 236, 236);
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    width: 94vw;
+    margin-left: 6vw;
   }
 
+  span {
+    display: block;
+    padding-top: 0px;
+    color: rgba(0, 0, 0, .5);
+    font-size: 0.8rem;
+  }
 `;
 
 const MarkdownDocument = styled.div`
-  margin-top: 5vh;
+  margin-top: 15vh;
   width: 100%;
 
   & > div {
-    width: 60%;
+    width: 90%;
+
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+      width: 60%;
+    }
+
     margin: 0 auto;
   }
 
@@ -202,7 +229,7 @@ const NavigationButtons = styled.div`
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     visibility: visible;
     position: fixed;
-    bottom: 5vh;
+    bottom: 2vh;
     right: 4vh;
     display: flex;
     width: 100px;
@@ -251,11 +278,12 @@ const NavigationBottom = styled.div`
   background-color: #f7f7f7;
   border-top: 1px solid rgb(236, 236, 236);
   display: flex; 
-  flex-wrap: wrap;
-  flex-direction: row;
-  overflow-x: auto;
+  flex-wrap: no-wrap;
+  width: 100%;
+  /* flex-direction: row; */
+  overflow-x: scroll;
   justify-content: space-between;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 
   &::-webkit-scrollbar {
       display: none;
@@ -265,9 +293,8 @@ const NavigationBottom = styled.div`
     display: flex;
     height: 100%;
     align-items: center;
+    flex: 1;
 
-    /* flex: 1; */
-    text-align: center;
     font-size: 0.8rem;
     color: rgba(0, 0, 0, .6);
     text-decoration: none;
@@ -285,6 +312,27 @@ const NavigationBottom = styled.div`
   }
 `;
 
+const Menu = styled.div`
+  background-color: #1f232b;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: -94vw;
+  transition: all 0.3s cubic-bezier(.17,.67,.28,.27);
+
+  ${props => props.menuOpen ? css`
+    /* background: blue; */
+    opacity: 0.95;
+    left: 0;
+  ` : css`
+    color: black;
+    opacity: 1;
+    background: #1f232b;
+  `}
+`;
+
 export {
   Container,
   Main,
@@ -292,5 +340,7 @@ export {
   Chapter,
   Sidebar,
   NavigationButtons,
-  NavigationBottom
+  NavigationBottom,
+  Menu,
+  MainHeading
 }

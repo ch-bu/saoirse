@@ -12,7 +12,7 @@ import katex from "katex/dist/katex.min.css"
 import styled from 'styled-components'
 import filterMarkdown from "../components/helper/filter_markdown";
 import getNextPrevious from "../components/helper/next_and_previous";
-import { Container,Main, MarkdownDocument, Chapter, Sidebar, NavigationButtons, NavigationBottom } from '../assets/styled-components/module/module.js';
+import { Container,Main, Menu, MarkdownDocument, MainHeading, Chapter, Sidebar, NavigationButtons, NavigationBottom } from '../assets/styled-components/module/module.js';
 
 import { FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
 
@@ -43,7 +43,8 @@ class Module extends Component {
       markdownFirst,
       markdownCurrent,
       markdownPrevious,
-      markdownNext
+      markdownNext,
+      menuOpen: false
     };
 
     this.updateCurrentMarkdown = this.updateCurrentMarkdown.bind(this);
@@ -69,22 +70,25 @@ class Module extends Component {
     return (
       <div>
         <Shell>
+          <Menu menuOpen={this.state.menuOpen} 
+                onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}> 
+          </Menu>
           <Container>
+            <MainHeading>Chapter {this.state.markdownCurrent.frontmatter.module} <br />
+                  <span>{this.state.markdownCurrent.frontmatter.title}</span></MainHeading>
             <Main>
-              <h1>Chapter {this.state.markdownCurrent.frontmatter.module} <br />
-                <span>{this.state.markdownCurrent.frontmatter.title}</span></h1>
               <MarkdownDocument>
                 <div>
                   {renderAst(this.state.markdownCurrent.htmlAst)}
                 </div>
               </MarkdownDocument>
             </Main>
-            <Sidebar>Sidebar</Sidebar>
-            <NavigationBottom>
+            {/* <Sidebar>Sidebar</Sidebar> */}
+            {/* <NavigationBottom>
               {this.state.markdownSubunits.map((subunit) => {
                 return <a href="#">{subunit.node.frontmatter.title}</a>
               })}
-            </NavigationBottom>
+            </NavigationBottom> */}
             <NavigationButtons>
               {PreviousLink}
               {NextLink}     
