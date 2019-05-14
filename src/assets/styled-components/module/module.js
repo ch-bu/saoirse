@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components'
 
 
 const Container = styled.div`
-  min-height: 100vh;
   width: 100vw;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
@@ -185,24 +184,6 @@ const Chapter = styled.div`
   background-image: linear-gradient(to right top, #3690ff, #00b8ff, #00d4e3, #00e68a, #a8eb12);
 `;
 
-const Sidebar = styled.div`
-  background-color: #1f232b;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  transform: translateX(-100vw);
-  background-color: rgba(0, 0, 0, .8);
-
-  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    position: relative;
-    grid-area: sidebar;
-    width: 100%;
-    transform: translateX(0);
-    height: 100%;
-  }
-`;
 
 const NavigationButtons = styled.div`
   visibility: hidden;
@@ -294,17 +275,15 @@ const NavigationBottom = styled.div`
 `;
 
 const Menu = styled.div`
-  /* background-color: #1f232b; */
-  background-image: linear-gradient(to right bottom, #1f232b, #25292f, #2b2e34, #313438, #383a3d);
-  background-image: linear-gradient(to right bottom, #1f232b, #21252c, #23272d, #25282d, #272a2e);
+  background-color: #1f232b;
   min-height: 100vh;
   width: 100vw;
   position: fixed;
   z-index: 99;
   top: 0;
+  
   left: -94vw;
   transition: all 0.15s cubic-bezier(.17,.67,.28,.27);
-  /* overflow-y: scroll; */
 
   ${props => props.menuOpen ? css`
     left: 0;
@@ -315,7 +294,6 @@ const Menu = styled.div`
   .menu-wrapper {
     margin: 0 auto;
     width: 50%;
-    height: 100%;
     padding-top: 10vh;
     color: #fff;
 
@@ -324,6 +302,13 @@ const Menu = styled.div`
       margin-bottom: 3vh;
       color: rgba(255, 255, 255, .8);
       cursor: default;
+    }
+
+    & > ul {
+      /* display: grid; */
+      /* grid-template-columns: 1fr 1fr; */
+      /* grid-template-rows: 1fr 1fr 1fr; */
+      /* grid-gap: 20px; */
     }
 
     ul {
@@ -366,7 +351,6 @@ export {
   Main,
   MarkdownDocument,
   Chapter,
-  Sidebar,
   NavigationButtons,
   NavigationBottom,
   Menu,

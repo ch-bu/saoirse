@@ -12,7 +12,7 @@ import katex from "katex/dist/katex.min.css"
 import styled from 'styled-components'
 import filterMarkdown from "../components/helper/filter_markdown";
 import getNextPrevious from "../components/helper/next_and_previous";
-import { Container,Main, Menu, MarkdownDocument, MainHeading, Chapter, Sidebar, NavigationButtons, NavigationBottom } from '../assets/styled-components/module/module.js';
+import { Container,Main, Menu, MarkdownDocument, MainHeading, Chapter, NavigationButtons, NavigationBottom } from '../assets/styled-components/module/module.js';
 
 import { FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
 
@@ -48,6 +48,7 @@ class Module extends Component {
     };
 
     this.updateCurrentMarkdown = this.updateCurrentMarkdown.bind(this);
+    this.linkIsActive = this.linkIsActive.bind(this);
   }
 
   render() {
@@ -166,11 +167,11 @@ class Module extends Component {
         subunitLi.push(
           <li key={unitSorted[unit].frontmatter.title}>
             <Link key={unit} 
-                  onClick={this.updateMainContent}
+                  onClick={this.updateCurrentMarkdown}
                   to={`/module?id=` + unitSorted[unit].frontmatter.module + 
                         '&unit='      + unitSorted[unit].frontmatter.unit +
-                        '&subunit='         + unitSorted[unit].frontmatter.subunit}>
-                  {/* getProps={this.linkIsActive}> */}
+                        '&subunit='         + unitSorted[unit].frontmatter.subunit}
+                  getProps={this.linkIsActive}>
                 {unitSorted[unit].frontmatter.title}  
             </Link>
           </li>
@@ -193,6 +194,10 @@ class Module extends Component {
     this.setState({
       aside: unitLi
     });
+  }
+
+  linkIsActive(e) {
+    return e.href.includes(this.props.location.search) ? {className: "active" } : null;
   }
 }
 
