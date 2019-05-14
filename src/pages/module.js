@@ -12,7 +12,7 @@ import katex from "katex/dist/katex.min.css"
 import styled from 'styled-components'
 import filterMarkdown from "../components/helper/filter_markdown";
 import getNextPrevious from "../components/helper/next_and_previous";
-import { Container,Main, Menu, MarkdownDocument, MainHeading, Chapter, NavigationButtons, NavigationBottom } from '../assets/styled-components/module/module.js';
+import { Container, Menu, MarkdownDocument, MainHeading, Chapter, NavigationButtons, SubNav } from '../assets/styled-components/module/module.js';
 
 import { FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
 
@@ -72,7 +72,6 @@ class Module extends Component {
         <Shell>
           <Menu menuOpen={this.state.menuOpen} 
                 onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}> 
-
               <div className="menu-wrapper">
                 <h2>Inhaltsverzeichnis</h2>
                 <ul>
@@ -80,22 +79,22 @@ class Module extends Component {
                 </ul>
               </div>
           </Menu>
-          <Container>
-            <MainHeading>Chapter {this.state.markdownCurrent.frontmatter.module} <br />
+          <MainHeading>Chapter {this.state.markdownCurrent.frontmatter.module} <br />
                   <span>{this.state.markdownCurrent.frontmatter.title}</span></MainHeading>
-            <Main>
-              <MarkdownDocument>
-                <div>
-                  {renderAst(this.state.markdownCurrent.htmlAst)}
-                </div>
-              </MarkdownDocument>
-            </Main>
-            {/* <Sidebar>Sidebar</Sidebar> */}
-            {/* <NavigationBottom>
-              {this.state.markdownSubunits.map((subunit) => {
-                return <a href="#">{subunit.node.frontmatter.title}</a>
-              })}
-            </NavigationBottom> */}
+          <SubNav>
+          </SubNav>
+          <Container>
+            {/* <Chapter>
+              <div>
+                <span>Chapter {this.state.markdownCurrent.frontmatter.module}</span>
+                <h2>{this.state.markdownCurrent.frontmatter.unitTitle}</h2>
+              </div>
+            </Chapter> */}
+            <MarkdownDocument>
+              <div>
+                {renderAst(this.state.markdownCurrent.htmlAst)}
+              </div>
+            </MarkdownDocument>
             <NavigationButtons>
               {PreviousLink}
               {NextLink}     

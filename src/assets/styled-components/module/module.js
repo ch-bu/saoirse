@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 
 const Container = styled.div`
   width: 100vw;
+  min-height: 100vh;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 94vw;
@@ -10,13 +11,12 @@ const Container = styled.div`
   }
 `;
 
-const Main = styled.div`
-`;
 
 const MainHeading = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  height: 70px;
   background-color: #fff;
   width: 100vw;
   margin: 0 auto;
@@ -45,9 +45,21 @@ const MainHeading = styled.div`
   }
 `;
 
+const SubNav = styled.div`
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 94vw;
+  height: 30px;
+  margin-left: 6vw;
+  background-color: green;
+  background-color: #fff;
+  border-bottom: 1px solid rgb(236, 236, 236);
+`;
+
 const MarkdownDocument = styled.div`
-  margin-top: 15vh;
   width: 100%;
+  padding-top: 15vh;
 
   & > div {
     width: 90%;
@@ -179,9 +191,37 @@ const MarkdownDocument = styled.div`
 `;
 
 const Chapter = styled.div`
+  position: absolute;
   height: 100%;
+  z-index: 98;
   width: 100%;
-  background-image: linear-gradient(to right top, #3690ff, #00b8ff, #00d4e3, #00e68a, #a8eb12);
+  /* background-image: linear-gradient(to right top, #3690ff, #00b8ff, #00d4e3, #00e68a, #a8eb12); */
+  display: flex;
+  justify-content: center;
+  background-color: ${props => props.theme.primaryColor};
+
+
+  div {
+    text-align: center;
+    padding-top: 20vh;
+    max-width: 50%;
+
+    span {
+      display: inline-block;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1.5rem;
+      font-weight: 100;
+    }
+
+    h2 {
+      color: #fff;
+      letter-spacing: 2px;
+      font-size: 3rem;
+      border: none;
+    }
+  }
 `;
 
 
@@ -298,7 +338,7 @@ const Menu = styled.div`
     color: #fff;
 
     h2 {
-      font-size: 2rem;
+      font-size: 1rem;
       margin-bottom: 3vh;
       color: rgba(255, 255, 255, .8);
       cursor: default;
@@ -306,7 +346,7 @@ const Menu = styled.div`
 
     & > ul {
       /* display: grid; */
-      /* grid-template-columns: 1fr 1fr; */
+      /* grid-template-columns: 1fr 1fr 1fr; */
       /* grid-template-rows: 1fr 1fr 1fr; */
       /* grid-gap: 20px; */
     }
@@ -317,7 +357,7 @@ const Menu = styled.div`
 
       span {
         font-weight: bold;
-        font-size: 1.3rem;
+        font-size: 1rem;
         color: rgba(255, 255, 255, .8);
         cursor: default;
       }
@@ -330,11 +370,16 @@ const Menu = styled.div`
             margin-left: 2vw;
             a {
               color: rgba(255, 255, 255, .8);
-              font-size: 1.3rem;
+              font-size: 1rem;
 
               &:hover {
                 text-decoration: none;
                 color: rgba(255, 255, 255, 1);
+              }
+
+              &.active {
+                font-weight: bold;
+                border-bottom: 5px solid ${props => props.theme.primaryColor};
               }
             }
           }
@@ -348,11 +393,11 @@ const Menu = styled.div`
 
 export {
   Container,
-  Main,
   MarkdownDocument,
   Chapter,
   NavigationButtons,
   NavigationBottom,
   Menu,
+  SubNav,
   MainHeading
 }
