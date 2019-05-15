@@ -387,7 +387,7 @@ const Menu = styled.div`
         position: absolute;
         top: -50%;
         left: -25px;
-        width: 200px;
+        width: 100px;
         /* height: 80px; */
         height: 105%;
         z-index: 150;
@@ -452,7 +452,6 @@ const Card = styled.div`
   background-color: #1f232b;
   opacity: .9;
   width: 400px;
-  /* top: 40vh; */
   top: ${props => props.coordY};
   left: ${props => props.coordX};
   height: 87px;
@@ -461,13 +460,19 @@ const Card = styled.div`
   padding-left: 20px;
   justify-content: left;
   align-items: center;
+  visibility: ${props => props.mouseOverCard ? "visible" : "hidden"};
 
   h3 {
     color: rgba(255, 255, 255, .6);
     margin: 0;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
 
     span {
       color: rgba(255, 255, 255, .9);
+      text-transform: capitalize;
+      font-size: 1.4rem;
     }
   }
 

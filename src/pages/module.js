@@ -57,6 +57,8 @@ class Module extends Component {
       markdownPrevious,
       markdownNext,
       markdownIcons,
+      showCard: false,
+      mouseOverCard: false,
       menuOpen: false
     };
 
@@ -67,6 +69,7 @@ class Module extends Component {
     this.updateCurrentMarkdown = this.updateCurrentMarkdown.bind(this);
     this.linkIsActive = this.linkIsActive.bind(this);
     this.showCard = this.showCard.bind(this);
+    this.mouseOutCard = this.mouseOutCard.bind(this);
   }
 
   render() {
@@ -96,19 +99,22 @@ class Module extends Component {
             </Link>
     });
 
+    console.log(this.state.mouseOverCard);
     
     // Build mainnav for units
     const units = this.state.markdownStarters.map((markdown, index) => {
+      const node = markdown.node.frontmatter;
       return <li key={index}>
-                <a href="#" 
-                   chaptername={markdown.node.frontmatter.unitTitle}
-                   onMouseOver={this.showCard}>
-                </a>
+                <Link key={index}
+                   onMouseOut={this.mouseOutCard}
+                   onMouseOver={this.showCard}
+                   onClick={() => this.updateCurrentMarkdown()}
+                   to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
+                   chaptername={node.unitTitle}>
+                </Link>
                 <span className="dot"></span>
              </li>
     });
-
-    console.log(`${this.state.coordY}px`);
 
     return (
       <div>
@@ -122,7 +128,10 @@ class Module extends Component {
               {units}
             </ul>
           </Menu>
-          <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}>
+          <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}
+                showCard={this.state.showCard}
+                mouseOverCard={this.state.mouseOverCard}
+                >
             <h3>Chapter <br /> <span>{this.state.cardTitle}</span></h3>
           </Card>
           <MainHeading>Chapter {this.state.markdownCurrent.frontmatter.module} <br />
@@ -172,7 +181,11 @@ class Module extends Component {
     );
   }
 
-  componentDidMount() {
+
+  mouseOutCard() {
+    this.setState({
+      mouseOverCard: false,
+    });
   }
 
   showCard(e) {
@@ -182,9 +195,9 @@ class Module extends Component {
     this.setState({
       coordX: coordinates["x"] + 100,
       coordY: coordinates["y"],
-      cardTitle: anchorTag.getAttribute("chaptername")
+      cardTitle: anchorTag.getAttribute("chaptername"),
+      mouseOverCard: true,
     })
-
   }
 
   linkIsActive(e) {
