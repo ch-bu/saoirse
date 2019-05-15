@@ -31,6 +31,7 @@ const MainHeading = styled.div`
   border: none;
   letter-spacing: 1px;
   border-bottom: 1px solid rgb(236, 236, 236);
+  cursor: default;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 94vw;
@@ -49,17 +50,56 @@ const SubNav = styled.div`
   position: fixed;
   top: 70px;
   left: 0;
-  width: 94vw;
-  height: 30px;
-  margin-left: 6vw;
-  background-color: green;
+  width: 100vw;
+  min-height: 30px;
+  margin-left: 0vw;
   background-color: #fff;
   border-bottom: 1px solid rgb(236, 236, 236);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px;
+  opacity: 0.96;
+  z-index: 92;
+  box-shadow: 5px 4px 25px 0 rgba(46,61,73,.2);
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    width: 94vw;
+    margin-left: 6vw;
+  }
+
+  a {
+    color: #dbdbdb;
+    text-align: center;
+    flex: 1;
+    font-size: 0.8rem;
+    text-decoration:none;
+
+    &:hover {
+      color: ${props => props.theme.primaryColor};
+
+    }
+  }
+
+  span {
+    letter-spacing: 1px;
+    display: none;
+
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+      display: inline;
+    }
+  }
+
+  .active {
+    color: ${props => props.theme.primaryColor};
+    /* color: rgba(0, 0, 0, .75); */
+    /* font-weight: bold; */
+  }
 `;
 
 const MarkdownDocument = styled.div`
   width: 100%;
-  padding-top: 15vh;
+  padding-top: 20vh;
 
   & > div {
     width: 90%;
@@ -317,78 +357,24 @@ const NavigationBottom = styled.div`
 const Menu = styled.div`
   background-color: #1f232b;
   min-height: 100vh;
-  width: 100vw;
+  width: 6vw;
   position: fixed;
   z-index: 99;
   top: 0;
-  
-  left: -94vw;
-  transition: all 0.15s cubic-bezier(.17,.67,.28,.27);
+  left: -100vw;
 
-  ${props => props.menuOpen ? css`
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    left: 0;
+  }
+
+  /* left: -94vw; */
+  /* transition: all 0.15s cubic-bezier(.17,.67,.28,.27); */
+
+  /* ${props => props.menuOpen ? css`
     left: 0;
   ` : css`
     color: black;
-  `}
-
-  .menu-wrapper {
-    margin: 0 auto;
-    width: 50%;
-    padding-top: 10vh;
-    color: #fff;
-
-    h2 {
-      font-size: 1rem;
-      margin-bottom: 3vh;
-      color: rgba(255, 255, 255, .8);
-      cursor: default;
-    }
-
-    & > ul {
-      /* display: grid; */
-      /* grid-template-columns: 1fr 1fr 1fr; */
-      /* grid-template-rows: 1fr 1fr 1fr; */
-      /* grid-gap: 20px; */
-    }
-
-    ul {
-      margin: 0;
-      list-style-type: none;
-
-      span {
-        font-weight: bold;
-        font-size: 1rem;
-        color: rgba(255, 255, 255, .8);
-        cursor: default;
-      }
-
-      li {
-        color: #fff;
-
-        ul {
-          li {
-            margin-left: 2vw;
-            a {
-              color: rgba(255, 255, 255, .8);
-              font-size: 1rem;
-
-              &:hover {
-                text-decoration: none;
-                color: rgba(255, 255, 255, 1);
-              }
-
-              &.active {
-                font-weight: bold;
-                border-bottom: 5px solid ${props => props.theme.primaryColor};
-              }
-            }
-          }
-        }
-
-      }
-    }
-  }
-
+  `} */
 `;
 
 export {

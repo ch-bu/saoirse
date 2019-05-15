@@ -23,6 +23,12 @@ function NextPrevious(subunits, location) {
            value.node.frontmatter.unit == markdownCurrent.frontmatter.unit;
   });
 
+  // Get markdown files for current subunit
+  const markdownCurrentSubunits = subunits.filter((value, index, array) => {
+    return value.node.frontmatter.module == parsedURL.id &&
+          value.node.frontmatter.unit == parsedURL.unit;
+  });
+
   // Get subunit before current subunit
   const markdownPrevious = subunits.filter((value, index) => {
     return index == current_index - 1 &&
@@ -31,7 +37,8 @@ function NextPrevious(subunits, location) {
 
   return [markdownPrevious.length === 0 ? undefined : markdownPrevious[0].node, 
           markdownCurrent, 
-          markdownNext.length     === 0 ? undefined : markdownNext[0].node];
+          markdownNext.length     === 0 ? undefined : markdownNext[0].node,
+          markdownCurrentSubunits];
 
 }
 

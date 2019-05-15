@@ -15,6 +15,7 @@ import getNextPrevious from "../components/helper/next_and_previous";
 import { Container, Menu, MarkdownDocument, MainHeading, Chapter, NavigationButtons, SubNav } from '../assets/styled-components/module/module.js';
 
 import { FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
+import { GiRam } from "react-icons/gi";
 
 // Markdown components
 import Video from "../components/video";
@@ -32,7 +33,7 @@ class Module extends Component {
     super(props);
 
     // Filter markdown files for current chapter
-    const [markdownSubunits, markdownFirst] = [...filterMarkdown(this.props.data.allMarkdownRemark.edges, 
+    const [markdownSubunits, markdownFirst, markdownCurrentSubunits] = [...filterMarkdown(this.props.data.allMarkdownRemark.edges, 
                                                           this.props.location)];
     const [markdownPrevious, markdownCurrent, markdownNext] = [...getNextPrevious(markdownSubunits, 
       this.props.location)];
@@ -40,11 +41,12 @@ class Module extends Component {
     this.state = {
       data: this.props.data.allMarkdownRemark.edges,
       markdownSubunits,
+      markdownCurrentSubunits,
       markdownFirst,
       markdownCurrent,
       markdownPrevious,
       markdownNext,
-      menuOpen: true
+      menuOpen: false
     };
 
     this.updateCurrentMarkdown = this.updateCurrentMarkdown.bind(this);
@@ -67,21 +69,34 @@ class Module extends Component {
       <FaArrowCircleRight />
       </Link> : "";
 
+    // Build elements for current subunit
+    const subnav = this.state.markdownCurrentSubunits.map((markdown, index) => {
+      const frontmatter = markdown.node.frontmatter;
+
+      return <Link onClick={() => this.updateCurrentMarkdown("previous")}
+                   key={index}
+                   getProps={this.linkIsActive}
+                   to={`/module?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
+              <GiRam /><br /><span>{frontmatter.title}</span>
+            </Link>
+    });
+
     return (
       <div>
         <Shell>
           <Menu menuOpen={this.state.menuOpen} 
                 onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}> 
-              <div className="menu-wrapper">
+              {/* <div className="menu-wrapper">
                 <h2>Inhaltsverzeichnis</h2>
                 <ul>
                   {this.state.aside}
                 </ul>
-              </div>
+              </div> */}
           </Menu>
           <MainHeading>Chapter {this.state.markdownCurrent.frontmatter.module} <br />
-                  <span>{this.state.markdownCurrent.frontmatter.title}</span></MainHeading>
+                  <span>{this.state.markdownCurrent.frontmatter.unitTitle}</span></MainHeading>
           <SubNav>
+            {subnav}
           </SubNav>
           <Container>
             {/* <Chapter>
@@ -109,13 +124,14 @@ class Module extends Component {
     // I have to make sure that the url has changed before I get the current component
     setTimeout(
       function() {
-        const [markdownPrevious, markdownCurrent, markdownNext] = [...getNextPrevious(this.state.markdownSubunits, 
+        const [markdownPrevious, markdownCurrent, markdownNext, markdownCurrentSubunits] = [...getNextPrevious(this.state.markdownSubunits, 
           this.props.location)];
         
         this.setState({
           markdownCurrent,
           markdownNext,
-          markdownPrevious
+          markdownPrevious,
+          markdownCurrentSubunits
         });
       }
       .bind(this),
@@ -161,7 +177,6 @@ class Module extends Component {
       const subunitLi = [];
         
       for (var unit in unitSorted) {
-        console.log(unitSorted[unit]);
         // Get appropriate type
         subunitLi.push(
           <li key={unitSorted[unit].frontmatter.title}>
