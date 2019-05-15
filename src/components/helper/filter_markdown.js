@@ -11,6 +11,12 @@ function filterMarkdownFiles(data, location) {
     // Filter all markdown files by module_id
     const markdownSubunits = data.filter((value, index, array) => {
       return value.node.frontmatter.module == parsedURL.id;
+    }); 
+
+    // Filter all markdown files by module_id
+    const markdownStarters = markdownSubunits.filter((value) => {
+      return value.node.frontmatter.module == parsedURL.id &&
+             value.node.frontmatter.subunit == 0;
     });
 
     // Get markdown files for current subunit
@@ -25,7 +31,8 @@ function filterMarkdownFiles(data, location) {
              value.node.frontmatter.unit == 0;
     });
 
-    return [markdownSubunits, markdownFirst, markdownCurrentSubunits];
+    return [markdownSubunits, markdownFirst, markdownCurrentSubunits,
+            markdownStarters];
   }
 }
 

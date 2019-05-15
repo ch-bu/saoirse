@@ -12,7 +12,7 @@ import katex from "katex/dist/katex.min.css"
 import styled from 'styled-components'
 import filterMarkdown from "../components/helper/filter_markdown";
 import getNextPrevious from "../components/helper/next_and_previous";
-import { Container, Menu, MarkdownDocument, MainHeading, Chapter, NavigationButtons, SubNav } from '../assets/styled-components/module/module.js';
+import { Container, Menu, MarkdownDocument, MainHeading, Chapter, NavigationButtons, SubNav, Card } from '../assets/styled-components/module/module.js';
 
 import { FaArrowCircleLeft, FaArrowCircleRight, FaBookOpen, FaInfoCircle, FaTasks, FaVideo} from "react-icons/fa";
 import { GiRam } from "react-icons/gi";
@@ -33,10 +33,13 @@ class Module extends Component {
     super(props);
 
     // Filter markdown files for current chapter
-    const [markdownSubunits, markdownFirst, markdownCurrentSubunits] = [...filterMarkdown(this.props.data.allMarkdownRemark.edges, 
+    const [markdownSubunits, markdownFirst, 
+           markdownCurrentSubunits, markdownStarters] = [...filterMarkdown(this.props.data.allMarkdownRemark.edges, 
                                                           this.props.location)];
     const [markdownPrevious, markdownCurrent, markdownNext] = [...getNextPrevious(markdownSubunits, 
       this.props.location)];
+
+    console.log(markdownStarters);
 
     // Image Types for subnavigation
     const markdownIcons = {'instruction': <FaBookOpen />,
@@ -48,6 +51,7 @@ class Module extends Component {
       data: this.props.data.allMarkdownRemark.edges,
       markdownSubunits,
       markdownCurrentSubunits,
+      markdownStarters,
       markdownFirst,
       markdownCurrent,
       markdownPrevious,
@@ -56,8 +60,13 @@ class Module extends Component {
       menuOpen: false
     };
 
+    // Ref
+    this.menuCard = React.createRef();
+
+    // Methods
     this.updateCurrentMarkdown = this.updateCurrentMarkdown.bind(this);
     this.linkIsActive = this.linkIsActive.bind(this);
+    this.showCard = this.showCard.bind(this);
   }
 
   render() {
@@ -79,10 +88,6 @@ class Module extends Component {
     // Build elements for current subunit
     const subnav = this.state.markdownCurrentSubunits.map((markdown, index) => {
       const frontmatter = markdown.node.frontmatter;
-
-      console.log(frontmatter.type);
-      console.log(this.state.markdownIcons);
-
       return <Link onClick={() => this.updateCurrentMarkdown("previous")}
                    key={index}
                    getProps={this.linkIsActive}
@@ -91,18 +96,35 @@ class Module extends Component {
             </Link>
     });
 
+    
+    // Build mainnav for units
+    const units = this.state.markdownStarters.map((markdown, index) => {
+      return <li key={index}>
+                <a href="#" 
+                   chaptername={markdown.node.frontmatter.unitTitle}
+                   onMouseOver={this.showCard}>
+                </a>
+                <span className="dot"></span>
+             </li>
+    });
+
+    console.log(`${this.state.coordY}px`);
+
     return (
       <div>
         <Shell>
+          {this.state.markdownCurrent ? <Helmet>
+            <title>{this.state.markdownCurrent.frontmatter.title}</title>
+          </Helmet> : ""}
           <Menu menuOpen={this.state.menuOpen} 
                 onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}> 
-              {/* <div className="menu-wrapper">
-                <h2>Inhaltsverzeichnis</h2>
-                <ul>
-                  {this.state.aside}
-                </ul>
-              </div> */}
+            <ul>
+              {units}
+            </ul>
           </Menu>
+          <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}
+                color="blue">
+          </Card>
           <MainHeading>Chapter {this.state.markdownCurrent.frontmatter.module} <br />
                   <span>{this.state.markdownCurrent.frontmatter.unitTitle}</span></MainHeading>
           <SubNav>
@@ -134,7 +156,8 @@ class Module extends Component {
     // I have to make sure that the url has changed before I get the current component
     setTimeout(
       function() {
-        const [markdownPrevious, markdownCurrent, markdownNext, markdownCurrentSubunits] = [...getNextPrevious(this.state.markdownSubunits, 
+        const [markdownPrevious, markdownCurrent, markdownNext, 
+               markdownCurrentSubunits] = [...getNextPrevious(this.state.markdownSubunits, 
           this.props.location)];
         
         this.setState({
@@ -150,74 +173,18 @@ class Module extends Component {
   }
 
   componentDidMount() {
-    // *************************************
-    // Build Aside navigation
-    // *************************************
+  }
 
-    // I need to get the units for each subunit
-    const units = {};
-    this.state.markdownSubunits.map(function(unit) {
-      return units[unit.node.frontmatter.unit] = unit.node.frontmatter.unitTitle;
-    });
+  showCard(e) {
+    const anchorTag = e.target;
+    const coordinates = anchorTag.getBoundingClientRect();
+    // console.log(this.menuCard);
 
-    // Get li of subunits
-    var unitLi = [];
-  
-    // Generate li tags for aside
-    for (var unit in units) {
-      // Get all relevant subunits
-      let unitByKey = this.state.markdownSubunits.filter((subunit) => {
-        return subunit.node.frontmatter.unit == unit;
-      });
-
-      // Make Dictionary of units with index as key
-      let unitSorted = {};
-      unitByKey.map((unit) => {
-        unitSorted[unit.node.frontmatter.subunit] = {frontmatter: {
-                                                    title: unit.node.frontmatter.title,
-                                                    module: unit.node.frontmatter.module,
-                                                    unitTitle: unit.node.frontmatter.unitTitle,
-                                                    unit: unit.node.frontmatter.unit,
-                                                    subunit: unit.node.frontmatter.subunit},
-                                                  type: unit.node.frontmatter.type,
-                                                  htmlAst:  unit.node.htmlAst};
-      });
-
-      // Unit li
-      const subunitLi = [];
-        
-      for (var unit in unitSorted) {
-        // Get appropriate type
-        subunitLi.push(
-          <li key={unitSorted[unit].frontmatter.title}>
-            <Link key={unit} 
-                  onClick={this.updateCurrentMarkdown}
-                  to={`/module?id=` + unitSorted[unit].frontmatter.module + 
-                        '&unit='      + unitSorted[unit].frontmatter.unit +
-                        '&subunit='         + unitSorted[unit].frontmatter.subunit}
-                  getProps={this.linkIsActive}>
-                {unitSorted[unit].frontmatter.title}  
-            </Link>
-          </li>
-        );
-      } 
-
-      unitLi.push(
-        <li id={unitSorted[unit].frontmatter.unitTitle == "Problem" ? "problem" : ""}
-              key={unitSorted[unit].frontmatter.unitTitle}>
-          <span>{unitSorted[unit].frontmatter.unitTitle}</span>
-          <ul className="menu">
-            {subunitLi}
-          </ul>
-        </li>
-        );
-    }
-
-    // console.log(unitLi);
-  
     this.setState({
-      aside: unitLi
-    });
+      coordX: coordinates["x"] + 100,
+      coordY: coordinates["y"]
+    })
+
   }
 
   linkIsActive(e) {

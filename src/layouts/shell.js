@@ -32,7 +32,7 @@ const theme = {
   colorIcons: "rgba(255, 255, 255, .7)",
   colorIconsHover: "rgba(255, 255, 255, .9)",
   colorIconsMobile: "rgba(0, 0, 0, .7)",
-  primaryColor: "#3690ff",
+  primaryColor: "rgb(166, 97, 194)",
   secondaryColor: "#ffc600",
   topNavigationBackgroundColor: "#20232a",
   topNavigationBorderBottom: "#20232a",

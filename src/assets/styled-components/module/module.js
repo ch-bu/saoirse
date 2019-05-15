@@ -74,15 +74,15 @@ const SubNav = styled.div`
     flex: 1;
     font-size: 0.8rem;
     text-decoration:none;
+    transition: color 0.2s;
 
     &:hover {
-      color: ${props => props.theme.primaryColor};
-
+      /* color: ${props => props.theme.primaryColor}; */
+      color: rgba(0, 0, 0, .6);
     }
   }
 
   span {
-    letter-spacing: 1px;
     display: none;
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
@@ -91,7 +91,8 @@ const SubNav = styled.div`
   }
 
   .active {
-    color: ${props => props.theme.primaryColor};
+    /* color: ${props => props.theme.primaryColor}; */
+    color: rgba(0, 0, 0, .6);
   }
 `;
 
@@ -361,19 +362,124 @@ const Menu = styled.div`
   z-index: 99;
   top: 0;
   left: -100vw;
+  padding: 5vh;
+  display: flex;
+  justify-content: center;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     left: 0;
   }
 
-  /* left: -94vw; */
-  /* transition: all 0.15s cubic-bezier(.17,.67,.28,.27); */
+  ul {
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAEUlEQVQYV2O4xmf8nwFMwAEAPggELf4HomYAAAAASUVORK5CYII=) repeat;
+
+    li {
+      position: relative;
+
+      a {
+        position: absolute;
+        top: -25px;
+        left: -25px;
+        width: 50px;
+        height: 80px;
+        /* background-color: blue; */
+
+        &:hover + span:before {
+          transform: scale(.625);
+        }
+      }
+    }
+
+    span.dot {
+        width: 50px;
+        left: 50%;
+        position: absolute;
+        width: 25px;
+        left: 13px;
+        top: 0;
+        bottom: 0;
+        margin: -10px -25px;
+        cursor: pointer;
+
+        &:before {
+          /* Das sind die Punkte */
+          background: #d60e33;
+          border-radius: 50%;
+          content: "";
+          display: block;
+          height: 16px;
+          left: 50%;
+          margin: 0 -8px;
+          position: absolute;
+          top: 0px;
+          transform: scale(.625);
+          transition: transform .5s cubic-bezier(0.5, 0, 0.2, 1);
+          width: 16px;
+        }
+
+        &:after {
+          /* Das sind die runden Kreise */
+          content: "";
+          display: block;
+          position: absolute;
+          left: 50%;
+          top: 0px;
+          margin: -5px -13px;
+          height: 26px;
+          border-radius: 50%;
+          width: 26px;
+          border: 1px solid #d60e33;
+          transition: transform .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transform: scale(.68462);
+        }
+      }
+  }
 
   /* ${props => props.menuOpen ? css`
     left: 0;
   ` : css`
     color: black;
   `} */
+`;
+
+const Card = styled.div`
+  position: fixed;
+  left: 400px;
+  z-index: 200;
+  background-color: #1f232b;
+  opacity: .9;
+  width: 400px;
+  /* top: 40vh; */
+  top: ${props => props.coordY};
+  left: ${props => props.coordX};
+  height: 87px;
+  transition: all 0.2s;
+
+  /* ${props => props.menuOpen ? css`
+    left: 0;
+  ` : css`
+    color: black;
+  `} */
+
+  &:before {
+    border-color: transparent #1f232b transparent transparent;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    content: "";
+    display: block;
+    height: 0;
+    left: -10px;
+    margin-top: -10px;
+    position: absolute;
+    top: 50%;
+    width: 0;
+  }
 `;
 
 export {
@@ -383,6 +489,7 @@ export {
   NavigationButtons,
   NavigationBottom,
   Menu,
+  Card,
   SubNav,
   MainHeading
 }
