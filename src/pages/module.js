@@ -122,8 +122,8 @@ class Module extends Component {
               {units}
             </ul>
           </Menu>
-          <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}
-                color="blue">
+          <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}>
+            <h3>Chapter <br /> <span>{this.state.cardTitle}</span></h3>
           </Card>
           <MainHeading>Chapter {this.state.markdownCurrent.frontmatter.module} <br />
                   <span>{this.state.markdownCurrent.frontmatter.unitTitle}</span></MainHeading>
@@ -178,11 +178,11 @@ class Module extends Component {
   showCard(e) {
     const anchorTag = e.target;
     const coordinates = anchorTag.getBoundingClientRect();
-    // console.log(this.menuCard);
 
     this.setState({
       coordX: coordinates["x"] + 100,
-      coordY: coordinates["y"]
+      coordY: coordinates["y"],
+      cardTitle: anchorTag.getAttribute("chaptername")
     })
 
   }

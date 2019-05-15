@@ -322,10 +322,8 @@ const NavigationBottom = styled.div`
   display: flex; 
   flex-wrap: no-wrap;
   width: 100%;
-  /* flex-direction: row; */
   overflow-x: scroll;
   justify-content: space-between;
-  /* overflow-x: hidden; */
 
   &::-webkit-scrollbar {
       display: none;
@@ -363,6 +361,7 @@ const Menu = styled.div`
   top: 0;
   left: -100vw;
   padding: 5vh;
+  padding-top: 15vh;
   display: flex;
   justify-content: center;
 
@@ -376,18 +375,22 @@ const Menu = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: stretch;
     width: 2px;
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAEUlEQVQYV2O4xmf8nwFMwAEAPggELf4HomYAAAAASUVORK5CYII=) repeat;
 
     li {
       position: relative;
+      height: 100%;
 
       a {
         position: absolute;
-        top: -25px;
+        top: -50%;
         left: -25px;
-        width: 50px;
-        height: 80px;
+        width: 200px;
+        /* height: 80px; */
+        height: 105%;
+        z-index: 150;
         /* background-color: blue; */
 
         &:hover + span:before {
@@ -440,12 +443,6 @@ const Menu = styled.div`
         }
       }
   }
-
-  /* ${props => props.menuOpen ? css`
-    left: 0;
-  ` : css`
-    color: black;
-  `} */
 `;
 
 const Card = styled.div`
@@ -460,12 +457,19 @@ const Card = styled.div`
   left: ${props => props.coordX};
   height: 87px;
   transition: all 0.2s;
+  display: flex;
+  padding-left: 20px;
+  justify-content: left;
+  align-items: center;
 
-  /* ${props => props.menuOpen ? css`
-    left: 0;
-  ` : css`
-    color: black;
-  `} */
+  h3 {
+    color: rgba(255, 255, 255, .6);
+    margin: 0;
+
+    span {
+      color: rgba(255, 255, 255, .9);
+    }
+  }
 
   &:before {
     border-color: transparent #1f232b transparent transparent;
