@@ -14,7 +14,7 @@ import filterMarkdown from "../components/helper/filter_markdown";
 import getNextPrevious from "../components/helper/next_and_previous";
 import { Container, Menu, MarkdownDocument, MainHeading, Chapter, NavigationButtons, SubNav } from '../assets/styled-components/module/module.js';
 
-import { FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
+import { FaArrowCircleLeft, FaArrowCircleRight, FaBookOpen, FaInfoCircle, FaTasks, FaVideo} from "react-icons/fa";
 import { GiRam } from "react-icons/gi";
 
 // Markdown components
@@ -37,6 +37,12 @@ class Module extends Component {
                                                           this.props.location)];
     const [markdownPrevious, markdownCurrent, markdownNext] = [...getNextPrevious(markdownSubunits, 
       this.props.location)];
+
+    // Image Types for subnavigation
+    const markdownIcons = {'instruction': <FaBookOpen />,
+    'question': <FaTasks />,
+    'video': <FaVideo />,
+    'information': <FaInfoCircle />};
     
     this.state = {
       data: this.props.data.allMarkdownRemark.edges,
@@ -46,6 +52,7 @@ class Module extends Component {
       markdownCurrent,
       markdownPrevious,
       markdownNext,
+      markdownIcons,
       menuOpen: false
     };
 
@@ -73,11 +80,14 @@ class Module extends Component {
     const subnav = this.state.markdownCurrentSubunits.map((markdown, index) => {
       const frontmatter = markdown.node.frontmatter;
 
+      console.log(frontmatter.type);
+      console.log(this.state.markdownIcons);
+
       return <Link onClick={() => this.updateCurrentMarkdown("previous")}
                    key={index}
                    getProps={this.linkIsActive}
                    to={`/module?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
-              <GiRam /><br /><span>{frontmatter.title}</span>
+               {this.state.markdownIcons[frontmatter.type]}<br /><span>{frontmatter.title}</span>
             </Link>
     });
 

@@ -92,14 +92,13 @@ const SubNav = styled.div`
 
   .active {
     color: ${props => props.theme.primaryColor};
-    /* color: rgba(0, 0, 0, .75); */
-    /* font-weight: bold; */
   }
 `;
 
 const MarkdownDocument = styled.div`
   width: 100%;
   padding-top: 20vh;
+  padding-bottom: 10vh;
 
   & > div {
     width: 90%;
