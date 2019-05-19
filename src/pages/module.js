@@ -39,8 +39,6 @@ class Module extends Component {
     const [markdownPrevious, markdownCurrent, markdownNext] = [...getNextPrevious(markdownSubunits, 
       this.props.location)];
 
-    console.log(markdownStarters);
-
     // Image Types for subnavigation
     const markdownIcons = {'instruction': <FaBookOpen />,
     'question': <FaTasks />,
@@ -75,14 +73,14 @@ class Module extends Component {
   render() {
     // Generate Links
     const PreviousLink = this.state.markdownPrevious ? <Link 
-      onClick={() => this.updateCurrentMarkdown("previous")}
+      onClick={() => this.updateCurrentMarkdown()}
       className="previous"
       to={`/module?id=${this.state.markdownPrevious.frontmatter.module}&unit=${this.state.markdownPrevious.frontmatter.unit}&subunit=${this.state.markdownPrevious.frontmatter.subunit}`}>
       <FaArrowCircleLeft />
     </Link> : "";
 
     const NextLink = this.state.markdownNext ? <Link 
-      onClick={() => this.updateCurrentMarkdown("next")}
+      onClick={() => this.updateCurrentMarkdown()}
       className="next"
       to={`/module?id=${this.state.markdownNext.frontmatter.module}&unit=${this.state.markdownNext.frontmatter.unit}&subunit=${this.state.markdownNext.frontmatter.subunit}`}>
       <FaArrowCircleRight />
@@ -91,7 +89,7 @@ class Module extends Component {
     // Build elements for current subunit
     const subnav = this.state.markdownCurrentSubunits.map((markdown, index) => {
       const frontmatter = markdown.node.frontmatter;
-      return <Link onClick={() => this.updateCurrentMarkdown("previous")}
+      return <Link onClick={() => this.updateCurrentMarkdown()}
                    key={index}
                    getProps={this.linkIsActive}
                    to={`/module?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
@@ -99,16 +97,16 @@ class Module extends Component {
             </Link>
     });
 
-    console.log(this.state.mouseOverCard);
-    
     // Build mainnav for units
     const units = this.state.markdownStarters.map((markdown, index) => {
       const node = markdown.node.frontmatter;
+      const unitActive = node.unit === this.state.markdownCurrent.frontmatter.unit;
+
       return <li key={index}>
                 <Link key={index}
                    onMouseOut={this.mouseOutCard}
                    onMouseOver={this.showCard}
-                   getProps={this.linkIsActive}
+                   className={unitActive ? "active" : ""}
                    onClick={() => this.updateCurrentMarkdown()}
                    to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
                    chaptername={node.unitTitle}>
@@ -162,14 +160,14 @@ class Module extends Component {
     )
   }
 
-  updateCurrentMarkdown(direction) {
+  updateCurrentMarkdown() {
     // I have to make sure that the url has changed before I get the current component
     setTimeout(
       function() {
         const [markdownPrevious, markdownCurrent, markdownNext, 
                markdownCurrentSubunits] = [...getNextPrevious(this.state.markdownSubunits, 
           this.props.location)];
-        
+
         this.setState({
           markdownCurrent,
           markdownNext,
@@ -192,6 +190,7 @@ class Module extends Component {
   showCard(e) {
     const anchorTag = e.target;
     const coordinates = anchorTag.getBoundingClientRect();
+    console.log(anchorTag);
 
     // Only update state when mouse is indeed on another link
     if (coordinates["y"] !== this.state.coordY) {

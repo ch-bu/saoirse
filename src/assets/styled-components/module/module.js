@@ -30,7 +30,7 @@ const MainHeading = styled.div`
   text-decoration: none;
   border: none;
   letter-spacing: 1px;
-  border-bottom: 1px solid rgb(236, 236, 236);
+  border-bottom: 1px solid rgba(236, 236, 236, .5);
   cursor: default;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
@@ -392,9 +392,9 @@ const Menu = styled.div`
         height: 105%;
         z-index: 150;
 
-        &:hover + span:before {
+        /* &:hover + span:before {
           transform: scale(.625);
-        }
+        } */
 
         &.active + span:after {
           margin: -5px -13px;
