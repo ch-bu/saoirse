@@ -376,7 +376,7 @@ const Menu = styled.div`
     align-items: stretch;
     width: 1px;
     background: ${props => props.theme.primaryColor};
-    opacity: .9;
+    /* opacity: .9; */
     
     li {
       position: relative;
@@ -389,10 +389,6 @@ const Menu = styled.div`
         width: 100px;
         height: 105%;
         z-index: 150;
-
-        /* &:hover + span:before {
-          transform: scale(.625);
-        } */
 
         &.active + span:after {
           margin: -5px -13px;

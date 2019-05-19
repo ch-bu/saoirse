@@ -40,10 +40,12 @@ class Module extends Component {
       this.props.location)];
 
     // Image Types for subnavigation
-    const markdownIcons = {'instruction': <FaBookOpen />,
-    'question': <FaTasks />,
-    'video': <FaVideo />,
-    'information': <FaInfoCircle />};
+    const markdownIcons = {
+      'instruction': <FaBookOpen />,
+      'question': <FaTasks />,
+      'video': <FaVideo />,
+      'information': <FaInfoCircle />
+    };
     
     this.state = {
       data: this.props.data.allMarkdownRemark.edges,
