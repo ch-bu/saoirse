@@ -12,7 +12,7 @@ import katex from "katex/dist/katex.min.css"
 import styled from 'styled-components'
 import filterMarkdown from "../components/helper/filter_markdown";
 import getNextPrevious from "../components/helper/next_and_previous";
-import { Container, Menu, MarkdownDocument, MainHeading, Chapter, NavigationButtons, SubNav, Card } from '../assets/styled-components/module/module.js';
+import { Container, Menu, MarkdownDocument, MainHeading, VideoContainer, NavigationButtons, SubNav, Card } from '../assets/styled-components/module/module.js';
 
 import { FaArrowCircleLeft, FaArrowCircleRight, FaBookOpen, FaArrowLeft, FaInfoCircle, FaTasks, FaVideo} from "react-icons/fa";
 
@@ -150,9 +150,10 @@ class Module extends Component {
               </div>
             </Chapter> */}
             <MarkdownDocument>
+              {this.state.markdownCurrent.frontmatter.type === "video" ? <VideoContainer>{renderAst(this.state.markdownCurrent.htmlAst)}</VideoContainer> : 
               <div>
                 {renderAst(this.state.markdownCurrent.htmlAst)}
-              </div>
+              </div>}
             </MarkdownDocument>
             <NavigationButtons>
               {PreviousLink}

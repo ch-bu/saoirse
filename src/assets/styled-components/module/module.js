@@ -16,7 +16,8 @@ const MainHeading = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  height: 70px;
+  /* height: 70px; */
+  height: 7vh;
   background-color: #fff;
   width: 100vw;
   margin: 0 auto;
@@ -48,10 +49,12 @@ const MainHeading = styled.div`
 
 const SubNav = styled.div`
   position: fixed;
-  top: 70px;
+  /* top: 70px; */
+  top: 7vh;
   left: 0;
   width: 100vw;
-  min-height: 30px;
+  /* min-height: 30px; */
+  min-height: 7vh;
   margin-left: 0vw;
   background-color: #fff;
   border-bottom: 1px solid rgb(236, 236, 236);
@@ -97,11 +100,13 @@ const SubNav = styled.div`
 
 const MarkdownDocument = styled.div`
   width: 100%;
-  padding-top: 20vh;
-  padding-bottom: 10vh;
+  min-height: 80vh;
+  padding-top: 14vh;
 
   & > div {
     width: 90%;
+    padding-bottom: 20vh;
+    padding-top: 7vh;
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
       width: 60%;
@@ -226,6 +231,23 @@ const MarkdownDocument = styled.div`
 
   .gatsby-resp-image-image {
     box-shadow: 5px 5px 25px 0 rgba(46,61,73,.4);
+  }
+`;
+
+const VideoContainer = styled.div`
+  position: relative;
+  top: 0;
+  height: 86vh;
+  width: 100% !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+  overflow-y: hidden;
+
+  video, iframe {
+    position: relative;
+    max-height: 86vh;
+    width: 100%;
+    z-index: 100;
   }
 `;
 
@@ -358,10 +380,6 @@ const Menu = styled.div`
   z-index: 99;
   top: 0;
   left: -100vw;
-  /* padding: 5vh; */
-  /* padding-top: 15vh; */
-  /* display: flex;
-  justify-content: center; */
   display: grid;
   grid-template-rows: 10vh 80vh 10vh;
   grid-template-columns: 1fr 2fr;
@@ -542,6 +560,7 @@ export {
   NavigationButtons,
   NavigationBottom,
   Menu,
+  VideoContainer,
   Card,
   SubNav,
   MainHeading
