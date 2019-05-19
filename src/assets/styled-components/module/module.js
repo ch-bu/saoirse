@@ -91,7 +91,6 @@ const SubNav = styled.div`
   }
 
   .active {
-    /* color: ${props => props.theme.primaryColor}; */
     color: rgba(0, 0, 0, .6);
   }
 `;
@@ -235,7 +234,6 @@ const Chapter = styled.div`
   height: 100%;
   z-index: 98;
   width: 100%;
-  /* background-image: linear-gradient(to right top, #3690ff, #00b8ff, #00d4e3, #00e68a, #a8eb12); */
   display: flex;
   justify-content: center;
   background-color: ${props => props.theme.primaryColor};
@@ -401,6 +399,12 @@ const Menu = styled.div`
           height: 26px;
           width: 26px;
           transform: scale(.825);
+        }
+
+        &.active + span:before {
+          height: 20px;
+          width: 20px;
+          margin: -2px -10px;
         }
       }
     }
