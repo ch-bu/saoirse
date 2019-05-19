@@ -358,21 +358,59 @@ const Menu = styled.div`
   z-index: 99;
   top: 0;
   left: -100vw;
-  padding: 5vh;
-  padding-top: 15vh;
-  display: flex;
-  justify-content: center;
+  /* padding: 5vh; */
+  /* padding-top: 15vh; */
+  /* display: flex;
+  justify-content: center; */
+  display: grid;
+  grid-template-rows: 10vh 80vh 10vh;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: ". ."
+                       "nav nav"
+                       "back back";
+
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     left: 0;
   }
 
+  div.modules {
+    grid-area: back;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    svg {
+      color: rgba(255, 255, 255, .7);
+      font-size: 1.8rem;
+
+      &:hover {
+        color: rgba(255, 255, 255, .9);
+      }
+    }
+
+  }
+
+  div.chapters {
+    grid-area: chapters;
+    transform: rotate(180deg);
+    letter-spacing: 1px;
+    writing-mode:vertical-rl; 
+    align-self: center;
+    justify-self: right;
+    color: rgba(255, 255, 255, .7);
+    cursor: default;
+  }
+
   ul {
+    grid-area: nav;
     margin: 0;
     list-style-type: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    justify-self: center;
     align-items: stretch;
     width: 1px;
     background: ${props => props.theme.primaryColor};

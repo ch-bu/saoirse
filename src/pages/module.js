@@ -14,8 +14,7 @@ import filterMarkdown from "../components/helper/filter_markdown";
 import getNextPrevious from "../components/helper/next_and_previous";
 import { Container, Menu, MarkdownDocument, MainHeading, Chapter, NavigationButtons, SubNav, Card } from '../assets/styled-components/module/module.js';
 
-import { FaArrowCircleLeft, FaArrowCircleRight, FaBookOpen, FaInfoCircle, FaTasks, FaVideo} from "react-icons/fa";
-import { GiRam } from "react-icons/gi";
+import { FaArrowCircleLeft, FaArrowCircleRight, FaBookOpen, FaArrowLeft, FaInfoCircle, FaTasks, FaVideo} from "react-icons/fa";
 
 // Markdown components
 import Video from "../components/video";
@@ -129,6 +128,8 @@ class Module extends Component {
             <ul>
               {units}
             </ul>
+            <div className="modules"><Link to="modules/"><FaArrowLeft /></Link></div>
+            {/* <div className="chapters"><span>Chapters</span></div> */}
           </Menu>
           <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}
                 showCard={this.state.showCard}
