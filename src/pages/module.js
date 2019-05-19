@@ -108,6 +108,7 @@ class Module extends Component {
                 <Link key={index}
                    onMouseOut={this.mouseOutCard}
                    onMouseOver={this.showCard}
+                   getProps={this.linkIsActive}
                    onClick={() => this.updateCurrentMarkdown()}
                    to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
                    chaptername={node.unitTitle}>
@@ -192,12 +193,15 @@ class Module extends Component {
     const anchorTag = e.target;
     const coordinates = anchorTag.getBoundingClientRect();
 
-    this.setState({
-      coordX: coordinates["x"] + 100,
-      coordY: coordinates["y"],
-      cardTitle: anchorTag.getAttribute("chaptername"),
-      mouseOverCard: true,
-    })
+    // Only update state when mouse is indeed on another link
+    if (coordinates["y"] !== this.state.coordY) {
+      this.setState({
+        coordX: coordinates["x"] + 100,
+        coordY: coordinates["y"] + 20,
+        cardTitle: anchorTag.getAttribute("chaptername"),
+        mouseOverCard: true,
+      });
+    }
   }
 
   linkIsActive(e) {

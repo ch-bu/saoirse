@@ -376,9 +376,10 @@ const Menu = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    width: 2px;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAEUlEQVQYV2O4xmf8nwFMwAEAPggELf4HomYAAAAASUVORK5CYII=) repeat;
-
+    width: 1px;
+    background: ${props => props.theme.primaryColor};
+    opacity: .9;
+    
     li {
       position: relative;
       height: 100%;
@@ -388,13 +389,18 @@ const Menu = styled.div`
         top: -50%;
         left: -25px;
         width: 100px;
-        /* height: 80px; */
         height: 105%;
         z-index: 150;
-        /* background-color: blue; */
 
         &:hover + span:before {
           transform: scale(.625);
+        }
+
+        &.active + span:after {
+          margin: -5px -13px;
+          height: 26px;
+          width: 26px;
+          transform: scale(.825);
         }
       }
     }
@@ -412,7 +418,7 @@ const Menu = styled.div`
 
         &:before {
           /* Das sind die Punkte */
-          background: #d60e33;
+          background: ${props => props.theme.primaryColor};
           border-radius: 50%;
           content: "";
           display: block;
@@ -433,15 +439,15 @@ const Menu = styled.div`
           position: absolute;
           left: 50%;
           top: 0px;
-          margin: -5px -13px;
-          height: 26px;
+          margin: 0px -8px;
+          height: 16px;
           border-radius: 50%;
-          width: 26px;
-          border: 1px solid #d60e33;
+          width: 16px;
+          border: 1px solid ${props => props.theme.primaryColor};
           transition: transform .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           transform: scale(.68462);
-        }
       }
+    }
   }
 `;
 
