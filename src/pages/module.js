@@ -109,7 +109,8 @@ class Module extends Component {
                    className={unitActive ? "active" : ""}
                    onClick={() => this.updateCurrentMarkdown()}
                    to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
-                   chaptername={node.unitTitle}>
+                   chaptername={node.unitTitle}
+                   chapternumber={node.unit}>
                 </Link>
                 <span className="dot"></span>
              </li>
@@ -131,9 +132,9 @@ class Module extends Component {
                 showCard={this.state.showCard}
                 mouseOverCard={this.state.mouseOverCard}
                 >
-            <h3>Chapter <br /> <span>{this.state.cardTitle}</span></h3>
+            <h3>Chapter {this.state.cardNumber}<br /> <span>{this.state.cardTitle}</span></h3>
           </Card>
-          <MainHeading>Chapter {this.state.markdownCurrent.frontmatter.module} <br />
+          <MainHeading>Chapter {this.state.markdownCurrent.frontmatter.unit} <br />
                   <span>{this.state.markdownCurrent.frontmatter.unitTitle}</span></MainHeading>
           <SubNav>
             {subnav}
@@ -190,7 +191,6 @@ class Module extends Component {
   showCard(e) {
     const anchorTag = e.target;
     const coordinates = anchorTag.getBoundingClientRect();
-    console.log(anchorTag);
 
     // Only update state when mouse is indeed on another link
     if (coordinates["y"] !== this.state.coordY) {
@@ -198,6 +198,7 @@ class Module extends Component {
         coordX: coordinates["x"] + 100,
         coordY: coordinates["y"] + 20,
         cardTitle: anchorTag.getAttribute("chaptername"),
+        cardNumber: anchorTag.getAttribute("chapternumber"),
         mouseOverCard: true,
       });
     }
