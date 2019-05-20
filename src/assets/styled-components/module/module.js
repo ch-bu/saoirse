@@ -482,7 +482,7 @@ const Menu = styled.div`
 
       &:after {
         content: "";
-        background: ${props => props.theme.primaryColor};
+        border-left: 1px dotted ${props => props.theme.primaryColor};
         height: 100%;
         width: 1px;
         position: absolute;
