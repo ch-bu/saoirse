@@ -60,7 +60,7 @@ const SubNav = styled.div`
   border-bottom: 1px solid rgb(236, 236, 236);
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   padding: 5px;
   opacity: 0.96;
   z-index: 92;
@@ -168,6 +168,7 @@ const MarkdownDocument = styled.div`
 
   iframe {
     width: 100%;
+    padding: 2vh 0;
   }
 
   video {
@@ -246,8 +247,20 @@ const VideoContainer = styled.div`
   video, iframe {
     position: relative;
     max-height: 86vh;
+    height: 100%;
     width: 100%;
     z-index: 100;
+    padding: 0 !important;
+  }
+
+  div {
+    position: relative;
+    height: 100%;
+  }
+
+  .gatsby-resp-iframe-wrapper {
+    position: relative;
+    height: 100% !important; 
   }
 `;
 
@@ -397,17 +410,23 @@ const Menu = styled.div`
     display: flex;
     justify-content: center;
     align-content: center;
-    align-items: center;
+    align-items: stretch;
 
-    svg {
-      color: rgba(255, 255, 255, .7);
-      font-size: 1.8rem;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
 
-      &:hover {
+      &:hover > svg {
         color: rgba(255, 255, 255, .9);
       }
-    }
 
+      svg {
+        color: rgba(255, 255, 255, .7);
+        font-size: 1.8rem;
+      }
+    }
   }
 
   div.chapters {
@@ -443,8 +462,9 @@ const Menu = styled.div`
         top: -50%;
         left: -25px;
         width: 100px;
-        height: 105%;
+        height: 100%;
         z-index: 150;
+
 
         &.active + span:after {
           margin: -5px -13px;

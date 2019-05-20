@@ -128,7 +128,7 @@ class Module extends Component {
             <ul>
               {units}
             </ul>
-            <div className="modules"><Link to="modules/"><FaArrowLeft /></Link></div>
+            <div className="modules"><Link to="/modules"><FaArrowLeft /></Link></div>
             {/* <div className="chapters"><span>Chapters</span></div> */}
           </Menu>
           <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}
@@ -193,14 +193,18 @@ class Module extends Component {
   }
 
   showCard(e) {
+    console.log(e.target);
     const anchorTag = e.target;
     const coordinates = anchorTag.getBoundingClientRect();
+    console.log(coordinates);
 
     // Only update state when mouse is indeed on another link
     if (coordinates["y"] !== this.state.coordY) {
       this.setState({
         coordX: coordinates["x"] + 100,
-        coordY: coordinates["y"] + 20,
+        // The card is 82 px high. This math is to adjust the card to 
+        // the middle of the navigation
+        coordY: coordinates["y"] + coordinates["height"] / 2 - (82 / 2),
         cardTitle: anchorTag.getAttribute("chaptername"),
         cardNumber: anchorTag.getAttribute("chapternumber"),
         mouseOverCard: true,
