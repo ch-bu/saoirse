@@ -87,41 +87,61 @@ class Module extends Component {
       <FaArrowCircleRight />
       </Link> : "";
 
-    // Build elements for current subunit
-    const subnav = this.state.markdownCurrentSubunits.map((markdown, index) => {
-      const frontmatter = markdown.node.frontmatter;
-      return <Link onClick={() => this.updateCurrentMarkdown()}
-                   key={index}
-                   getProps={this.linkIsActive}
-                   to={`/module?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
-               {this.state.markdownIcons[frontmatter.type]}<br /><span>{frontmatter.title}</span>
-            </Link>
-    });
+    let subnav = undefined;
+    if (this.state.markdownCurrentSubunits) {
+      // Build elements for current subunit
+      subnav = this.state.markdownCurrentSubunits.map((markdown, index) => {
+        const frontmatter = markdown.node.frontmatter;
+        return <Link onClick={() => this.updateCurrentMarkdown()}
+                    key={index}
+                    getProps={this.linkIsActive}
+                    to={`/module?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
+                {this.state.markdownIcons[frontmatter.type]}<br /><span>{frontmatter.title}</span>
+              </Link>
+      });
+    }
 
     // Build mainnav for units
-    const units = this.state.markdownStarters.map((markdown, index) => {
-      const node = markdown.node.frontmatter;
-      const unitActive = node.unit === this.state.markdownCurrent.frontmatter.unit;
+    let units = undefined;
+    if (this.state.markdownCurrent && this.state.markdownCurrentSubunits) { 
+      if (this.state.markdownCurrent.length !== 0 ) {
+        units = this.state.markdownStarters.map((markdown, index) => {
+          const node = markdown.node.frontmatter;
+          const unitActive = node.unit === this.state.markdownCurrent.frontmatter.unit;
+    
+          return <li key={index}>
+                    <Link key={index}
+                       onMouseOut={this.mouseOutCard}
+                       onMouseOver={this.showCard}
+                       className={unitActive ? "active" : ""}
+                       onClick={() => this.updateCurrentMarkdown()}
+                       to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
+                       chaptername={node.unitTitle}
+                       chapternumber={node.unit}>
+                    </Link>
+                    <span className="dot"></span>
+                 </li>
+        });
+      }  
+    }
 
-      return <li key={index}>
-                <Link key={index}
-                   onMouseOut={this.mouseOutCard}
-                   onMouseOver={this.showCard}
-                   className={unitActive ? "active" : ""}
-                   onClick={() => this.updateCurrentMarkdown()}
-                   to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
-                   chaptername={node.unitTitle}
-                   chapternumber={node.unit}>
-                </Link>
-                <span className="dot"></span>
-             </li>
-    });
+    // Generate Video?
+    let mainComponent;
+    if (this.state.markdownCurrent) {
+      if (this.state.markdownCurrent.length !== 0) {
+        if (this.state.markdownCurrent.frontmatter.type === "video") {
+          mainComponent = <VideoContainer>{renderAst(this.state.markdownCurrent.htmlAst)}</VideoContainer>;
+        } else {
+          mainComponent = renderAst(this.state.markdownCurrent.htmlAst);
+        }
+      }
+    }
 
     return (
       <div>
         <Shell>
           {this.state.markdownCurrent ? <Helmet>
-            <title>{this.state.markdownCurrent.frontmatter.title}</title>
+            <title>{this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.title : ""}</title>
           </Helmet> : ""}
           <Menu menuOpen={this.state.menuOpen} 
                 onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}> 
@@ -129,7 +149,6 @@ class Module extends Component {
               {units}
             </ul>
             <div className="modules"><Link to="/modules"><FaArrowLeft /></Link></div>
-            {/* <div className="chapters"><span>Chapters</span></div> */}
           </Menu>
           <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}
                 showCard={this.state.showCard}
@@ -137,23 +156,14 @@ class Module extends Component {
                 >
             <h3>Chapter {this.state.cardNumber}<br /> <span>{this.state.cardTitle}</span></h3>
           </Card>
-          <MainHeading>Chapter {this.state.markdownCurrent.frontmatter.unit} <br />
-                  <span>{this.state.markdownCurrent.frontmatter.unitTitle}</span></MainHeading>
+          <MainHeading>Chapter {this.state.markdownCurrent ? (this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.unit : "") : ""}<br />
+                  <span>{this.state.markdownCurrent ? (this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.unitTitle : "") : ""}</span></MainHeading>
           <SubNav>
             {subnav}
           </SubNav>
           <Container>
-            {/* <Chapter>
-              <div>
-                <span>Chapter {this.state.markdownCurrent.frontmatter.module}</span>
-                <h2>{this.state.markdownCurrent.frontmatter.unitTitle}</h2>
-              </div>
-            </Chapter> */}
             <MarkdownDocument>
-              {this.state.markdownCurrent.frontmatter.type === "video" ? <VideoContainer>{renderAst(this.state.markdownCurrent.htmlAst)}</VideoContainer> : 
-              <div>
-                {renderAst(this.state.markdownCurrent.htmlAst)}
-              </div>}
+              {mainComponent}
             </MarkdownDocument>
             <NavigationButtons>
               {PreviousLink}
@@ -193,10 +203,8 @@ class Module extends Component {
   }
 
   showCard(e) {
-    console.log(e.target);
     const anchorTag = e.target;
     const coordinates = anchorTag.getBoundingClientRect();
-    console.log(coordinates);
 
     // Only update state when mouse is indeed on another link
     if (coordinates["y"] !== this.state.coordY) {
