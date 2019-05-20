@@ -449,8 +449,8 @@ const Menu = styled.div`
     justify-content: space-between;
     justify-self: center;
     align-items: stretch;
-    width: 1px;
-    background: ${props => props.theme.primaryColor};
+    /* width: 1px; */
+    /* background: ${props => props.theme.primaryColor}; */
     /* opacity: .9; */
     
     li {
@@ -478,6 +478,20 @@ const Menu = styled.div`
           width: 20px;
           margin: -2px -10px;
         }
+      }
+
+      &:after {
+        content: "";
+        background: ${props => props.theme.primaryColor};
+        height: 100%;
+        width: 1px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      &:last-child:after {
+        height: 0px;
       }
     }
 
