@@ -23,7 +23,7 @@ const MainHeading = styled.div`
   margin: 0 auto;
   z-index: 98;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: normal;
   text-transform: uppercase;
   padding: 1vh 0;
@@ -34,17 +34,24 @@ const MainHeading = styled.div`
   border-bottom: 1px solid rgba(236, 236, 236, .5);
   cursor: default;
 
-  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    width: 94vw;
-    margin-left: 6vw;
-  }
-
   span {
     display: block;
     padding-top: 0px;
     color: rgba(0, 0, 0, .5);
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   }
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    width: 94vw;
+    margin-left: 6vw;
+    font-size: 1rem;
+
+    span {
+      font-size: 0.8rem;
+    }
+  }
+
+
 `;
 
 const SubNav = styled.div`
