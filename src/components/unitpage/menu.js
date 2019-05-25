@@ -33,6 +33,7 @@ const Menu = styled.div`
   }
 
   .menu {
+    visibility: hidden;
     grid-area: menu;
     color: rgba(255, 255, 255, .7);
     transform: rotate(-90deg);
@@ -42,6 +43,10 @@ const Menu = styled.div`
     cursor: pointer;
     text-transform: uppercase;
     transition: color 0.1s;
+    
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+      visibility: visible;
+    }
 
     &:hover {
       color: rgba(255, 255, 255, .9);
@@ -275,7 +280,7 @@ class MenuComponent extends React.Component {
           {units}
         </ul>
         {this.props.menuOpen ? <CloseIcon onClick={this.props.toggleMenu}><IoIosCloseCircle/></CloseIcon> : ""}
-        <div className="modules"><Link to="/modules"><FaArrowLeft /></Link></div>
+        <div className="modules"><Link to="/"><FaArrowLeft /></Link></div>
       </Menu>
     ); 
   }
