@@ -233,9 +233,9 @@ class MenuComponent extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      menuOpen: false
-    };
+    // this.state = {
+    //   menuOpen: false
+    // };
 
     this.linkClicked = this.linkClicked.bind(this);
 
@@ -266,13 +266,13 @@ class MenuComponent extends React.Component {
     }
 
     return (
-      <Menu menuOpen={this.state.menuOpen}>
-        <div onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}
+      <Menu menuOpen={this.props.menuOpen}>
+        <div onClick={this.props.toggleMenu}
              className="menu">Menu</div>
         <ul>
           {units}
         </ul>
-        {this.state.menuOpen ? <CloseIcon onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}><IoIosCloseCircle/></CloseIcon> : ""}
+        {this.props.menuOpen ? <CloseIcon onClick={this.props.toggleMenu}><IoIosCloseCircle/></CloseIcon> : ""}
         <div className="modules"><Link to="/modules"><FaArrowLeft /></Link></div>
       </Menu>
     ); 
@@ -281,10 +281,8 @@ class MenuComponent extends React.Component {
   linkClicked() {
     this.props.updateCurrentMarkdown();
 
-    if (this.state.menuOpen) {
-      this.setState(prevState => (
-        {menuOpen: !prevState.menuOpen}
-        ));
+    if (this.props.menuOpen) {
+      this.props.toggleMenu()
     }
   }
 }

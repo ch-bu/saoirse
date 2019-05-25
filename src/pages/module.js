@@ -32,6 +32,7 @@ class Module extends Component {
       markdownCurrent,
       markdownPrevious,
       markdownNext,
+      menuOpen: false,
       showCard: false,
       mouseOverCard: false
     };
@@ -43,6 +44,7 @@ class Module extends Component {
     this.updateCurrentMarkdown = this.updateCurrentMarkdown.bind(this);
     this.linkIsActive = this.linkIsActive.bind(this);
     this.showCard = this.showCard.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
     this.mouseOutCard = this.mouseOutCard.bind(this);
   }
 
@@ -57,6 +59,8 @@ class Module extends Component {
                 markdownCurrent={this.state.markdownCurrent}
                 markdownStarters={this.state.markdownStarters}
                 mouseOutCard={this.mouseOutCard}
+                menuOpen={this.state.menuOpen}
+                toggleMenu={this.toggleMenu}
                 showCard={this.showCard}
                 updateCurrentMarkdown={this.updateCurrentMarkdown}></Menu>
           <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}
@@ -106,6 +110,12 @@ class Module extends Component {
     this.setState({
       mouseOverCard: false,
     });
+  }
+
+  toggleMenu() {
+    this.setState(prevState => (
+      {menuOpen: !prevState.menuOpen}
+    ));
   }
 
   showCard(e) {
