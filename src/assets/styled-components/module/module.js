@@ -253,51 +253,7 @@ const Chapter = styled.div`
 `;
 
 
-const NavigationButtons = styled.div`
-  visibility: hidden;
 
-  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    visibility: visible;
-    position: fixed;
-    bottom: 2vh;
-    right: 4vh;
-    display: flex;
-    width: 100px;
-    height: 80px;
-    align-items: center;
-
-    a {
-      color: #000;
-      text-decoration: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    a.previous {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    a.next {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-    svg {
-      height: 35px;
-      width: 35px;
-      transition: all 0.1s;
-      cursor: pointer;
-
-      &:hover {
-        transform: scale(1.3);
-      }
-    }
-  }
-
-`;
 
 const NavigationBottom = styled.div`
   position: fixed;
@@ -390,7 +346,6 @@ export {
   Container,
   MarkdownDocument,
   Chapter,
-  NavigationButtons,
   NavigationBottom,
   VideoContainer,
   Card,

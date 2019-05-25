@@ -12,10 +12,10 @@ import katex from "katex/dist/katex.min.css"
 import styled from 'styled-components'
 import filterMarkdown from "../components/helper/filter_markdown";
 import SubNav from '../components/unitpage/subnav';
+import NavigationLinks from '../components/unitpage/navigationlinks';
 import Menu from '../components/unitpage/menu';
 import getNextPrevious from "../components/helper/next_and_previous";
-import { Container, MarkdownDocument, MainHeading, VideoContainer, NavigationButtons, Card } from '../assets/styled-components/module/module.js';
-import { FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
+import { Container, MarkdownDocument, MainHeading, VideoContainer, Card } from '../assets/styled-components/module/module.js';
 
 // Markdown components
 import Video from "../components/video";
@@ -64,21 +64,6 @@ class Module extends Component {
   }
 
   render() {
-    // Generate Links
-    const PreviousLink = this.state.markdownPrevious ? <Link 
-      onClick={() => this.updateCurrentMarkdown()}
-      className="previous"
-      to={`/module?id=${this.state.markdownPrevious.frontmatter.module}&unit=${this.state.markdownPrevious.frontmatter.unit}&subunit=${this.state.markdownPrevious.frontmatter.subunit}`}>
-      <FaArrowCircleLeft />
-    </Link> : "";
-
-    const NextLink = this.state.markdownNext ? <Link 
-      onClick={() => this.updateCurrentMarkdown()}
-      className="next"
-      to={`/module?id=${this.state.markdownNext.frontmatter.module}&unit=${this.state.markdownNext.frontmatter.unit}&subunit=${this.state.markdownNext.frontmatter.subunit}`}>
-      <FaArrowCircleRight />
-      </Link> : "";
-
     // Generate Video?
     let mainComponent;
     if (this.state.markdownCurrent) {
@@ -120,10 +105,10 @@ class Module extends Component {
             <MarkdownDocument>
               {mainComponent}
             </MarkdownDocument>
-            <NavigationButtons>
-              {PreviousLink}
-              {NextLink}     
-            </NavigationButtons>
+            <NavigationLinks markdownPrevious={this.state.markdownPrevious}
+                             markdownNext={this.state.markdownNext}
+                             updateCurrentMarkdown={this.updateCurrentMarkdown}>
+            </NavigationLinks>
           </Container>
         </Shell>
       </div>    
@@ -149,7 +134,6 @@ class Module extends Component {
       100
     );
   }
-
 
   mouseOutCard() {
     this.setState({
