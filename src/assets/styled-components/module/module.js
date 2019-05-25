@@ -48,8 +48,6 @@ const MainHeading = styled.div`
       font-size: 0.8rem;
     }
   }
-
-
 `;
 
 const Chapter = styled.div`
