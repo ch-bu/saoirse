@@ -1,30 +1,14 @@
 import React, { Component } from "react"
-import ReactDOM from 'react-dom'
-import rehypeReact from "rehype-react"
-import { Link } from "gatsby"
 import Shell from '../layouts/shell';
 import { graphql } from "gatsby"
 import Helmet from 'react-helmet';
-import Url from 'url-parse';
-import queryString from 'query-string';
-import prism from "prismjs/themes/prism-okaidia.css";
-import katex from "katex/dist/katex.min.css"
-import styled from 'styled-components'
 import filterMarkdown from "../components/helper/filter_markdown";
 import SubNav from '../components/unitpage/subnav';
 import NavigationLinks from '../components/unitpage/navigationlinks';
+import MarkdownComponent from '../components/unitpage/markdown';
 import Menu from '../components/unitpage/menu';
 import getNextPrevious from "../components/helper/next_and_previous";
-import { Container, MarkdownDocument, MainHeading, VideoContainer, Card } from '../assets/styled-components/module/module.js';
-
-// Markdown components
-import Video from "../components/video";
-import Audio from "../components/audio";
-import SingleChoice from "../components/questions/singlechoice";
-import MultipleChoice from "../components/questions/multiplechoice";
-import OrderQuestion from "../components/questions/orderquestion";
-import Flipcard from "../components/questions/flipcard";
-import VideoModeling from "../components/questions/youtubevideomodeling";
+import { Container, MainHeading, Card } from '../assets/styled-components/module/module.js';
 
 // https://whereispoland.com/a-nation-without-a-state/2
 
@@ -64,18 +48,6 @@ class Module extends Component {
   }
 
   render() {
-    // Generate Video?
-    let mainComponent;
-    if (this.state.markdownCurrent) {
-      if (this.state.markdownCurrent.length !== 0) {
-        if (this.state.markdownCurrent.frontmatter.type === "video") {
-          mainComponent = <VideoContainer>{renderAst(this.state.markdownCurrent.htmlAst)}</VideoContainer>;
-        } else {
-          mainComponent = renderAst(this.state.markdownCurrent.htmlAst);
-        }
-      }
-    }
-
     return (
       <div>
         <Shell>
@@ -102,9 +74,7 @@ class Module extends Component {
                   markdowns={this.state.markdownCurrentSubunits}
                   updateCurrentMarkdown={this.updateCurrentMarkdown}></SubNav>
           <Container>
-            <MarkdownDocument>
-              {mainComponent}
-            </MarkdownDocument>
+            <MarkdownComponent markdownCurrent={this.state.markdownCurrent}></MarkdownComponent>
             <NavigationLinks markdownPrevious={this.state.markdownPrevious}
                              markdownNext={this.state.markdownNext}
                              updateCurrentMarkdown={this.updateCurrentMarkdown}>
@@ -185,19 +155,6 @@ export const query = graphql`
     }
   }
 `;
-
-const renderAst = new rehypeReact({
-  createElement: React.createElement,
-  components: { 
-    "video": Video,
-    "audio": Audio,
-    "singlechoice": SingleChoice,
-    "multiplechoice": MultipleChoice,
-    "orderquestion": OrderQuestion,
-    "videomodeling": VideoModeling,
-    "flipcard": Flipcard
-  },
-}).Compiler
 
 export default Module
 
