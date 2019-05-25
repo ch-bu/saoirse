@@ -172,10 +172,35 @@ const Card = styled.div`
   }
 `;
 
+const MenuButton = styled.div`
+  position: fixed;
+  right: 2vw;
+  bottom: 2vh;
+  background-color: ${props => props.theme.primaryColor};
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 199;
+
+  svg {
+    color: #fff;
+  }
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    display: none;
+  }
+`;
+
 export {
   Container,
   Chapter,
   NavigationBottom,
   Card,
+  MenuButton,
   MainHeading
 }

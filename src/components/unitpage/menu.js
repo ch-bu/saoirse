@@ -14,18 +14,18 @@ const Menu = styled.div`
   left: -100vw;
   display: grid;
   grid-template-rows: 10vh 80vh 10vh;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-areas: ". ."
                        "menu nav"
                        "back back";
   transition: width 0.2s;
 
   ${props => props.menuOpen && css`
-     width: 100vw; 
-     /* opacity: .95; */
-     grid-template-areas: ". ."
-                       "nav nav"
-                       "back back";
+    left: 0;
+    width: 100vw; 
+    grid-template-areas: ". ."
+                      "nav nav"
+                      "back back";
   `}
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
@@ -51,7 +51,7 @@ const Menu = styled.div`
   div.modules {
     grid-area: back;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-content: center;
     align-items: stretch;
 
@@ -90,20 +90,18 @@ const Menu = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    justify-self: center;
+    justify-self: left;
     align-items: stretch;
+    padding-left: 10vw;
+
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+      justify-self: center;
+      padding-left: 0;
+    }
     
     li {
       position: relative;
       height: 100%;
-
-      /* &:nth-child(even) {
-        a {
-          background-color: darkblue;
-          left: -350px;
-          text-align: right;
-        }
-      } */
 
       a {
         position: absolute;
@@ -218,9 +216,13 @@ const Menu = styled.div`
 
 const CloseIcon = styled.div`
   position: absolute;
-  right: 1vw;
+  right: 8vw;
   top: 2vh;
   width: 5vw;
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    right: 1vw;
+  }
 
   svg {
     color: #fff;

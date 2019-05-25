@@ -8,7 +8,8 @@ import NavigationLinks from '../components/unitpage/navigationlinks';
 import MarkdownComponent from '../components/unitpage/markdown';
 import Menu from '../components/unitpage/menu';
 import getNextPrevious from "../components/helper/next_and_previous";
-import { Container, MainHeading, Card } from '../assets/styled-components/module/module.js';
+import { IoIosMenu } from "react-icons/io";
+import { Container, MainHeading, Card, MenuButton} from '../assets/styled-components/module/module.js';
 
 // https://whereispoland.com/a-nation-without-a-state/2
 
@@ -55,6 +56,7 @@ class Module extends Component {
           {this.state.markdownCurrent ? <Helmet>
             <title>{this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.title : ""}</title>
           </Helmet> : ""}
+          <MenuButton onClick={this.toggleMenu}><IoIosMenu /></MenuButton>
           <Menu markdownCurrentSubunits={this.state.markdownCurrentSubunits}
                 markdownCurrent={this.state.markdownCurrent}
                 markdownStarters={this.state.markdownStarters}
@@ -113,6 +115,7 @@ class Module extends Component {
   }
 
   toggleMenu() {
+    console.log("men");
     this.setState(prevState => (
       {menuOpen: !prevState.menuOpen}
     ));
