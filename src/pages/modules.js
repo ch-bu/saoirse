@@ -19,18 +19,19 @@ import { FaStar } from "react-icons/fa";
 
 const Modules = styled.div`
   position: static;
-  background-color: ${props => props.theme.primaryColor};
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  /* background-color: ${props => props.theme.primaryColor}; */
+  background-color: #1f232b;
+  /* background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E"); */
   padding: 5vh;
   overflow-y: scroll;
-  border-top: 1.5vh solid #ffc600;
+  border-top: 1.5vh solid ${props => props.theme.primaryColor};
   min-height: 100vh;
 
   h1 {
     margin-top: 0;
     letter-spacing: 2px;
     font-weight: 700;
-    text-align: center;
+    /* text-align: center; */
     color: #fff;
     text-shadow: 8px 8px 3px rgba(0,0,0,0.1);
     border: none;
@@ -77,7 +78,7 @@ const FlexElement = styled.div`
   }
 
   &:hover {
-    border-left: 20px solid ${props => props.theme.secondaryColor};
+    border-left: 20px solid ${props => props.theme.primaryColor};
   }
 
   a {
@@ -122,7 +123,7 @@ const Credits = styled.div`
   /* background-color: ${props => props.theme.asideDropdownBackgroundColor}; */
   background-color: #fff;
   border-radius: 5px;
-  border: 1px solid #626262;
+  border: 1px solid ${props => props.theme.primaryColor};
   margin-top: 5vh;
   width: 50%;
 
@@ -148,7 +149,7 @@ const Credits = styled.div`
   }
 
   svg {
-    color: ${props => props.theme.secondaryColor};
+    color: ${props => props.theme.primaryColor};
     position: absolute;
     font-size: 2.5rem;
     top: -27%;
