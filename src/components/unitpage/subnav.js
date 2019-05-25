@@ -76,6 +76,7 @@ class SubNav extends React.Component {
         const frontmatter = markdown.node.frontmatter;
 
         return <Link key={index}
+                    onClick={this.props.updateCurrentMarkdown}
                     getProps={this.props.linkIsActive}
                     to={`/module?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
                 {this.state.markdownIcons[frontmatter.type]}<br /><span>{frontmatter.title}</span>

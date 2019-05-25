@@ -12,10 +12,10 @@ import katex from "katex/dist/katex.min.css"
 import styled from 'styled-components'
 import filterMarkdown from "../components/helper/filter_markdown";
 import SubNav from '../components/unitpage/subnav';
+import Menu from '../components/unitpage/menu';
 import getNextPrevious from "../components/helper/next_and_previous";
-import { Container, Menu, MarkdownDocument, MainHeading, VideoContainer, NavigationButtons, Card } from '../assets/styled-components/module/module.js';
-
-import { FaArrowCircleLeft, FaArrowCircleRight, FaBookOpen, FaArrowLeft, FaInfoCircle, FaTasks, FaVideo} from "react-icons/fa";
+import { Container, MarkdownDocument, MainHeading, VideoContainer, NavigationButtons, Card } from '../assets/styled-components/module/module.js';
+import { FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
 
 // Markdown components
 import Video from "../components/video";
@@ -79,30 +79,6 @@ class Module extends Component {
       <FaArrowCircleRight />
       </Link> : "";
 
-    // Build mainnav for units
-    let units = undefined;
-    if (this.state.markdownCurrent && this.state.markdownCurrentSubunits) { 
-      if (this.state.markdownCurrent.length !== 0 ) {
-        units = this.state.markdownStarters.map((markdown, index) => {
-          const node = markdown.node.frontmatter;
-          const unitActive = node.unit === this.state.markdownCurrent.frontmatter.unit;
-    
-          return <li key={index}>
-                    <Link key={index}
-                       onMouseOut={this.mouseOutCard}
-                       onMouseOver={this.showCard}
-                       className={unitActive ? "active" : ""}
-                       onClick={() => this.updateCurrentMarkdown()}
-                       to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
-                       chaptername={node.unitTitle}
-                       chapternumber={node.unit}>
-                    </Link>
-                    <span className="dot"></span>
-                 </li>
-        });
-      }  
-    }
-
     // Generate Video?
     let mainComponent;
     if (this.state.markdownCurrent) {
@@ -122,12 +98,13 @@ class Module extends Component {
             <title>{this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.title : ""}</title>
           </Helmet> : ""}
           <Menu menuOpen={this.state.menuOpen} 
-                onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}> 
-            <ul>
-              {units}
-            </ul>
-            <div className="modules"><Link to="/modules"><FaArrowLeft /></Link></div>
-          </Menu>
+                onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}
+                markdownCurrentSubunits={this.state.markdownCurrentSubunits}
+                markdownCurrent={this.state.markdownCurrent}
+                markdownStarters={this.state.markdownStarters}
+                mouseOutCard={this.mouseOutCard}
+                showCard={this.showCard}
+                updateCurrentMarkdown={this.updateCurrentMarkdown}></Menu>
           <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}
                 showCard={this.state.showCard}
                 mouseOverCard={this.state.mouseOverCard}
@@ -136,7 +113,9 @@ class Module extends Component {
           </Card>
           <MainHeading>Chapter {this.state.markdownCurrent ? (this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.unit : "") : ""}<br />
                   <span>{this.state.markdownCurrent ? (this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.unitTitle : "") : ""}</span></MainHeading>
-          <SubNav linkIsActive={this.linkIsActive} markdowns={this.state.markdownCurrentSubunits}></SubNav>
+          <SubNav linkIsActive={this.linkIsActive} 
+                  markdowns={this.state.markdownCurrentSubunits}
+                  updateCurrentMarkdown={this.updateCurrentMarkdown}></SubNav>
           <Container>
             <MarkdownDocument>
               {mainComponent}
