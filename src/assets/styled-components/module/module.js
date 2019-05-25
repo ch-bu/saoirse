@@ -11,7 +11,6 @@ const Container = styled.div`
   }
 `;
 
-
 const MainHeading = styled.div`
   position: fixed;
   top: 0;
@@ -52,57 +51,6 @@ const MainHeading = styled.div`
   }
 
 
-`;
-
-const SubNav = styled.div`
-  position: fixed;
-  /* top: 70px; */
-  top: 7vh;
-  left: 0;
-  width: 100vw;
-  /* min-height: 30px; */
-  min-height: 7vh;
-  margin-left: 0vw;
-  background-color: #fff;
-  border-bottom: 1px solid rgb(236, 236, 236);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-  opacity: 0.96;
-  z-index: 92;
-  box-shadow: 5px 4px 25px 0 rgba(46,61,73,.2);
-
-  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    width: 94vw;
-    margin-left: 6vw;
-  }
-
-  a {
-    color: #dbdbdb;
-    text-align: center;
-    flex: 1;
-    font-size: 0.8rem;
-    text-decoration:none;
-    transition: color 0.2s;
-
-    &:hover {
-      /* color: ${props => props.theme.primaryColor}; */
-      color: rgba(0, 0, 0, .6);
-    }
-  }
-
-  span {
-    display: none;
-
-    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      display: inline;
-    }
-  }
-
-  .active {
-    color: rgba(0, 0, 0, .6);
-  }
 `;
 
 const MarkdownDocument = styled.div`
@@ -603,6 +551,5 @@ export {
   Menu,
   VideoContainer,
   Card,
-  SubNav,
   MainHeading
 }

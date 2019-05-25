@@ -11,8 +11,9 @@ import prism from "prismjs/themes/prism-okaidia.css";
 import katex from "katex/dist/katex.min.css"
 import styled from 'styled-components'
 import filterMarkdown from "../components/helper/filter_markdown";
+import SubNav from '../components/unitpage/subnav';
 import getNextPrevious from "../components/helper/next_and_previous";
-import { Container, Menu, MarkdownDocument, MainHeading, VideoContainer, NavigationButtons, SubNav, Card } from '../assets/styled-components/module/module.js';
+import { Container, Menu, MarkdownDocument, MainHeading, VideoContainer, NavigationButtons, Card } from '../assets/styled-components/module/module.js';
 
 import { FaArrowCircleLeft, FaArrowCircleRight, FaBookOpen, FaArrowLeft, FaInfoCircle, FaTasks, FaVideo} from "react-icons/fa";
 
@@ -38,14 +39,6 @@ class Module extends Component {
     const [markdownPrevious, markdownCurrent, markdownNext] = [...getNextPrevious(markdownSubunits, 
       this.props.location)];
 
-    // Image Types for subnavigation
-    const markdownIcons = {
-      'instruction': <FaBookOpen />,
-      'question': <FaTasks />,
-      'video': <FaVideo />,
-      'information': <FaInfoCircle />
-    };
-    
     this.state = {
       data: this.props.data.allMarkdownRemark.edges,
       markdownSubunits,
@@ -55,7 +48,6 @@ class Module extends Component {
       markdownCurrent,
       markdownPrevious,
       markdownNext,
-      markdownIcons,
       showCard: false,
       mouseOverCard: false,
       menuOpen: false
@@ -86,20 +78,6 @@ class Module extends Component {
       to={`/module?id=${this.state.markdownNext.frontmatter.module}&unit=${this.state.markdownNext.frontmatter.unit}&subunit=${this.state.markdownNext.frontmatter.subunit}`}>
       <FaArrowCircleRight />
       </Link> : "";
-
-    let subnav = undefined;
-    if (this.state.markdownCurrentSubunits) {
-      // Build elements for current subunit
-      subnav = this.state.markdownCurrentSubunits.map((markdown, index) => {
-        const frontmatter = markdown.node.frontmatter;
-        return <Link onClick={() => this.updateCurrentMarkdown()}
-                    key={index}
-                    getProps={this.linkIsActive}
-                    to={`/module?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
-                {this.state.markdownIcons[frontmatter.type]}<br /><span>{frontmatter.title}</span>
-              </Link>
-      });
-    }
 
     // Build mainnav for units
     let units = undefined;
@@ -158,9 +136,7 @@ class Module extends Component {
           </Card>
           <MainHeading>Chapter {this.state.markdownCurrent ? (this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.unit : "") : ""}<br />
                   <span>{this.state.markdownCurrent ? (this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.unitTitle : "") : ""}</span></MainHeading>
-          <SubNav>
-            {subnav}
-          </SubNav>
+          <SubNav linkIsActive={this.linkIsActive} markdowns={this.state.markdownCurrentSubunits}></SubNav>
           <Container>
             <MarkdownDocument>
               {mainComponent}
