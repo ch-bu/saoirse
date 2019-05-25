@@ -137,6 +137,7 @@ const Menu = styled.div`
 
         span {
           color: rgba(255, 255, 255, .4);
+          /* text-transform: capitalize; */
           font-size: 1.4rem;
         }
 
@@ -236,6 +237,8 @@ class MenuComponent extends React.Component {
       menuOpen: false
     };
 
+    this.linkClicked = this.linkClicked.bind(this);
+
   }
   render() {
     // Build mainnav for units
@@ -251,7 +254,7 @@ class MenuComponent extends React.Component {
                        onMouseOut={this.props.mouseOutCard}
                        onMouseOver={this.props.showCard}
                        className={unitActive ? "active" : ""}
-                       onClick={this.props.updateCurrentMarkdown}
+                       onClick={this.linkClicked}
                        to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
                        chaptername={node.unitTitle}
                        chapternumber={node.unit}><span>Chapter {node.unit}</span><br />{node.unitTitle}
@@ -273,6 +276,16 @@ class MenuComponent extends React.Component {
         <div className="modules"><Link to="/modules"><FaArrowLeft /></Link></div>
       </Menu>
     ); 
+  }
+
+  linkClicked() {
+    this.props.updateCurrentMarkdown();
+
+    if (this.state.menuOpen) {
+      this.setState(prevState => (
+        {menuOpen: !prevState.menuOpen}
+        ));
+    }
   }
 }
 
