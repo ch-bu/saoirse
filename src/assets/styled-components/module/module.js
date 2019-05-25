@@ -15,7 +15,6 @@ const MainHeading = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  /* height: 70px; */
   height: 7vh;
   background-color: #fff;
   width: 100vw;
@@ -85,9 +84,6 @@ const Chapter = styled.div`
     }
   }
 `;
-
-
-
 
 const NavigationBottom = styled.div`
   position: fixed;

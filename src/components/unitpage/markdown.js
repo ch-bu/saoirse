@@ -1,6 +1,7 @@
 import React from "react"
 import styled from 'styled-components'
 import rehypeReact from "rehype-react"
+
 // Markdown components
 import Video from "../video";
 import Audio from "../audio";
@@ -154,6 +155,7 @@ const VideoContainer = styled.div`
   position: relative;
   top: 0;
   height: 86vh;
+  max-height: 86vh !important;
   width: 100% !important;
   padding-bottom: 0 !important;
   padding-top: 0 !important;

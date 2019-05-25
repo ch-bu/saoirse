@@ -1,26 +1,51 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from 'styled-components'
-import { FaArrowLeft} from "react-icons/fa";
+import { FaArrowLeft, FaExpandArrowsAlt} from "react-icons/fa";
+import styled, { css } from 'styled-components'
+import { IoIosCloseCircle } from "react-icons/io";
 
 const Menu = styled.div`
   background-color: #1f232b;
   min-height: 100vh;
   width: 6vw;
   position: fixed;
-  z-index: 99;
+  z-index: 209;
   top: 0;
   left: -100vw;
   display: grid;
   grid-template-rows: 10vh 80vh 10vh;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   grid-template-areas: ". ."
+                       "menu nav"
+                       "back back";
+  transition: width 0.2s;
+
+  ${props => props.menuOpen && css`
+     width: 100vw; 
+     /* opacity: .95; */
+     grid-template-areas: ". ."
                        "nav nav"
                        "back back";
-
+  `}
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     left: 0;
+  }
+
+  .menu {
+    grid-area: menu;
+    color: rgba(255, 255, 255, .7);
+    transform: rotate(-90deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.1s;
+
+    &:hover {
+      color: rgba(255, 255, 255, .9);
+    }
   }
 
   div.modules {
@@ -67,13 +92,18 @@ const Menu = styled.div`
     justify-content: space-between;
     justify-self: center;
     align-items: stretch;
-    /* width: 1px; */
-    /* background: ${props => props.theme.primaryColor}; */
-    /* opacity: .9; */
     
     li {
       position: relative;
       height: 100%;
+
+      /* &:nth-child(even) {
+        a {
+          background-color: darkblue;
+          left: -350px;
+          text-align: right;
+        }
+      } */
 
       a {
         position: absolute;
@@ -83,7 +113,32 @@ const Menu = styled.div`
         height: 100%;
         z-index: 150;
         outline: none;
+        text-indent: -9999px;
+        text-decoration: none;
+        color: transparent;
+        font-size: 1.7rem;
 
+        &:hover {
+          color: transparent;
+        }
+
+        ${props => props.menuOpen && css`
+          text-indent: 0px;
+          color: rgba(255, 255, 255, .6);
+          top: -20px;
+          left: 25px;
+          width: auto;
+          min-width: 300px;
+
+          &:hover {
+            color: white;
+          }
+        `}
+
+        span {
+          color: rgba(255, 255, 255, .4);
+          font-size: 1.4rem;
+        }
 
         &.active + span:after {
           margin: -5px -13px;
@@ -160,13 +215,29 @@ const Menu = styled.div`
   }
 `;
 
+const CloseIcon = styled.div`
+  position: absolute;
+  right: 1vw;
+  top: 2vh;
+  width: 5vw;
+
+  svg {
+    color: #fff;
+    font-size: 3rem;
+    cursor: pointer;
+  }
+`;
+
 class MenuComponent extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      menuOpen: false
+    };
+
   }
   render() {
-
     // Build mainnav for units
     let units = undefined;
     if (this.props.markdownCurrent && this.props.markdownCurrentSubunits) { 
@@ -183,7 +254,7 @@ class MenuComponent extends React.Component {
                        onClick={this.props.updateCurrentMarkdown}
                        to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
                        chaptername={node.unitTitle}
-                       chapternumber={node.unit}>
+                       chapternumber={node.unit}><span>Chapter {node.unit}</span><br />{node.unitTitle}
                     </Link>
                     <span className="dot"></span>
                  </li>
@@ -192,10 +263,13 @@ class MenuComponent extends React.Component {
     }
 
     return (
-      <Menu menuOpen={this.props.menuOpen}>
+      <Menu menuOpen={this.state.menuOpen}>
+        <div onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}
+             className="menu">Menu</div>
         <ul>
           {units}
         </ul>
+        {this.state.menuOpen ? <CloseIcon onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}><IoIosCloseCircle/></CloseIcon> : ""}
         <div className="modules"><Link to="/modules"><FaArrowLeft /></Link></div>
       </Menu>
     ); 

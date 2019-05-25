@@ -33,8 +33,7 @@ class Module extends Component {
       markdownPrevious,
       markdownNext,
       showCard: false,
-      mouseOverCard: false,
-      menuOpen: false
+      mouseOverCard: false
     };
 
     // Ref
@@ -54,9 +53,7 @@ class Module extends Component {
           {this.state.markdownCurrent ? <Helmet>
             <title>{this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.title : ""}</title>
           </Helmet> : ""}
-          <Menu menuOpen={this.state.menuOpen} 
-                onClick={() => {this.setState(prevState => ({menuOpen: !prevState.menuOpen}))}}
-                markdownCurrentSubunits={this.state.markdownCurrentSubunits}
+          <Menu markdownCurrentSubunits={this.state.markdownCurrentSubunits}
                 markdownCurrent={this.state.markdownCurrent}
                 markdownStarters={this.state.markdownStarters}
                 mouseOutCard={this.mouseOutCard}
@@ -101,7 +98,7 @@ class Module extends Component {
         });
       }
       .bind(this),
-      100
+      50
     );
   }
 
