@@ -26,11 +26,12 @@ const SubNavContainer = styled.div`
   }
 
   a {
-    color: #dbdbdb;
+    color: rgba(0, 0, 0, .3);
     text-align: center;
     flex: 1;
     font-size: 0.8rem;
     text-decoration:none;
+    outline: none;
     transition: color 0.2s;
 
     &:hover {
@@ -47,7 +48,7 @@ const SubNavContainer = styled.div`
   }
 
   .active {
-    color: rgba(0, 0, 0, .6);
+    color: rgba(0, 0, 0, .8);
   }
 `;
 

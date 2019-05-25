@@ -82,6 +82,7 @@ const Menu = styled.div`
         width: 100px;
         height: 100%;
         z-index: 150;
+        outline: none;
 
 
         &.active + span:after {
