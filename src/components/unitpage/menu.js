@@ -177,7 +177,7 @@ class MenuComponent extends React.Component {
           return <li key={index}>
                     <Link key={index}
                        onMouseOut={this.props.mouseOutCard}
-                       onMouseOver={this.showCard}
+                       onMouseOver={this.props.showCard}
                        className={unitActive ? "active" : ""}
                        onClick={this.props.updateCurrentMarkdown}
                        to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
