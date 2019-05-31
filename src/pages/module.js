@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Helmet from 'react-helmet';
 import filterMarkdown from "../components/helper/filter_markdown";
 import SubNav from '../components/unitpage/subnav';
-import NavigationLinks from '../components/unitpage/navigationlinks';
+// import NavigationLinks from '../components/unitpage/navigationlinks';
 import MarkdownComponent from '../components/unitpage/markdown';
 import Menu from '../components/unitpage/menu';
 import getNextPrevious from "../components/helper/next_and_previous";
