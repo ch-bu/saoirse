@@ -14,7 +14,7 @@ const theme = {
   // colorIconsMobile: "rgba(0, 0, 0, .7)",
   primaryColor: "hsla(193, 98%, 45%, 1)",
   primaryColorSuperlightDark: "hsla(193, 98%, 55%, 1)",
-  primaryColorLight: "hsla(193, 98%, 50%, .80)",
+  primaryColorLight: "hsla(193, 98%, 60%, 1)",
   primaryColorSuperlight: "hsla(215, 18%, 98%, 1)",
   greyColor: "hsla(0, 0%, 0%, .82)",
   greyColorLight: "hsla(0, 0%, 15%, .32)",

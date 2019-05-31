@@ -15,8 +15,6 @@ const SubNavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  /* padding: 5px; */
-  /* opacity: 0.96; */
   z-index: 92;
   box-shadow: 0px 4px 18px 0 hsla(0, 0%, 0%, .11);
   border-top: 1px solid rgba(236, 236, 236, .5);
