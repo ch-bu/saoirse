@@ -14,11 +14,12 @@ const SubNavContainer = styled.div`
   border-bottom: 1px solid rgb(236, 236, 236);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-  opacity: 0.96;
+  align-items: stretch;
+  /* padding: 5px; */
+  /* opacity: 0.96; */
   z-index: 92;
-  box-shadow: 5px 4px 25px 0 rgba(46,61,73,.2);
+  box-shadow: 0px 4px 18px 0 hsla(0, 0%, 0%, .11);
+  border-top: 1px solid rgba(236, 236, 236, .5);
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 94vw;
@@ -26,13 +27,19 @@ const SubNavContainer = styled.div`
   }
 
   a {
-    color: rgba(0, 0, 0, .3);
+    color: hsla(0, 0%, 0%, .32);
     text-align: center;
     flex: 1;
     font-size: 0.8rem;
     text-decoration:none;
+    padding: 3px;
     outline: none;
-    transition: color 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    border-top: 2px solid #fff;
 
     &:hover {
       color: rgba(0, 0, 0, .6);
@@ -49,6 +56,9 @@ const SubNavContainer = styled.div`
 
   .active {
     color: rgba(0, 0, 0, .8);
+    /* font-weight: bold; */
+    border-top: 2px solid ${props => props.theme.primaryColorLight};
+    /* background-color: ${props => props.theme.primaryColorSuperlight} */
   }
 `;
 
@@ -80,7 +90,7 @@ class SubNav extends React.Component {
                     onClick={this.props.updateCurrentMarkdown}
                     getProps={this.props.linkIsActive}
                     to={`/module?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
-                {this.state.markdownIcons[frontmatter.type]}<br /><span>{frontmatter.title}</span>
+                {this.state.markdownIcons[frontmatter.type]}<span>{frontmatter.title}</span>
               </Link>
       });
     }

@@ -21,31 +21,32 @@ const MainHeading = styled.div`
   margin: 0 auto;
   z-index: 98;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: normal;
-  text-transform: uppercase;
+  color: ${props => props.theme.greyColorLight};
+  /* text-transform: uppercase; */
   padding: 1vh 0;
-  opacity: 0.96;
+  /* opacity: 0.96; */
   text-decoration: none;
   border: none;
   letter-spacing: 1px;
-  border-bottom: 1px solid rgba(236, 236, 236, .5);
+  /* border-top: 5px solid ${props => props.theme.primaryColor}; */
   cursor: default;
 
   span {
     display: block;
     padding-top: 0px;
-    color: rgba(0, 0, 0, .5);
-    font-size: 0.6rem;
+    color: ${props => props.theme.greyColor};
+    font-size: 0.8rem;
   }
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 94vw;
     margin-left: 6vw;
-    font-size: 1rem;
+    font-size: 0.8rem;
 
     span {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
   }
 `;
@@ -129,7 +130,7 @@ const Card = styled.div`
   left: 400px;
   z-index: 200;
   background-color: #1f232b;
-  opacity: .9;
+  visibility: hidden;
   width: 400px;
   top: ${props => props.coordY};
   left: ${props => props.coordX};
@@ -139,7 +140,11 @@ const Card = styled.div`
   padding-left: 20px;
   justify-content: left;
   align-items: center;
-  visibility: ${props => props.mouseOverCard ? "visible" : "hidden"};
+  
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    visibility: ${props => props.mouseOverCard ? "visible" : "hidden"};
+  }
 
   h3 {
     color: rgba(255, 255, 255, .6);
@@ -151,7 +156,7 @@ const Card = styled.div`
     span {
       color: rgba(255, 255, 255, .9);
       text-transform: capitalize;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
   }
 
@@ -175,6 +180,7 @@ const MenuButton = styled.div`
   right: 2vw;
   bottom: 2vh;
   background-color: ${props => props.theme.primaryColor};
+  /* border: 1px solid ${props => props.theme.greyColorLight}; */
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -186,7 +192,7 @@ const MenuButton = styled.div`
   z-index: 199;
 
   svg {
-    color: #fff;
+    color: ${props => props.theme.primaryColorSuperlight};
   }
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {

@@ -9,7 +9,9 @@ import { Shake, ShakeLittle } from 'reshake'
 
 const Quiz = styled.div`
   width: 100%;
-  margin: 4rem 0;
+  margin: 2rem 0;
+  box-shadow: 0 3px 9px hsla(0, 0%, 0%, .15), 0 2px 4px hsla(0, 0%, 0%, .12);
+  padding: 20px; 
 
   p {
     font-weight: bold;
@@ -19,9 +21,10 @@ const Quiz = styled.div`
   ul {
     list-style: none;
     margin: 0;
-    padding: 10px;
-    border: 1px solid #e6e6e6;
+    padding: 10px 0;
     margin-bottom: 15px;
+    /* box-shadow: 0 3px 6px hsla(0, 0%, 0%, .15), 0 2px 2px hsla(0, 0%, 0%, .12); */
+   
   }
 `
 
@@ -55,9 +58,9 @@ const Answer = styled.div`
   min-height: 100px;
   padding: 15px;
   font-size: 1rem;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   background-color: ${props => props.answerCorrect ? "#c7efc7" : "#ecbaba"};
-  box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4);
+  /* box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4); */
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     font-size: 1.2rem;
@@ -100,7 +103,8 @@ const Input = styled.input`
 
   &:checked ~ .checkmark {
     background-color: ${props => props.theme.primaryColor};
-    box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4);
+    /* box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4); */
+    box-shadow: 0 3px 6px hsla(0, 0%, 0%, .15), 0 2px 2px hsla(0, 0%, 0%, .12);
   }
 `
 

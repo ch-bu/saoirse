@@ -22,10 +22,11 @@ const MarkdownDocument = styled.div`
   & > div {
     width: 90%;
     padding-bottom: 20vh;
-    padding-top: 7vh;
+    padding-top: 3vh;
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
       width: 60%;
+      padding-top: 7vh;
     }
 
     margin: 0 auto;
@@ -103,13 +104,14 @@ const MarkdownDocument = styled.div`
     color: #000;
     text-decoration: none;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-    border-bottom: 1px solid ${props => props.theme.primaryColor};
-    box-shadow: inset 0 -2px 0px 0px ${props => props.theme.primaryColor};
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    background: rgba(187,239,253,0.3);
+    /* box-shadow: inset 0 -2px 0px 0px ${props => props.theme.primaryColor}; */
     font-weight: bold;
 
     &:hover {
-      background: ${props => props.theme.primaryColorLight};
-      border-radius: 5px;
+      background: #bbeffd;
+      /* border-radius: 5px; */
     }
   }
 
@@ -134,9 +136,9 @@ const MarkdownDocument = styled.div`
       margin-top: 1.6rem;
       padding: 0.8rem;
       margin-bottom: 1.6rem;
-      border-left: 0.4rem solid ${props => props.theme.colorTopNavigation};
-      color: hsla(291, 0%, 18%,0.9);
-      background-color: #e5ecf4;
+      border-left: 0.6rem solid ${props => props.theme.primaryColor};
+      color: hsla(291, 0%, 18%, 0.9);
+      background-color: hsla(0, 0%, 0%, .04);
       font-style: italic;
       font-size: 1rem;
   }

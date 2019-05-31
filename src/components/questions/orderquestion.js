@@ -51,14 +51,17 @@ const getListStyle = isDraggingOver => ({
   marginBottom: '20px',
 });
 
+
 const Answer = styled.div`
   margin-top: 15px;
   width: 100%;
+  font-size: 1rem;
   min-height: 100px;
   padding: 15px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   background-color: ${props => props.answerCorrect ? "#c7efc7" : "#ecbaba"};
-  box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4);
+  /* box-shadow: 5px 4px 25px 0 rgba(46,61,73,.4); */
+  /* box-shadow: inset 0 3px 9px hsla(0, 0%, 0%, .15), inset 0 2px 4px hsla(0, 0%, 0%, .12); */
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     font-size: 1.2rem;
@@ -66,13 +69,19 @@ const Answer = styled.div`
 `;
 
 const DragDropContainer = styled.div`
-  margin: 40px 0;
+  margin: 20px 0;
+  box-shadow: 0 3px 9px hsla(0, 0%, 0%, .15), 0 2px 4px hsla(0, 0%, 0%, .12);
+  padding: 20px;
 `;
 
 const QuestionP = styled.p`
   font-weight: bold;
   margin-bottom: 10px;
-  font-size: 1rem;
+  font-size: 0.9rem;
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    font-size: 1rem;
+  }
 `;
 
 class OrderComponent extends Component {

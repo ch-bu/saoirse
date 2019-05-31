@@ -1,11 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
-import { FaArrowLeft, FaExpandArrowsAlt} from "react-icons/fa";
+import { FaArrowLeft} from "react-icons/fa";
 import styled, { css } from 'styled-components'
 import { IoIosCloseCircle } from "react-icons/io";
 
 const Menu = styled.div`
-  background-color: #1f232b;
+  background-color: hsla(216, 12%, 16%, 1);
   min-height: 100vh;
   width: 6vw;
   position: fixed;
@@ -14,9 +14,9 @@ const Menu = styled.div`
   left: -100vw;
   display: grid;
   grid-template-rows: 10vh 80vh 10vh;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas: ". ."
-                       "menu nav"
+                       "nav nav"
                        "back back";
   transition: width 0.2s;
 
@@ -24,8 +24,8 @@ const Menu = styled.div`
     left: 0;
     width: 100vw; 
     grid-template-areas: ". ."
-                      "nav nav"
-                      "back back";
+                         "nav nav"
+                         "back back";
   `}
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
@@ -59,6 +59,11 @@ const Menu = styled.div`
     justify-content: left;
     align-content: center;
     align-items: stretch;
+    background-color: hsla(216, 12%, 20%, 1);
+
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+      background-color: hsla(216, 12%, 16%, 1);
+    }
 
     a {
       display: flex;
@@ -66,12 +71,14 @@ const Menu = styled.div`
       justify-content: center;
       width: 100%;
 
-      &:hover > svg {
-        color: rgba(255, 255, 255, .9);
+      &:hover + svg {
+        /* color: rgba(255, 255, 255, .9); */
+        color: ${props => props.theme.primaryColorLight};
       }
 
       svg {
         color: rgba(255, 255, 255, .7);
+        color: ${props => props.theme.primaryColorSuperlight};
         font-size: 1.8rem;
       }
     }
@@ -119,7 +126,15 @@ const Menu = styled.div`
         text-indent: -9999px;
         text-decoration: none;
         color: transparent;
-        font-size: 1.7rem;
+        font-size: 1.2rem;
+
+        &.active {
+          color: ${props => props.menuOpen ? "#fff" : "transparent"};
+        }
+
+        @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+          font-size: 1.7rem;
+        }
 
         &:hover {
           color: transparent;
@@ -141,7 +156,11 @@ const Menu = styled.div`
         span {
           color: rgba(255, 255, 255, .4);
           /* text-transform: capitalize; */
-          font-size: 1.4rem;
+          font-size: 1rem;
+
+          @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+            font-size: 1.4rem;
+          }
         }
 
         &.active + span:after {
@@ -230,7 +249,7 @@ const CloseIcon = styled.div`
   }
 
   svg {
-    color: #fff;
+    color: ${props => props.theme.primaryColor};
     font-size: 3rem;
     cursor: pointer;
   }
@@ -274,8 +293,8 @@ class MenuComponent extends React.Component {
 
     return (
       <Menu menuOpen={this.props.menuOpen}>
-        <div onClick={this.props.toggleMenu}
-             className="menu">Menu</div>
+        {/* <div onClick={this.props.toggleMenu}
+             className="menu">Menu</div> */}
         <ul>
           {units}
         </ul>

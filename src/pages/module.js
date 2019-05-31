@@ -34,7 +34,7 @@ class Module extends Component {
       markdownPrevious,
       markdownNext,
       menuOpen: false,
-      showCard: false,
+      showCard: true,
       mouseOverCard: false
     };
 
@@ -78,10 +78,10 @@ class Module extends Component {
                   updateCurrentMarkdown={this.updateCurrentMarkdown}></SubNav>
           <Container>
             <MarkdownComponent markdownCurrent={this.state.markdownCurrent}></MarkdownComponent>
-            <NavigationLinks markdownPrevious={this.state.markdownPrevious}
+            {/* <NavigationLinks markdownPrevious={this.state.markdownPrevious}
                              markdownNext={this.state.markdownNext}
                              updateCurrentMarkdown={this.updateCurrentMarkdown}>
-            </NavigationLinks>
+            </NavigationLinks> */}
           </Container>
         </Shell>
       </div>    

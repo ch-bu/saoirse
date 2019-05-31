@@ -18,7 +18,8 @@ const NavigationButtons = styled.div`
     align-items: center;
 
     a {
-      color: #000;
+      /* color: #000; */
+      color: ${props => props.theme.primaryColor};
       text-decoration: none;
       margin: 0;
       padding: 0;
