@@ -37,7 +37,7 @@ const SubNavContainer = styled.div`
 
   a {
     color: hsla(0, 0%, 0%, .32);
-    min-height: 60px;
+    min-height: 40px;
     text-align: center;
     flex: 1;
     font-size: 0.8rem;
@@ -57,6 +57,7 @@ const SubNavContainer = styled.div`
       font-size: 0.9rem;
       text-align: left;
       padding-left: 15px;
+      min-height: 60px;
     }
 
     &:hover {

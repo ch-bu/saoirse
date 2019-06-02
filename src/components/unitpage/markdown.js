@@ -17,19 +17,23 @@ import katex from "katex/dist/katex.min.css"
 const MarkdownDocument = styled.div`
   width: 100vw;
   min-height: 100vh;
+  position: relative;
   
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    position: relative;
     width: 60vw;
     min-height: 100vh;
     margin-left: 30vw;
+    top: 10vh;
   }
+`;
 
-  & > div {
-    position: relative;
-    top: 8vh;
+const TextComponent = styled.div`
+ & > div {
+    /* position: relative; */
     width: 100% !important;
     min-height: 100vh;
-    padding: 3vh 5vw 20vh 5vw;
+    padding: 14vh 5vw 20vh 5vw;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 9px, rgba(0, 0, 0, 0.12) 0px 2px 4px;
 
@@ -37,8 +41,7 @@ const MarkdownDocument = styled.div`
       width: 90% !important;
       max-width: 1400px;
       padding: 5vh 5vw 20vh 5vw;
-      top: 10vh;
-      min-height: 50vh;
+      min-height: 40vh;
     }
   }
 
@@ -175,7 +178,7 @@ const VideoContainer = styled.div`
   video, iframe {
     position: relative;
     /* max-height: 86vh; */
-    height: 100%;
+    height: 100% !important;
     width: 100%;
     z-index: 100;
     margin-bottom: 0 !important;
@@ -206,7 +209,7 @@ class MarkdownComponent extends React.Component {
         if (this.props.markdownCurrent.frontmatter.type === "video") {
           mainComponent = <VideoContainer>{renderAst(this.props.markdownCurrent.htmlAst)}</VideoContainer>;
         } else {
-          mainComponent = <div>{renderAst(this.props.markdownCurrent.htmlAst)}</div>;
+          mainComponent = <TextComponent><div>{renderAst(this.props.markdownCurrent.htmlAst)}</div></TextComponent>;
         }
       }
     }
