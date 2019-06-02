@@ -259,10 +259,6 @@ class MenuComponent extends React.Component {
   constructor(props) {
     super(props)
 
-    // this.state = {
-    //   menuOpen: false
-    // };
-
     this.linkClicked = this.linkClicked.bind(this);
 
   }

@@ -7,6 +7,7 @@ import SubNav from '../components/unitpage/subnav';
 // import NavigationLinks from '../components/unitpage/navigationlinks';
 import MarkdownComponent from '../components/unitpage/markdown';
 import Menu from '../components/unitpage/menu';
+import Heading from '../components/unitpage/heading';
 import getNextPrevious from "../components/helper/next_and_previous";
 import { IoIosMenu } from "react-icons/io";
 import { Container, MainHeading, Card, MenuButton} from '../assets/styled-components/module/module.js';
@@ -57,27 +58,32 @@ class Module extends Component {
             <title>{this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.title : ""}</title>
           </Helmet> : ""}
           <MenuButton onClick={this.toggleMenu}><IoIosMenu /></MenuButton>
-          <Menu markdownCurrentSubunits={this.state.markdownCurrentSubunits}
+          {/* <Menu markdownCurrentSubunits={this.state.markdownCurrentSubunits}
                 markdownCurrent={this.state.markdownCurrent}
                 markdownStarters={this.state.markdownStarters}
                 mouseOutCard={this.mouseOutCard}
                 menuOpen={this.state.menuOpen}
                 toggleMenu={this.toggleMenu}
                 showCard={this.showCard}
-                updateCurrentMarkdown={this.updateCurrentMarkdown}></Menu>
-          <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}
+                updateCurrentMarkdown={this.updateCurrentMarkdown}></Menu> */}
+          {/* <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}
                 showCard={this.state.showCard}
                 mouseOverCard={this.state.mouseOverCard}
                 >
             <h3>Chapter {this.state.cardNumber}<br /> <span>{this.state.cardTitle}</span></h3>
-          </Card>
-          <MainHeading>Chapter {this.state.markdownCurrent ? (this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.unit : "") : ""}<br />
-                  <span>{this.state.markdownCurrent ? (this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.unitTitle : "") : ""}</span></MainHeading>
-          <SubNav linkIsActive={this.linkIsActive} 
+          </Card> */}
+          <Heading unit={this.state.markdownCurrent ? (this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.unitTitle : "") : ""}
+                   units={this.state.markdownCurrentSubunits}
+                   unitStarters={this.state.markdownStarters}
+                   markdownCurrent={this.state.markdownCurrent}
+                   updateCurrentMarkdown={this.updateCurrentMarkdown}>
+          </Heading>
+          
+          {/* <SubNav linkIsActive={this.linkIsActive} 
                   markdowns={this.state.markdownCurrentSubunits}
-                  updateCurrentMarkdown={this.updateCurrentMarkdown}></SubNav>
+                  updateCurrentMarkdown={this.updateCurrentMarkdown}></SubNav> */}
           <Container>
-            <MarkdownComponent markdownCurrent={this.state.markdownCurrent}></MarkdownComponent>
+            {/* <MarkdownComponent markdownCurrent={this.state.markdownCurrent}></MarkdownComponent> */}
             {/* <NavigationLinks markdownPrevious={this.state.markdownPrevious}
                              markdownNext={this.state.markdownNext}
                              updateCurrentMarkdown={this.updateCurrentMarkdown}>

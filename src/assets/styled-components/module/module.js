@@ -4,83 +4,9 @@ import styled, { css } from 'styled-components'
 const Container = styled.div`
   width: 100vw;
   min-height: 100vh;
+  background-color: hsl(0, 0%, 91%);
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    width: 94vw;
-    margin-left: 6vw;
-  }
-`;
-
-const MainHeading = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 7vh;
-  background-color: #fff;
-  width: 100vw;
-  margin: 0 auto;
-  z-index: 98;
-  text-align: center;
-  font-size: 0.6rem;
-  font-weight: normal;
-  color: ${props => props.theme.greyColorLight};
-  /* text-transform: uppercase; */
-  padding: 1vh 0;
-  /* opacity: 0.96; */
-  text-decoration: none;
-  border: none;
-  letter-spacing: 1px;
-  /* border-top: 5px solid ${props => props.theme.primaryColor}; */
-  cursor: default;
-
-  span {
-    display: block;
-    padding-top: 0px;
-    color: ${props => props.theme.greyColor};
-    font-size: 0.8rem;
-  }
-
-  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    width: 94vw;
-    margin-left: 6vw;
-    font-size: 0.8rem;
-
-    span {
-      font-size: 1rem;
-    }
-  }
-`;
-
-const Chapter = styled.div`
-  position: absolute;
-  height: 100%;
-  z-index: 98;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: ${props => props.theme.primaryColor};
-
-
-  div {
-    text-align: center;
-    padding-top: 20vh;
-    max-width: 50%;
-
-    span {
-      display: inline-block;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 1.5rem;
-      font-weight: 100;
-    }
-
-    h2 {
-      color: #fff;
-      letter-spacing: 2px;
-      font-size: 3rem;
-      border: none;
-    }
   }
 `;
 
@@ -202,9 +128,7 @@ const MenuButton = styled.div`
 
 export {
   Container,
-  Chapter,
   NavigationBottom,
   Card,
   MenuButton,
-  MainHeading
 }
