@@ -165,8 +165,8 @@ const TextComponent = styled.div`
 `;
 
 const VideoContainer = styled.div`
-  /* position: relative; */
-  /* top: 0; */
+  position: relative;
+  top: 8vh;
   width: 100% !important;
   padding-bottom: 0 !important;
   padding-top: 0 !important;
@@ -174,6 +174,10 @@ const VideoContainer = styled.div`
   padding-right: 0 !important;
   /* padding: 0; */
   overflow-y: hidden;
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    top: 0;
+  }
 
   video, iframe {
     position: relative;

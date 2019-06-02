@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled, { css } from 'styled-components'
-import { IoIosCloseCircle } from "react-icons/io";
 import { FiHome, FiChevronDown} from "react-icons/fi";
+import { GoArrowLeft } from "react-icons/go";
 
 const Heading = styled.div`
   position: fixed;
@@ -14,7 +14,7 @@ const Heading = styled.div`
   border-bottom: 1px solid hsl(111, 10%, 80%);
   display: flex;
   align-items: center;
-  padding: 0 10vw;
+  padding: 0 4vw;
   z-index: 300;
   justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.11) 0px 4px 18px 0px;
@@ -22,6 +22,7 @@ const Heading = styled.div`
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     min-height: 70px;
     box-shadow: none;
+    padding: 0 10vw;
   }
 
   a {
@@ -29,17 +30,19 @@ const Heading = styled.div`
     align-items: center;
 
     svg {
-      font-size: 1.4rem;
+      /* font-size: 1.8rem; */
+      /* height: 30px; */
 
       @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-        font-size: 2.8vh;
+        /* font-size: 4.5vh; */
       }
 
-      color: ${props => props.theme.primaryColor};
+      
+      color: hsla(193, 98%, 45%, 0.7);
       transition: color 0.2s;
 
       &:hover {
-        color: hsla(193, 98%, 35%, 1);
+        color: hsla(193, 98%, 45%, 1);
       }
     }
   }
@@ -72,11 +75,11 @@ const UnitNavigation = styled.div`
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 25vw;
+    height: 40px;
   }
 
   &:hover {
     border-radius: 0;
-    /* background-color: hsl(0, 0%, 92%); */
   }
 
   &:hover div {
@@ -101,6 +104,11 @@ const Menu = styled.div`
     width: 100%;
     margin: 0;
     z-index: 22;
+
+
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+      top: calc(40px);
+    }
 
     a {
       text-decoration: none;
@@ -153,7 +161,7 @@ class HeadingComponent extends React.Component {
 
     return (
       <Heading>
-        <Link to="/"><FiHome /></Link>
+        <Link to="/"><GoArrowLeft size={35} /></Link>
         <UnitNavigation>
           {this.props.unit} <FiChevronDown />     
           <Menu>
