@@ -10,15 +10,13 @@ import { FaStar } from "react-icons/fa";
 
 const Modules = styled.div`
   background-color: hsl(220, 16%, 88%);
-  /* background-image: url(https://advancedreact.com/images/texture-white.png); */
-  /* background-color: rgba(255, 255, 255, .85); */
   border-top: 2vh solid hsla(196, 98%, 65%, 1);
 `;
 
 const Heading = styled.div`
   background-color: hsl(220, 16%, 15%);
   background-color: ${props => props.theme.primaryColor};
-  min-height: 57vh;
+  min-height: 56vh;
   display: flex;
   z-index: 99;
   justify-content: center;
@@ -102,7 +100,6 @@ const FlexElement = styled.div`
 
   &:hover {
     background-color: hsl(220, 16%, 19%);
-    /* border-left: 20px solid ${props => props.theme.primaryColor}; */
   }
 
   a {
@@ -110,16 +107,17 @@ const FlexElement = styled.div`
     align-self: stretch;
     height: 100%;
     text-decoration: none;
+    border: none;
   }
 `;
 
 const ModuleNumber = styled.div`
   align-self: center;
   font-size: 3rem;
-  color: hsl(196, 16%, 70%);
+  color: hsl(196, 16%, 80%);
   text-align: center;
   width: 29%;
-  border-right: 1px solid rgba(0, 0, 0, .1);
+  border-right: 1px solid hsl(220, 16%, 30%);
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     font-size: 5rem;
@@ -211,7 +209,6 @@ export default ({ data }) => {
                     
                   ))}  
                 </ModulesFlexbox>
-                  
                 }
               </Spring>
             </Content>

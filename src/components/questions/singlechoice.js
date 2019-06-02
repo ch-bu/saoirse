@@ -10,7 +10,8 @@ import { Shake, ShakeLittle } from 'reshake'
 const Quiz = styled.div`
   width: 100%;
   margin: 2rem 0;
-  box-shadow: 0 3px 9px hsla(0, 0%, 0%, .15), 0 2px 4px hsla(0, 0%, 0%, .12);
+  border: 1px solid hsl(0, 89%, 40);
+  box-shadow: 3px 3px 15px hsla(0, 0%, 0%, .15);
   padding: 20px; 
 
   p {
@@ -24,7 +25,6 @@ const Quiz = styled.div`
     padding: 10px 0;
     margin-bottom: 15px;
     /* box-shadow: 0 3px 6px hsla(0, 0%, 0%, .15), 0 2px 2px hsla(0, 0%, 0%, .12); */
-   
   }
 `
 
