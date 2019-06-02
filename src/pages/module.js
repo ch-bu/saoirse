@@ -57,7 +57,7 @@ class Module extends Component {
           {this.state.markdownCurrent ? <Helmet>
             <title>{this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.title : ""}</title>
           </Helmet> : ""}
-          <MenuButton onClick={this.toggleMenu}><IoIosMenu /></MenuButton>
+          <Container>
           {/* <Menu markdownCurrentSubunits={this.state.markdownCurrentSubunits}
                 markdownCurrent={this.state.markdownCurrent}
                 markdownStarters={this.state.markdownStarters}
@@ -66,12 +66,6 @@ class Module extends Component {
                 toggleMenu={this.toggleMenu}
                 showCard={this.showCard}
                 updateCurrentMarkdown={this.updateCurrentMarkdown}></Menu> */}
-          {/* <Card coordX={`${this.state.coordX}px`} coordY={`${this.state.coordY}px`}
-                showCard={this.state.showCard}
-                mouseOverCard={this.state.mouseOverCard}
-                >
-            <h3>Chapter {this.state.cardNumber}<br /> <span>{this.state.cardTitle}</span></h3>
-          </Card> */}
           <Heading unit={this.state.markdownCurrent ? (this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.unitTitle : "") : ""}
                    units={this.state.markdownCurrentSubunits}
                    unitStarters={this.state.markdownStarters}
@@ -82,8 +76,8 @@ class Module extends Component {
           {/* <SubNav linkIsActive={this.linkIsActive} 
                   markdowns={this.state.markdownCurrentSubunits}
                   updateCurrentMarkdown={this.updateCurrentMarkdown}></SubNav> */}
-          <Container>
-            {/* <MarkdownComponent markdownCurrent={this.state.markdownCurrent}></MarkdownComponent> */}
+         
+            <MarkdownComponent markdownCurrent={this.state.markdownCurrent}></MarkdownComponent>
             {/* <NavigationLinks markdownPrevious={this.state.markdownPrevious}
                              markdownNext={this.state.markdownNext}
                              updateCurrentMarkdown={this.updateCurrentMarkdown}>
@@ -121,28 +115,28 @@ class Module extends Component {
   }
 
   toggleMenu() {
-    console.log("men");
-    this.setState(prevState => (
-      {menuOpen: !prevState.menuOpen}
-    ));
+    // console.log("men");
+    // this.setState(prevState => (
+    //   {menuOpen: !prevState.menuOpen}
+    // ));
   }
 
   showCard(e) {
-    const anchorTag = e.target;
-    const coordinates = anchorTag.getBoundingClientRect();
+    // const anchorTag = e.target;
+    // const coordinates = anchorTag.getBoundingClientRect();
 
-    // Only update state when mouse is indeed on another link
-    if (coordinates["y"] !== this.state.coordY) {
-      this.setState({
-        coordX: coordinates["x"] + 100,
-        // The card is 82 px high. This math is to adjust the card to 
-        // the middle of the navigation
-        coordY: coordinates["y"] + coordinates["height"] / 2 - (82 / 2),
-        cardTitle: anchorTag.getAttribute("chaptername"),
-        cardNumber: anchorTag.getAttribute("chapternumber"),
-        mouseOverCard: true,
-      });
-    }
+    // // Only update state when mouse is indeed on another link
+    // if (coordinates["y"] !== this.state.coordY) {
+    //   this.setState({
+    //     coordX: coordinates["x"] + 100,
+    //     // The card is 82 px high. This math is to adjust the card to 
+    //     // the middle of the navigation
+    //     coordY: coordinates["y"] + coordinates["height"] / 2 - (82 / 2),
+    //     cardTitle: anchorTag.getAttribute("chaptername"),
+    //     cardNumber: anchorTag.getAttribute("chapternumber"),
+    //     mouseOverCard: true,
+    //   });
+    // }
   }
 
   linkIsActive(e) {

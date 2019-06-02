@@ -15,6 +15,7 @@ const Heading = styled.div`
   display: flex;
   align-items: center;
   padding: 0 10vw;
+  z-index: 300;
   justify-content: space-between;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
@@ -48,7 +49,7 @@ const Heading = styled.div`
 
 const UnitNavigation = styled.div`
   position: relative;
-  background-color: hsl(0, 0%, 86%);
+  background-color: hsl(0, 0%, 91%);
   color: hsl(0, 0%, 46%);
   width: 50vw;
   padding: 10px;

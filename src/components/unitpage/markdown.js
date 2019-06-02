@@ -15,21 +15,31 @@ import prism from "prismjs/themes/prism-okaidia.css";
 import katex from "katex/dist/katex.min.css"
 
 const MarkdownDocument = styled.div`
-  width: 100%;
-  min-height: 80vh;
-  padding-top: 14vh;
+  width: 100vw;
+  min-height: 100vh;
+
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    width: 60vw;
+    min-height: 100vh;
+    margin-left: 30vw;
+  }
 
   & > div {
-    width: 90%;
-    padding-bottom: 20vh;
+    position: relative;
+    top: 8vh;
+    width: 100%;
+    min-height: 93vh;
+    padding: 5vw;
+    padding-bottom: 10vh;
     padding-top: 3vh;
+    background-color: #fff;
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      width: 60%;
-      padding-top: 7vh;
+      width: 90%;
+      padding: 40px;
+      top: 10vh;
+      min-height: auto;
     }
-
-    margin: 0 auto;
   }
 
   h1, h2, h3 {
@@ -106,12 +116,10 @@ const MarkdownDocument = styled.div`
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid rgba(0,0,0,0.2);
     background: rgba(187,239,253,0.3);
-    /* box-shadow: inset 0 -2px 0px 0px ${props => props.theme.primaryColor}; */
     font-weight: bold;
 
     &:hover {
       background: #bbeffd;
-      /* border-radius: 5px; */
     }
   }
 

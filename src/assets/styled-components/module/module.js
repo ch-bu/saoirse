@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components'
 
-
 const Container = styled.div`
+  /* top: 0; */
+  /* left: 0; */
+  /* position: fixed; */
+  /* z-index: 0; */
+  overflow: hidden;
   width: 100vw;
-  min-height: 100vh;
   background-color: hsl(0, 0%, 91%);
-
-  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-  }
 `;
 
 const NavigationBottom = styled.div`
