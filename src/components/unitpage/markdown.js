@@ -18,7 +18,6 @@ const MarkdownDocument = styled.div`
   width: 100vw;
   min-height: 100vh;
   
-
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 60vw;
     min-height: 100vh;
@@ -207,10 +206,11 @@ class MarkdownComponent extends React.Component {
         if (this.props.markdownCurrent.frontmatter.type === "video") {
           mainComponent = <VideoContainer>{renderAst(this.props.markdownCurrent.htmlAst)}</VideoContainer>;
         } else {
-          mainComponent = renderAst(this.props.markdownCurrent.htmlAst);
+          mainComponent = <div>{renderAst(this.props.markdownCurrent.htmlAst)}</div>;
         }
       }
     }
+
     return (
       <MarkdownDocument>
         {mainComponent}
