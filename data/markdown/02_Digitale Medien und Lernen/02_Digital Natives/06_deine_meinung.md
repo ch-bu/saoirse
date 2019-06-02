@@ -5,6 +5,7 @@ title: "Deine Meinung"
 module: 1
 unit: 1
 subunit: 50
+type: information
 ---
 
-Beantworte bitte noch folgende Fragen. Im Seminar gehen wir auf diese Fragen ein: 
+adsfadsfasdf

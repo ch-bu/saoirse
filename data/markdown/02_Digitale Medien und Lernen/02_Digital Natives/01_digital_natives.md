@@ -11,4 +11,4 @@ type: information
 Hier steht ein anderer Text. 
 
 
-<singlechoice id="2"></singlechoice>
+<!-- <singlechoice id="2"></singlechoice> -->

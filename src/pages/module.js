@@ -4,15 +4,17 @@ import { graphql } from "gatsby"
 import Helmet from 'react-helmet';
 import filterMarkdown from "../components/helper/filter_markdown";
 import SubNav from '../components/unitpage/subnav';
-// import NavigationLinks from '../components/unitpage/navigationlinks';
 import MarkdownComponent from '../components/unitpage/markdown';
-import Menu from '../components/unitpage/menu';
 import Heading from '../components/unitpage/heading';
 import getNextPrevious from "../components/helper/next_and_previous";
-import { IoIosMenu } from "react-icons/io";
-import { Container, MainHeading, Card, MenuButton} from '../assets/styled-components/module/module.js';
+import styled from 'styled-components';
 
-// https://whereispoland.com/a-nation-without-a-state/2
+const Container = styled.div`
+  overflow: hidden;
+  width: 100vw;
+  background-color: hsl(0, 0%, 91%);
+`;
+
 
 class Module extends Component {
   constructor(props) {
@@ -35,7 +37,6 @@ class Module extends Component {
       markdownPrevious,
       markdownNext,
       menuOpen: false,
-      showCard: true,
       mouseOverCard: false
     };
 
@@ -45,9 +46,6 @@ class Module extends Component {
     // Methods
     this.updateCurrentMarkdown = this.updateCurrentMarkdown.bind(this);
     this.linkIsActive = this.linkIsActive.bind(this);
-    this.showCard = this.showCard.bind(this);
-    this.toggleMenu = this.toggleMenu.bind(this);
-    this.mouseOutCard = this.mouseOutCard.bind(this);
   }
 
   render() {
@@ -58,30 +56,16 @@ class Module extends Component {
             <title>{this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.title : ""}</title>
           </Helmet> : ""}
           <Container>
-          {/* <Menu markdownCurrentSubunits={this.state.markdownCurrentSubunits}
-                markdownCurrent={this.state.markdownCurrent}
-                markdownStarters={this.state.markdownStarters}
-                mouseOutCard={this.mouseOutCard}
-                menuOpen={this.state.menuOpen}
-                toggleMenu={this.toggleMenu}
-                showCard={this.showCard}
-                updateCurrentMarkdown={this.updateCurrentMarkdown}></Menu> */}
           <Heading unit={this.state.markdownCurrent ? (this.state.markdownCurrent.length !== 0 ? this.state.markdownCurrent.frontmatter.unitTitle : "") : ""}
                    units={this.state.markdownCurrentSubunits}
                    unitStarters={this.state.markdownStarters}
                    markdownCurrent={this.state.markdownCurrent}
                    updateCurrentMarkdown={this.updateCurrentMarkdown}>
           </Heading>
-          
-          {/* <SubNav linkIsActive={this.linkIsActive} 
+          <SubNav linkIsActive={this.linkIsActive} 
                   markdowns={this.state.markdownCurrentSubunits}
-                  updateCurrentMarkdown={this.updateCurrentMarkdown}></SubNav> */}
-         
-            <MarkdownComponent markdownCurrent={this.state.markdownCurrent}></MarkdownComponent>
-            {/* <NavigationLinks markdownPrevious={this.state.markdownPrevious}
-                             markdownNext={this.state.markdownNext}
-                             updateCurrentMarkdown={this.updateCurrentMarkdown}>
-            </NavigationLinks> */}
+                  updateCurrentMarkdown={this.updateCurrentMarkdown}></SubNav>
+          <MarkdownComponent markdownCurrent={this.state.markdownCurrent}></MarkdownComponent>
           </Container>
         </Shell>
       </div>    
@@ -106,37 +90,6 @@ class Module extends Component {
       .bind(this),
       50
     );
-  }
-
-  mouseOutCard() {
-    this.setState({
-      mouseOverCard: false,
-    });
-  }
-
-  toggleMenu() {
-    // console.log("men");
-    // this.setState(prevState => (
-    //   {menuOpen: !prevState.menuOpen}
-    // ));
-  }
-
-  showCard(e) {
-    // const anchorTag = e.target;
-    // const coordinates = anchorTag.getBoundingClientRect();
-
-    // // Only update state when mouse is indeed on another link
-    // if (coordinates["y"] !== this.state.coordY) {
-    //   this.setState({
-    //     coordX: coordinates["x"] + 100,
-    //     // The card is 82 px high. This math is to adjust the card to 
-    //     // the middle of the navigation
-    //     coordY: coordinates["y"] + coordinates["height"] / 2 - (82 / 2),
-    //     cardTitle: anchorTag.getAttribute("chaptername"),
-    //     cardNumber: anchorTag.getAttribute("chapternumber"),
-    //     mouseOverCard: true,
-    //   });
-    // }
   }
 
   linkIsActive(e) {

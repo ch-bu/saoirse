@@ -11,15 +11,17 @@ const Heading = styled.div`
   min-height: 8vh;
   background-color: #fff;
   width: 100vw;
-  border-bottom: 1px solid hsl(111, 10%, 75%);
+  border-bottom: 1px solid hsl(111, 10%, 80%);
   display: flex;
   align-items: center;
   padding: 0 10vw;
   z-index: 300;
   justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.11) 0px 4px 18px 0px;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    min-height: 6.4vh;
+    min-height: 70px;
+    box-shadow: none;
   }
 
   a {
@@ -44,6 +46,11 @@ const Heading = styled.div`
 
   #right {
     opacity: 0;
+    display: none;
+
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+      display: block;
+    }
   }
 `;
 
@@ -51,7 +58,7 @@ const UnitNavigation = styled.div`
   position: relative;
   background-color: hsl(0, 0%, 91%);
   color: hsl(0, 0%, 46%);
-  width: 50vw;
+  width: 70vw;
   padding: 10px;
   height: 4vh;
   border-radius: 10px;
@@ -106,11 +113,10 @@ const Menu = styled.div`
       transition: background-color .2s;
 
       &.active {
-        background-color: ${props => props.theme.primaryColor};
-        color: ${props => props.theme.primaryColorSuperlight};
+        background-color: hsl(193, 94%, 95%);
 
         &:hover {
-          background-color: ${props => props.theme.primaryColor};
+          background-color: hsl(193, 94%, 95%);
         }
       }
 

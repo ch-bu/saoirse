@@ -3,29 +3,41 @@ import { Link } from "gatsby"
 import { FaBookOpen, FaInfoCircle, FaTasks, FaVideo} from "react-icons/fa";
 import styled from 'styled-components'
 
-const SubNavContainer = styled.div`
+
+const FixedContainer = styled.div`
   position: fixed;
-  top: 7vh;
+  bottom: 0vh;
   left: 0;
   width: 100vw;
-  min-height: 7vh;
   margin-left: 0vw;
-  background-color: #fff;
-  border-bottom: 1px solid rgb(236, 236, 236);
+  z-index: 92;
+  
+  @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+    left: 10vw;
+    top: 10vh;
+    width: 15vw;
+  }
+`;
+
+const SubNavContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  background-color: #fff;
   align-items: stretch;
-  z-index: 92;
-  box-shadow: 0px 4px 18px 0 hsla(0, 0%, 0%, .11);
-  border-top: 1px solid rgba(236, 236, 236, .5);
+  
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 9px, rgba(0, 0, 0, 0.12) 0px 2px 4px;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    width: 94vw;
-    margin-left: 6vw;
+    flex-direction: column;
+    left: 10vw;
+    top: 10vh;
+    width: 15vw;
+    flex-basis: auto;
   }
 
   a {
     color: hsla(0, 0%, 0%, .32);
+    height: 60px;
     text-align: center;
     flex: 1;
     font-size: 0.8rem;
@@ -37,7 +49,15 @@ const SubNavContainer = styled.div`
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
-    border-top: 2px solid #fff;
+    border-top: 1px solid hsl(111, 10%, 90%);
+
+    @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
+      flex-direction: row;
+      justify-content: left;
+      font-size: 0.9rem;
+      text-align: left;
+      padding-left: 15px;
+    }
 
     &:hover {
       color: rgba(0, 0, 0, .6);
@@ -46,6 +66,7 @@ const SubNavContainer = styled.div`
 
   span {
     display: none;
+    padding-left: 10px;
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
       display: inline;
@@ -53,10 +74,8 @@ const SubNavContainer = styled.div`
   }
 
   .active {
-    color: rgba(0, 0, 0, .8);
-    /* font-weight: bold; */
-    border-top: 2px solid ${props => props.theme.primaryColorLight};
-    /* background-color: ${props => props.theme.primaryColorSuperlight} */
+    color: rgba(0, 0, 0, .6);
+    background-color: hsl(0, 0%, 95%);
   }
 `;
 
@@ -94,9 +113,11 @@ class SubNav extends React.Component {
     }
 
     return (
-      <SubNavContainer>
-        {subnav}
-      </SubNavContainer>
+      <FixedContainer>
+        <SubNavContainer>
+          {subnav}
+        </SubNavContainer>
+      </FixedContainer>
     ); 
   }
 }

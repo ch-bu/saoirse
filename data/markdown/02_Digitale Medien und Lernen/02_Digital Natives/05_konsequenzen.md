@@ -5,6 +5,7 @@ title: "Konsequenzen der Befundlage"
 module: 1
 unit: 1
 subunit: 40
+type: information
 ---
 
 Wenn nun Digital Natives wie sie von Prensky vorgeschlagen werden, nicht existieren, welche Konsequenzen ergeben sich daraus für das Lernen mit digitalen Medien? 

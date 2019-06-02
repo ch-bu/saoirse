@@ -5,6 +5,7 @@ title: "Die Befundlage"
 module: 1
 unit: 1
 subunit: 30
+type: information
 ---
 
 Die Behauptungen von Prensky lassen sich als Hypothesen formulieren, die wir testen können: 

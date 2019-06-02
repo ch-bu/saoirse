@@ -17,6 +17,7 @@ import katex from "katex/dist/katex.min.css"
 const MarkdownDocument = styled.div`
   width: 100vw;
   min-height: 100vh;
+  
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 60vw;
@@ -27,18 +28,18 @@ const MarkdownDocument = styled.div`
   & > div {
     position: relative;
     top: 8vh;
-    width: 100%;
-    min-height: 93vh;
-    padding: 5vw;
-    padding-bottom: 10vh;
-    padding-top: 3vh;
+    width: 100% !important;
+    min-height: 100vh;
+    padding: 3vh 5vw 20vh 5vw;
     background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 9px, rgba(0, 0, 0, 0.12) 0px 2px 4px;
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      width: 90%;
-      padding: 40px;
+      width: 90% !important;
+      max-width: 1400px;
+      padding: 5vh 5vw 20vh 5vw;
       top: 10vh;
-      min-height: auto;
+      min-height: 50vh;
     }
   }
 
@@ -162,21 +163,23 @@ const MarkdownDocument = styled.div`
 `;
 
 const VideoContainer = styled.div`
-  position: relative;
-  top: 0;
-  height: 86vh;
-  max-height: 86vh !important;
+  /* position: relative; */
+  /* top: 0; */
   width: 100% !important;
   padding-bottom: 0 !important;
   padding-top: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  /* padding: 0; */
   overflow-y: hidden;
 
   video, iframe {
     position: relative;
-    max-height: 86vh;
+    /* max-height: 86vh; */
     height: 100%;
     width: 100%;
     z-index: 100;
+    margin-bottom: 0 !important;
     padding: 0 !important;
   }
 
