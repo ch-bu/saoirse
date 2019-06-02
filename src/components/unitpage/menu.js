@@ -277,7 +277,7 @@ class MenuComponent extends React.Component {
                        onMouseOver={this.props.showCard}
                        className={unitActive ? "active" : ""}
                        onClick={this.linkClicked}
-                       to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
+                       to={`/module/?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
                        chaptername={node.unitTitle}
                        chapternumber={node.unit}><span>Chapter {node.unit}</span><br />{node.unitTitle}
                     </Link>

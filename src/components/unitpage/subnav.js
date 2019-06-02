@@ -106,7 +106,7 @@ class SubNav extends React.Component {
         return <Link key={index}
                     onClick={this.props.updateCurrentMarkdown}
                     getProps={this.props.linkIsActive}
-                    to={`/module?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
+                    to={`/module/?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
                 {this.state.markdownIcons[frontmatter.type]}<span>{frontmatter.title}</span>
               </Link>
       });

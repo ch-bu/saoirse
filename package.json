@@ -72,6 +72,7 @@
     "format": "prettier --write 'src/**/*.js'"
   },
   "devDependencies": {
+    "gatsby-plugin-force-trailing-slashes": "^1.0.4",
     "gatsby-plugin-transition-link": "^1.5.1",
     "gatsby-transformer-sharp": "^2.1.17",
     "prettier": "^1.14.3",

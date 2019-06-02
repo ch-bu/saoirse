@@ -7,6 +7,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-transition-link',
     'gatsby-transformer-yaml',
+    `gatsby-plugin-force-trailing-slashes`,
     {
       resolve: 'gatsby-transformer-remark',
       options: {

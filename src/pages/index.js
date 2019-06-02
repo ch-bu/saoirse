@@ -201,7 +201,7 @@ export default ({ data }) => {
                   {modules.map(({ node }) => (
                     
                     <FlexElement key={node.frontmatter.module}>
-                      <Link to={`/module?id=` + node.frontmatter.module + 
+                      <Link to={`/module/?id=` + node.frontmatter.module + 
                                   '&unit=' + node.frontmatter.unit +
                                   '&subunit=' + node.frontmatter.subunit}>
                           <ModuleNumber>{node.frontmatter.module}</ModuleNumber>
