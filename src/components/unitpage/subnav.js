@@ -37,7 +37,7 @@ const SubNavContainer = styled.div`
 
   a {
     color: hsla(0, 0%, 0%, .32);
-    height: 60px;
+    min-height: 60px;
     text-align: center;
     flex: 1;
     font-size: 0.8rem;

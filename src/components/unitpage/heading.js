@@ -76,8 +76,7 @@ const UnitNavigation = styled.div`
 
   &:hover {
     border-radius: 0;
-    background-color: hsl(0, 0%, 92%);
-    border-bottom: 1px solid hsl(111, 10%, 85%);
+    /* background-color: hsl(0, 0%, 92%); */
   }
 
   &:hover div {
@@ -111,6 +110,7 @@ const Menu = styled.div`
       border-bottom: 1px solid hsl(111, 10%, 85%);
       background-color: hsl(0, 0%, 96%);
       transition: background-color .2s;
+      outline: none;
 
       &.active {
         background-color: hsl(193, 94%, 95%);
@@ -143,7 +143,7 @@ class HeadingComponent extends React.Component {
     
           return  <Link key={index}
                         className={unitActive ? "active" : ""}
-                        to={`/module?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
+                        to={`/module/?id=${node.module}&unit=${node.unit}&subunit=${node.subunit}`}
                         onClick={this.props.updateCurrentMarkdown}>
                         {node.unitTitle}
                   </Link>;
