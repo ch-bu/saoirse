@@ -72,6 +72,7 @@ const UnitNavigation = styled.div`
   padding: 10px;
   height: 4vh;
   font-size: 0.8rem;
+  font-weight: bold;
   border-radius: 10px;
   text-align: center;
   display: flex;
