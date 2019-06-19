@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled, { css } from 'styled-components'
-import { FiHome, FiChevronDown} from "react-icons/fi";
+import { FiHome, FiArrowLeft, FiChevronDown} from "react-icons/fi";
 import { GoArrowLeft } from "react-icons/go";
 
 const Heading = styled.div`
@@ -10,8 +10,10 @@ const Heading = styled.div`
   left: 0;
   min-height: 8vh;
   background-color: #fff;
+  background-color: hsl(222, 14%, 15%);
   width: 100vw;
-  border-bottom: 1px solid hsl(111, 10%, 80%);
+  /* border-bottom: 1px solid hsl(111, 10%, 80%); */
+  
   display: flex;
   align-items: center;
   padding: 0 4vw;
@@ -38,11 +40,13 @@ const Heading = styled.div`
       }
 
       
-      color: hsla(193, 98%, 45%, 0.7);
+      /* color: ${props => props.theme.primaryColor}; */
+      color: ${props => props.theme.primaryColorSuperlight};
       transition: color 0.2s;
 
       &:hover {
-        color: hsla(193, 98%, 45%, 1);
+        /* color: ${props => props.theme.primaryColorLight}; */
+        color: ${props => props.theme.primaryColorLight};
       }
     }
   }
@@ -59,11 +63,15 @@ const Heading = styled.div`
 
 const UnitNavigation = styled.div`
   position: relative;
-  background-color: hsl(0, 0%, 91%);
-  color: hsl(0, 0%, 46%);
+  background-color: hsl(222, 14%, 27%);
+  /* background-color:  ${props => props.theme.primaryColor}; */
+  /* border: 1px solid ${props => props.theme.primaryColor}; */
+  color: hsl(0, 0%, 86%);
+  color: ${props => props.theme.primaryColorSuperlight};
   width: 70vw;
   padding: 10px;
   height: 4vh;
+  font-size: 0.8rem;
   border-radius: 10px;
   text-align: center;
   display: flex;
@@ -76,21 +84,24 @@ const UnitNavigation = styled.div`
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 25vw;
     height: 40px;
+    font-size: 1rem;
   }
 
   &:hover {
     border-radius: 0;
+    /* background-color:  ${props => props.theme.primaryColor}; */
   }
 
   &:hover div {
     display: block;
     position: absolute;
     min-width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 9px, rgba(0, 0, 0, 0.12) 0px 2px 4px;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 9px, rgba(0, 0, 0, 0.12) 0px 2px 4px; */
   }
 
   svg {
     color: hsl(0, 0%, 66%);
+    color: ${props => props.theme.primaryColorSuperlight};
     font-size: 2rem;
   }
 `;
@@ -113,23 +124,32 @@ const Menu = styled.div`
     a {
       text-decoration: none;
       padding: 10px;
-      color: hsl(0, 0%, 36%);
+      /* color: hsl(0, 0%, 36%); */
+      color: hsl(0, 0%, 76%);
       justify-content: center;
-      border-bottom: 1px solid hsl(111, 10%, 85%);
-      background-color: hsl(0, 0%, 96%);
+      border-bottom: 1px solid hsl(222, 14%, 35%);
+      /* background-color: hsl(0, 0%, 96%); */
+      background-color: hsl(222, 14%, 27%);
       transition: background-color .2s;
       outline: none;
 
       &.active {
-        background-color: hsl(193, 94%, 95%);
+        /* background-color: hsl(193, 94%, 95%); */
+        /* background-color: ${props => props.theme.primaryColor}; */
+        /* background-color: hsl(222, 14%, 31%); */
+        color: ${props => props.theme.primaryColorSuperlight};
 
         &:hover {
-          background-color: hsl(193, 94%, 95%);
+          /* background-color: hsl(193, 94%, 95%); */
+          /* background-color: ${props => props.theme.primaryColor}; */
+          /* background-color: hsl(222, 14%, 31%); */
         }
       }
 
       &:hover {
-        background-color: hsl(0, 0%, 92%);
+        /* background-color: hsl(0, 0%, 92%); */
+        background-color: hsl(222, 14%, 31%);
+        /* color: hsl(0, 0%, 96%); */
       }
     }
 `;
@@ -161,9 +181,9 @@ class HeadingComponent extends React.Component {
 
     return (
       <Heading>
-        <Link to="/"><GoArrowLeft size={35} /></Link>
+        <Link to="/"><FiArrowLeft size={35} /></Link>
         <UnitNavigation>
-          {this.props.unit} <FiChevronDown />     
+          {this.props.unit} <FiChevronDown />    
           <Menu>
             {units}
           </Menu>

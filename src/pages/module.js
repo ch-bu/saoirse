@@ -12,7 +12,9 @@ import styled from 'styled-components';
 const Container = styled.div`
   overflow: hidden;
   width: 100vw;
-  background-color: hsl(0, 0%, 91%);
+  background-color: hsl(0, 0%, 95%);
+  /* background-color: #eafbff; */
+  /* background-image: linear-gradient(to bottom right, #f7f7f7, #eafbff); */
 `;
 
 

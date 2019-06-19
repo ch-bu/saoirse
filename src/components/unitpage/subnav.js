@@ -6,26 +6,27 @@ import styled from 'styled-components'
 
 const FixedContainer = styled.div`
   position: fixed;
-  bottom: 0vh;
+  bottom: -1px;
   left: 0;
   width: 100vw;
   margin-left: 0vw;
   z-index: 92;
+  border-top: 1px solid hsl(0, 0%, 96%);
   
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     left: 10vw;
-    top: 10vh;
+    top: 100px;
     width: 15vw;
+    border-top: 0;
   }
 `;
 
 const SubNavContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: #fff;
   align-items: stretch;
   
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 9px, rgba(0, 0, 0, 0.12) 0px 2px 4px;
+  /* box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 9px, rgba(0, 0, 0, 0.12) 0px 2px 4px; */
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     flex-direction: column;
@@ -38,6 +39,7 @@ const SubNavContainer = styled.div`
   a {
     color: hsla(0, 0%, 0%, .32);
     min-height: 40px;
+    background-color: #fff;
     text-align: center;
     flex: 1;
     font-size: 0.8rem;
@@ -48,8 +50,10 @@ const SubNavContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
-    border-top: 1px solid hsl(111, 10%, 90%);
+    transition: all 0.1s;
+    margin-bottom: 1px;
+    /* border-left: 5px solid #fff; */
+    /* border-top: 1px solid hsl(111, 10%, 90%); */
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
       flex-direction: row;
@@ -61,7 +65,11 @@ const SubNavContainer = styled.div`
     }
 
     &:hover {
-      color: rgba(0, 0, 0, .6);
+      color: rgba(0, 0, 0, .5);
+    }
+
+    svg {
+      color: rgba(0, 0, 0, .1);
     }
   }
 
@@ -76,7 +84,15 @@ const SubNavContainer = styled.div`
 
   .active {
     color: rgba(0, 0, 0, .6);
-    background-color: hsl(0, 0%, 95%);
+    font-weight: bold;
+    
+    /* border-left: 5px solid ${props => props.theme.primaryColor}; */
+    /* color: ${props => props.theme.primaryColorLight}; */
+    /* background-color: hsl(0, 0%, 95%); */
+
+    svg {
+      color: rgba(0, 0, 0, .6);
+    }
   }
 `;
 

@@ -34,7 +34,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   boxShadow: "5px 4px 20px 0 rgba(46,61,73,.4)",
 
   // change background colour if dragging
-  background: isDragging ? "#01a1cd" : '#02b3e4',
+  background: isDragging ? "hsla(208, 100%, 47%, 1)" : 'hsla(208, 100%, 47%, 0.8)',
   // color: isDragging ? '#fff' : '#000',
   color: "#000",
 

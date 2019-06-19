@@ -24,7 +24,7 @@ const MarkdownDocument = styled.div`
     width: 60vw;
     min-height: 100vh;
     margin-left: 30vw;
-    top: 10vh;
+    top: 100px;
   }
 `;
 
@@ -35,13 +35,13 @@ const TextComponent = styled.div`
     min-height: 100vh;
     padding: 14vh 5vw 20vh 5vw;
     background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 9px, rgba(0, 0, 0, 0.12) 0px 2px 4px;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 9px, rgba(0, 0, 0, 0.12) 0px 2px 4px; */
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
       width: 90% !important;
       max-width: 1400px;
       padding: 5vh 5vw 20vh 5vw;
-      min-height: 40vh;
+      min-height: 90vh;
     }
   }
 
@@ -54,6 +54,10 @@ const TextComponent = styled.div`
     margin-top: 0;
     font-size: 4rem;
     border: none;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
   
   h2 {
@@ -63,6 +67,10 @@ const TextComponent = styled.div`
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
       font-size: 1.9rem;
+    }
+
+    &:first-child {
+      margin-top: 0;
     }
   }
 
@@ -118,7 +126,7 @@ const TextComponent = styled.div`
     text-decoration: none;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid rgba(0,0,0,0.2);
-    background: rgba(187,239,253,0.3);
+    background: ${props => props.theme.primaryColorSuperSuperLight};
     font-weight: bold;
 
     &:hover {
