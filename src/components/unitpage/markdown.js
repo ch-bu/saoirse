@@ -88,6 +88,10 @@ const TextComponent = styled.div`
     color: red;
   }
 
+  p {
+    color: rgba(0, 0, 0, .75);
+  }
+
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     font-size: 1rem;
 
