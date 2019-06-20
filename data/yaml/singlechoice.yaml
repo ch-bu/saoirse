@@ -1,22 +1,12 @@
-- question: Sind digitale Medien in der Regel schädlich für Lernen?
+- question: How old is Barack Obama?
   questionid: "1"
   answers:
-    - answer: Ja, digitale Medien lenken beim Lernen ab. Zwar lassen sich gute Lernumgebungen damit erstellen, aber durch die Möglichkeit, schnell auf andere Funktionen zu wechseln, sind Lernende abgelenkt.
-      correct: False
-      hint: Nein. Ob ein digitales Gerät lernförderlich ist, hängt sehr stark von der Nutzung ab. Zwar finden sich viele Studien, die negative Einflüsse auf das Lernen finden, allerdings spielen auch Lernenmerkmale wie die Fähigkeit zur Selbstregulation eine Rolle.
-    - answer: Das kann man so nicht sagen. Es gibt für jedes digitale Geräte sowohl Vorteile als auch Nachteile.
+    - answer: 57
       correct: True
-      hint: Richtig. Beispielsweise kann man behaupten, dass sich die Dinge besser einprägt, wenn man in einer Vorlesung per Hand alles mitschreibt, allerdings hat der Laptop den Vorteil, dass das Geschriebene schnell gesucht und gefunden werden kann. Ähnlich verhält es sich mit den anderen Geräten. Der Kontext und der Inhalt des Produktes entscheidet, ob ein Produkt lernförderlich ist.
-    - answer: Ganz im Gegenteil. Digitale Medien fördern das Lernen, da die heutige Generation Digital Natives sind und produktiv mit digitalen Medien umgehen können.
+      hint: That is correct
+    - answer: 62
       correct: False
-      hint: Das ist so nicht haltbar. Die Idee der Digital Natives ist mittlerweile überholt. Nur weil Menschen mit digitalen Medien aufwachsen, sind sie nicht per se besser im Umgang. Ob ein digitales Gerät lernförderlich ist, hängt sehr stark von der Nutzung ab. Zwar finden sich viele Studien, die negative Einflüsse auf das Lernen finden, allerdings spielen auch Lernenmerkmale wie die Fähigkeit zur Selbstregulation eine Rolle.
-
-- question: Eine Testfrage
-  questionid: "2"
-  answers:
-    - answer: asldkfjadsf
-      correct: True
-      hint: saf
-    - answer: llll
+      hint: Nope. Younger than you expect
+    - answer: 50
       correct: False
-      hint: asdfd
+      hint: No way. He probably wishes to be that old.

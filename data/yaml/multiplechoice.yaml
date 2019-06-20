@@ -1,13 +1,15 @@
-- question: Wie alt ist günter?
+- question: Which of these animals is a mammal?
   questionid: 1
-  hint: Denk nochmal drüber nach
+  hint: Not yet. Keep trying.
   answers:
-    - answer: ja
+    - answer: dog
       correct: True
-    - answer: Nicht ganz
+    - answer: spider
       correct: False
-    - answer: Ein Meter und 80
+    - answer: mouse
       correct: True
+    - answer: bird
+      correct: False
 
 - question: Welches dieser Tiere ist ein Säugetier?
   questionid: 2
