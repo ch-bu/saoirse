@@ -47,6 +47,7 @@ const SubNavContainer = styled.div`
     padding: 3px;
     outline: none;
     display: flex;
+    /* font-weight: 100; */
     flex-direction: column;
     align-items: center;
     justify-content: center;

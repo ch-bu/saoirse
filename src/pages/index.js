@@ -10,28 +10,31 @@ import { FaStar } from "react-icons/fa";
 
 const Modules = styled.div`
   background-color: hsl(220, 16%, 88%);
-  border-top: 2vh solid hsla(208, 100%, 77%, 1);
+  /* background-color: hsl(222, 14%, 15%); */
+  border-top: 2vh solid hsl(222, 14%, 15%);
 `;
 
 const Heading = styled.div`
-  background-color: hsl(220, 16%, 15%);
-  background-color: ${props => props.theme.primaryColor};
+  /* background-color: hsl(220, 16%, 15%); */
+  /* background-color: ${props => props.theme.primaryColor}; */
+  background-color: hsl(222, 14%, 20%);
   min-height: 56vh;
   display: flex;
   z-index: 99;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2359a8ec' fill-opacity='0.55' fill-rule='evenodd'/%3E%3C/svg%3E");
-  clip-path: polygon(0 0, 100% 0%, 100% calc(100% - 100px), 0 100%);
+  /* background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2359a8ec' fill-opacity='0.55' fill-rule='evenodd'/%3E%3C/svg%3E"); */
+  /* clip-path: polygon(0 0, 100% 0%, 100% calc(100% - 100px), 0 100%); */
 
   h1 {
     margin: 0;
     text-align: center;
     letter-spacing: 2px;
     border: none;
-    color: hsla(196, 98%, 98%, 1);
-    text-shadow: 2px 2px hsla(208, 100%, 47%, 0.2);
+    font-weight: 700;
+    color: ${props => props.theme.primaryColorSuperlight};
+    /* text-shadow: 1px 1px ${props => props.theme.primaryColorSuperlight}; */
     font-size: 2rem;
     padding-bottom: 0;
     cursor: default;
@@ -42,9 +45,10 @@ const Heading = styled.div`
   }
 
   h2 {
-    color: hsla(196, 98%, 98%, 1);
-    text-shadow: 2px 2px hsla(196, 98%, 38%, 1);
+    color: rgba(255, 255, 255, 0.9);
+    /* text-shadow: 1px 1px ${props => props.theme.primaryColorSuperlight}; */
     font-size: 1.5rem;
+    font-weight: 100;
     text-align: center;
     border: none;
     letter-spacing: 1px;
@@ -71,7 +75,7 @@ const ModulesFlexbox = styled.div`
   justify-content: center;
   padding-top: 3vh;
   position: relative;
-  top: -23vh;
+  top: -20vh;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     justify-content: space-between;
@@ -80,25 +84,25 @@ const ModulesFlexbox = styled.div`
 
 
 const FlexElement = styled.div`
-  background-color: hsl(220, 16%, 25%);
+  background-color: ${props => props.theme.primaryColorSuperlight};
   width: 100%;
   text-align: center;
   margin-bottom: 1rem;
   transition: all 0.2s;
   box-sizing: border-box;
-  border-left: 20px solid rgba(255, 255, 255, 0);
-  box-shadow: 0 3px 9px hsla(0, 0%, 0%, .15), 0 2px 4px hsla(0, 0%, 0%, .12);
-  box-shadow: 0 0 0 4px rgba(255,255,255,0.4), 0 0 4px rgba(0,0,0,0.48);
-  
+  /* border-left: 20px solid rgba(255, 255, 255, 0); */
+  /* box-shadow: 0 0 0 4px rgba(255,255,255,0.3), 0 0 4px rgba(0,0,0,0.48); */
+  box-shadow: 7px 7px 0px 1px ${props => props.theme.primaryColor};
   
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    width: calc(33% - 10px);
+    width: calc(33% - 20px);
     margin-right: 10px;
     height: 180px;
   }
 
   &:hover {
-    background-color: hsl(220, 16%, 19%);
+    /* background-color: ${props => props.theme.primaryColor}; */
+    box-shadow: 7px 7px 0px 1px ${props => props.theme.primaryColorLight};
   }
 
   a {
@@ -113,10 +117,10 @@ const FlexElement = styled.div`
 const ModuleNumber = styled.div`
   align-self: center;
   font-size: 3rem;
-  color: hsl(196, 16%, 80%);
+  color: hsla(250, 16%, 15%, 0.9);
   text-align: center;
   width: 29%;
-  border-right: 1px solid hsl(220, 16%, 30%);
+  /* border-right: 1px solid hsla(250, 16%, 15%, 0.1); */
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     font-size: 5rem;
@@ -125,7 +129,7 @@ const ModuleNumber = styled.div`
 
 const ModuleDescription = styled.div`
   width: 80%;
-  color: hsl(250, 16%, 90%);
+  color: hsla(250, 16%, 15%, 0.9);
   text-align: left;
   padding: 20px;
   align-self: center;
@@ -185,8 +189,8 @@ export default ({ data }) => {
         </Helmet>
           <Modules>
             <Heading>
-              <h1>Saoirse</h1>
-              <h2>An E-Learning Framework for Busy People</h2>
+              <h1>Saoirse [ˈsˠiːɾʲʃə]</h1>
+              <h2>A Content-First E-Learning Framework</h2>
             </Heading>
             <Content>
               <Spring

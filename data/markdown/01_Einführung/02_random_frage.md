@@ -1,5 +1,5 @@
 ---
-moduleTitle: Einführung
+moduleTitle: About
 unitTitle: Einführung
 title: Random Frage
 module: 0

@@ -71,8 +71,9 @@ const UnitNavigation = styled.div`
   width: 70vw;
   padding: 10px;
   height: 4vh;
+  font-weight: 100;
   font-size: 0.8rem;
-  font-weight: bold;
+  /* font-weight: bold; */
   border-radius: 10px;
   text-align: center;
   display: flex;

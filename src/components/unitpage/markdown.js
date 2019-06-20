@@ -18,6 +18,7 @@ const MarkdownDocument = styled.div`
   width: 100vw;
   min-height: 100vh;
   position: relative;
+  /* border-top: 10px solid ${props => props.theme.primaryColor}; */
   
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     position: relative;
