@@ -13,6 +13,7 @@ import VideoModeling from "../questions/youtubevideomodeling";
 
 import prism from "prismjs/themes/prism-okaidia.css";
 import katex from "katex/dist/katex.min.css"
+import { Transition } from "react-spring/renderprops";
 
 const MarkdownDocument = styled.div`
   width: 100vw;
@@ -226,10 +227,25 @@ class MarkdownComponent extends React.Component {
         if (this.props.markdownCurrent.frontmatter.type === "video") {
           mainComponent = <VideoContainer>{renderAst(this.props.markdownCurrent.htmlAst)}</VideoContainer>;
         } else {
-          mainComponent = <TextComponent><div>{renderAst(this.props.markdownCurrent.htmlAst)}</div></TextComponent>;
+          mainComponent = <Transition
+          delay={400}
+          from={{opacity: 0}}
+          enter={{opacity: 1}}
+          leave={{opacity: 0}}>
+          {props => props => <TextComponent style={props}><div>{renderAst(this.props.markdownCurrent.htmlAst)}</div></TextComponent>}
+        </Transition>
         }
       }
     }
+
+    // let mainCompWrapped = <Transition
+    //   from={{opacity: 0}}
+    //   enter={{opacity: 1}}
+    //   leave={{opacity: 0}}>
+    //   {props => props => mainComponent}
+    // </Transition>
+
+    // console.log(mainCompWrapped);
 
     return (
       <MarkdownDocument>

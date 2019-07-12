@@ -7,6 +7,7 @@ import SubNav from '../components/unitpage/subnav';
 import MarkdownComponent from '../components/unitpage/markdown';
 import Heading from '../components/unitpage/heading';
 import getNextPrevious from "../components/helper/next_and_previous";
+import { Spring, config } from 'react-spring/renderprops.cjs';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -51,6 +52,7 @@ class Module extends Component {
   }
 
   render() {
+    console.log("rendered");
     return (
       <div>
         <Shell>
@@ -67,7 +69,16 @@ class Module extends Component {
           <SubNav linkIsActive={this.linkIsActive} 
                   markdowns={this.state.markdownCurrentSubunits}
                   updateCurrentMarkdown={this.updateCurrentMarkdown}></SubNav>
-          <MarkdownComponent markdownCurrent={this.state.markdownCurrent}></MarkdownComponent>
+          <Spring
+              delay={100}
+              from={{ 
+                opacity: 0,
+                transform: "scale(0.9)" }}
+                to={{ opacity: 1, transform: "scale(1)"  }}
+                config={{duration: 200}}>
+              {props => <MarkdownComponent style={props}
+                        markdownCurrent={this.state.markdownCurrent}></MarkdownComponent>}
+          </Spring>
           </Container>
         </Shell>
       </div>    

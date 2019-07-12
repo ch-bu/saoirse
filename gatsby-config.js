@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Saoirse',
   },
-  pathPrefix: "/saoirse",
+  pathPrefix: "/data/unifreiburg/lm_data/lm_1641538",
   plugins: [
     'gatsby-plugin-sharp',
     'gatsby-plugin-transition-link',

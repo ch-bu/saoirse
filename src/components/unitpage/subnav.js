@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { FaBookOpen, FaInfoCircle, FaTasks, FaVideo} from "react-icons/fa";
 import styled from 'styled-components'
+import { Transition } from 'react-spring/renderprops.cjs';
 
 
 const FixedContainer = styled.div`
@@ -121,12 +122,18 @@ class SubNav extends React.Component {
       subnav = this.props.markdowns.map((markdown, index) => {
         const frontmatter = markdown.node.frontmatter;
 
-        return <Link key={index}
-                    onClick={this.props.updateCurrentMarkdown}
-                    getProps={this.props.linkIsActive}
-                    to={`/module/?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
-                {this.state.markdownIcons[frontmatter.type]}<span>{frontmatter.title}</span>
-              </Link>
+        return <Transition key={index}
+                           from={{opacity: 0, transform: "translate(-10px, 0px)"}} 
+                           enter={{opacity: 1, transform: "translate(0px, 0px)"}} 
+                           leave={{opacity: 0, transform: "translate(-100px, 0px)"}}>
+                  {props => props => <Link style={props} 
+                  onClick={this.props.updateCurrentMarkdown}
+                  getProps={this.props.linkIsActive}
+                  to={`/module/?id=${frontmatter.module}&unit=${frontmatter.unit}&subunit=${frontmatter.subunit}`}>
+                  {this.state.markdownIcons[frontmatter.type]}<span>{frontmatter.title}</span>
+                </Link>}
+               </Transition>
+
       });
     }
 

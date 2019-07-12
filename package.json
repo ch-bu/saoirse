@@ -72,6 +72,8 @@
     "format": "prettier --write 'src/**/*.js'"
   },
   "devDependencies": {
+    "eslint": "^6.0.1",
+    "eslint-plugin-react": "^7.14.2",
     "gatsby-plugin-force-trailing-slashes": "^1.0.4",
     "gatsby-plugin-transition-link": "^1.5.1",
     "gatsby-transformer-sharp": "^2.1.17",
