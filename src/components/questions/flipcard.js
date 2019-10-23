@@ -4,6 +4,8 @@ import { useSpring, animated as a } from 'react-spring'
 import { StaticQuery, graphql } from "gatsby"
 
 const Container = styled.div`
+  min-height: 55ch;
+
   .front,
   .back {
     background-size: cover;
