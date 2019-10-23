@@ -68,7 +68,7 @@ const TextComponent = styled.div`
     margin-top: 40px;
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      font-size: 1.9rem;
+      font-size: 1.7rem;
     }
 
     &:first-child {
@@ -82,7 +82,7 @@ const TextComponent = styled.div`
     margin-top: 40px;
 
     @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-      font-size: 1.7rem;
+      font-size: 1.5rem;
     }
   }
 
@@ -98,7 +98,7 @@ const TextComponent = styled.div`
     font-size: 1rem;
 
     p, li {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
 
     h1 {
@@ -106,7 +106,7 @@ const TextComponent = styled.div`
     }
 
     code {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
     }
   }
 

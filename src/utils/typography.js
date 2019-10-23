@@ -6,8 +6,8 @@ githubTheme.overrideThemeStyles = ({ rhythm }, options) => ({
   'a': {
     textShadow: "none",
     backgroundImage: "none",
-    textDecoration: "none"
-    // baseFontSize: "20px",
+    textDecoration: "none",
+    baseFontSize: "12px"
   },
   'div': {
     textDecoration: "none"

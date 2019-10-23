@@ -86,7 +86,7 @@ const UnitNavigation = styled.div`
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
     width: 25vw;
     height: 40px;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   &:hover {

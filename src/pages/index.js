@@ -21,7 +21,6 @@ const Heading = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  /* clip-path: polygon(0 0, 100% 0%, 100% calc(100% - 100px), 0 100%); */
 
   h1 {
     margin: 0;
@@ -111,7 +110,7 @@ const ModuleNumber = styled.div`
   width: 29%;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    font-size: 5rem;
+    font-size: 4rem;
   }
 `;
 
@@ -124,7 +123,7 @@ const ModuleDescription = styled.div`
   font-size: 1.3rem;
 
   @media only screen and (min-width: ${props => props.theme.breakpointOne}) {
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 `;
 
