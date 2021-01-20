@@ -30,7 +30,7 @@
     "gatsby-source-filesystem": "^2.0.1-beta.10",
     "gatsby-transformer-remark": "^2.3.0",
     "gatsby-transformer-yaml": "^2.1.8",
-    "gsap": "^2.0.2",
+    "gsap": "^3.6.0",
     "history": "^4.7.2",
     "katex": "^0.10.1",
     "mermaid": "^8.0.0-rc.8",
