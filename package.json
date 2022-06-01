@@ -79,7 +79,7 @@
     "gatsby-transformer-sharp": "^2.1.17",
     "prettier": "^1.14.3",
     "react-reveal": "^1.2.2",
-    "sharp": "^0.22.0",
+    "sharp": "^0.30.5",
     "url-loader": "^1.1.2"
   },
   "repository": {
